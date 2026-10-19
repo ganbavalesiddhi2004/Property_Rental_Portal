@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.db import models
+from django.utils import timezone
 
 
 class AdminProfile(models.Model):
@@ -103,40 +106,7 @@ class HomeHero(models.Model):
         return self.title
 
 
-class HomeCategory(models.Model):
 
-    CATEGORY_CHOICES = [
-        ('1BHK', '1 BHK'),
-        ('PG', 'PG'),
-        ('ROOM', 'Room'),
-    ]
-
-    category = models.CharField(
-        max_length=10,
-        choices=CATEGORY_CHOICES
-    )
-
-    title = models.CharField(
-        max_length=100
-    )
-
-    description = models.TextField()
-
-    icon = models.CharField(
-        max_length=100,
-        default="fa-solid fa-house"
-    )
-
-    is_active = models.BooleanField(
-        default=True
-    )
-
-    order = models.PositiveIntegerField(
-        default=1
-    )
-
-    def __str__(self):
-        return self.title
 
 
 class HomeArea(models.Model):
@@ -267,4 +237,23 @@ class HomeContact(models.Model):
 
     def __str__(self):
         return self.location    
+# Home Category Model
+from django.db import models
+class HomeCategory(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField()
+    icon = models.CharField(
+        max_length=100,
+        default="fa-solid fa-house"
+    )
+    display_order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['display_order']
+
+    def __str__(self):
+        return self.name
+
+
 

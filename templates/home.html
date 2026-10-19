@@ -789,52 +789,56 @@
 
         </div>
 
-        <div class="row g-4">
+        
+<div class="row g-4">
 
-            {% for category in categories %}
+    {% for category in categories %}
 
-            <div class="col-md-4">
+        {% if category.is_active %}
 
-                <div class="category-card">
+        <div class="col-md-4">
 
-                    <div class="category-icon">
+            <div class="category-card h-100">
 
+                <!-- Category Icon -->
+                <div class="category-icon">
+                    {% if category.icon %}
                         <i class="{{ category.icon }}"></i>
-
-                    </div>
-
-                    <h5>
-                        {{ category.title }}
-                    </h5>
-
-                    <p>
-                        {{ category.description }}
-                    </p>
-
-                    <a
-                        href="#search"
-                        class="btn btn-outline-custom"
-                    >
-                        Explore {{ category.title }}
-                    </a>
-
+                    {% else %}
+                        <i class="fa-solid fa-house"></i>
+                    {% endif %}
                 </div>
 
+                <!-- Category Name -->
+                <h5>{{ category.name }}</h5>
+
+                <!-- Category Description -->
+                <p>{{ category.description }}</p>
+
+                <!-- Explore Button -->
+                <a href="{% url 'home' %}#search"
+                   class="btn btn-outline-custom">
+                    Explore {{ category.name }}
+                </a>
+
             </div>
-
-            {% empty %}
-
-            <div class="text-center">
-
-                <p class="text-secondary">
-                    No property categories available.
-                </p>
-
-            </div>
-
-            {% endfor %}
 
         </div>
+
+        {% endif %}
+
+    {% empty %}
+
+        <div class="col-12 text-center">
+            <p class="text-secondary">
+                No property categories available.
+            </p>
+        </div>
+
+    {% endfor %}
+
+</div>
+
 
     </div>
 
