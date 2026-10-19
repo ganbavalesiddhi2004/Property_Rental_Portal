@@ -294,13 +294,14 @@ def homepage_management(request):
         return redirect('admin_login')
 
     heroes = HomeHero.objects.all().order_by('-created_at')
+    categories = HomeCategory.objects.all().order_by('display_order')
 
     return render(
         request,
         'admin_panel/homepage_management.html',
         {
-            'heroes': heroes
-            
+            'heroes': heroes,
+            'categories': categories,
         }
     )
 def add_hero(request):
