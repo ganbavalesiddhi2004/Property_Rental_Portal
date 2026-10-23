@@ -296,11 +296,17 @@
             }
 
         }
+
+
+        /* Category Card Styles */
         .category-card {
+             .hero-card {
             background: #111827;
             border: 1px solid #1e293b;
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
         }
 
         .category-header {
@@ -380,6 +386,258 @@
                 margin-left: auto;
             }
         }
+        
+
+/* WHY CHOOSE US SECTION */
+
+.why-choose-card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: border-color 0.3s;
+}
+
+.why-choose-card:hover {
+    border-color: #334155;
+}
+
+.why-choose-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.why-choose-header h5 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.why-choose-content {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.why-choose-icon {
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e293b;
+    color: #38bdf8;
+    border-radius: 12px;
+    font-size: 32px;
+}
+
+.why-choose-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.why-choose-info h3 {
+    color: #f8fafc;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.why-choose-info p {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.why-choose-order {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* STATUS BADGES */
+
+.why-choose-card .status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #064e3b;
+    color: #6ee7b7;
+}
+
+.why-choose-card .status.inactive {
+    background: #334155;
+    color: #cbd5e1;
+}
+
+/* EDIT AND DELETE BUTTONS */
+
+.why-choose-card .action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.why-choose-card .btn-edit {
+    background: #1e293b;
+    color: #38bdf8;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.why-choose-card .btn-edit:hover {
+    background: #334155;
+    color: #7dd3fc;
+}
+
+.why-choose-card .btn-delete {
+    background: #450a0a;
+    color: #fca5a5;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.why-choose-card .btn-delete:hover {
+    background: #7f1d1d;
+    color: #fecaca;
+}
+
+/* EMPTY STATE */
+
+.why-choose-empty {
+    text-align: center;
+    padding: 70px 20px;
+    background: #111827;
+    border: 1px dashed #334155;
+    border-radius: 15px;
+    color: #f8fafc;
+}
+
+.why-choose-empty i {
+    font-size: 50px;
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+.why-choose-empty h4 {
+    color: #f8fafc;
+    margin-bottom: 10px;
+}
+
+.why-choose-empty p {
+    color: #94a3b8;
+}
+
+/* DARK MODALS */
+
+/* #addWhyChooseModal .modal-content,
+[id^="editWhyChoose"] .modal-content,
+[id^="deleteWhyChoose"] .modal-content {
+    background: #111827;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 15px;
+}
+
+#addWhyChooseModal .modal-header,
+[id^="editWhyChoose"] .modal-header,
+[id^="deleteWhyChoose"] .modal-header {
+    border-bottom: 1px solid #334155;
+}
+
+#addWhyChooseModal .modal-footer,
+[id^="editWhyChoose"] .modal-footer,
+[id^="deleteWhyChoose"] .modal-footer {
+    border-top: 1px solid #334155;
+}
+
+#addWhyChooseModal .form-label,
+[id^="editWhyChoose"] .form-label {
+    color: #cbd5e1;
+}
+
+#addWhyChooseModal .form-control,
+[id^="editWhyChoose"] .form-control {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #f8fafc;
+}
+
+#addWhyChooseModal .form-control:focus,
+[id^="editWhyChoose"] .form-control:focus {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #38bdf8;
+    box-shadow: none;
+}
+
+#addWhyChooseModal .form-control::placeholder,
+[id^="editWhyChoose"] .form-control::placeholder {
+    color: #64748b;
+}
+
+#addWhyChooseModal .btn-close,
+[id^="editWhyChoose"] .btn-close,
+[id^="deleteWhyChoose"] .btn-close {
+    filter: invert(1);
+} */
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+    .why-choose-content {
+        flex-wrap: wrap;
+    }
+
+    .why-choose-card .action-buttons {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-choose-card {
+        padding: 18px;
+    }
+
+    .why-choose-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .why-choose-icon {
+        width: 75px;
+        min-width: 75px;
+        height: 75px;
+        font-size: 28px;
+    }
+
+    .why-choose-info {
+        width: 100%;
+    }
+
+    .why-choose-info h3 {
+        font-size: 18px;
+    }
+
+    .why-choose-card .action-buttons {
+        margin-left: 0;
+    }
+}
+
+
+
+
 
 
     </style>
@@ -393,8 +651,12 @@
 
 <div class="sidebar">
 
-    <div class="brand">
-        RentEase AI
+    
+     <div class="brand">
+
+        <i class="fa-solid fa-house"></i>
+        Admin
+
     </div>
 
     <ul>
@@ -444,12 +706,7 @@
             </a>
         </li>
 
-        <li>
-            <a href="#">
-                <i class="fa-solid fa-star"></i>
-                <span>Reviews</span>
-            </a>
-        </li>
+        
 
         <li>
             <a href="#">
@@ -1596,20 +1853,366 @@
     </div>
 </div> 
 
-<!-- Bootstrap CSS should be included in the page head -->
+<!-- here to add features -->
 
-<!-- Before the closing body tag -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- WHY CHOOSE US MANAGEMENT -->
+<!-- <section id="why-choose-management" class="mb-4"> -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>
+            <i class="fa-solid fa-star me-2"></i>
+             xczxczcxzccczxcfL      Features  Management
+        </h4>
+
+        <button type="button"
+                class="btn btn-primary-custom"
+                data-bs-toggle="modal"
+                data-bs-target="#addWhyChooseModal">
+            <i class="fa-solid fa-plus me-2"></i>
+            Add Feature
+        </button>
+        
+    </div>
+    <div class="hero-header">
+    <div class="action-buttons">
+
+                <!-- ================= EDIT BUTTON ================= -->
+
+                <button
+                    type="button"
+                    class="btn-edit"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editWhyChooseModal{{ feature.id }}">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </button>
 
 
+                <!-- ================= DELETE BUTTON ================= -->
 
+                <button
+                    type="button"
+                    class="btn-delete"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteWhyChooseModal{{ feature.id }}">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </button>
+
+    </div>
+</div>
+
+    <div class="row g-4">
+
+        {% for feature in why_choose_features %}
+
+        <!-- FEATURE CARD -->
+        <div class="col-12">
+            <div class="card p-4">
+
+                <div class="d-flex align-items-center gap-3 flex-wrap">
+
+                    <div class="category-icon">
+                        <i class="{{ feature.icon }} fa-2x"></i>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <h5 class="mb-0">{{ feature.title }}</h5>
+
+                            {% if feature.is_active %}
+                                <span class="badge bg-success">Active</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Inactive</span>
+                            {% endif %}
+                        </div>
+
+                        <p class="text-secondary mb-1">
+                            {{ feature.description }}
+                        </p>
+
+                        <small class="text-secondary">
+                            Display Order: {{ feature.display_order }}
+                        </small>
+                    </div>
+
+                    <div class="d-flex gap-2 flex-shrink-0">
+
+                        <button type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editWhyChooseModal{{ feature.id }}"
+                                title="Edit Feature">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-danger"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteWhyChooseModal{{ feature.id }}"
+                                title="Delete Feature">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT FEATURE MODAL -->
+        <div class="modal fade"
+             id="editWhyChooseModal{{ feature.id }}"
+             tabindex="-1"
+             aria-hidden="true">
+
+            <div class="modal-dialog modal-lg ">
+                <div class="modal-content">
+
+                    <form method="POST"
+                          action="{% url 'edit_why_choose_feature' feature.id %}">
+                        {% csrf_token %}
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">
+                                <i class="fa-solid fa-pen me-2"></i>
+                                Edit Feature Section
+                            </h5>
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal">
+                                </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label class="form-label">Feature Title</label>
+                                <input type="text"
+                                       name="title"
+                                       class="form-control"
+                                       value="{{ feature.title }}"
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea name="description"
+                                          class="form-control"
+                                          rows="3"
+                                          required>{{ feature.description }}</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Icon Class</label>
+                                <input type="text"
+                                       name="icon"
+                                       class="form-control"
+                                       value="{{ feature.icon }}"
+                                       placeholder="fa-solid fa-shield-halved">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Display Order</label>
+                                <input type="number"
+                                       name="display_order"
+                                       class="form-control"
+                                       min="0"
+                                       value="{{ feature.display_order }}"
+                                       required>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox"
+                                       name="is_active"
+                                       class="form-check-input"
+                                       id="featureActive{{ feature.id }}"
+                                       {% if feature.is_active %}checked{% endif %}>
+                                <label class="form-check-label"
+                                       for="featureActive{{ feature.id }}">
+                                    Active
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal">
+                                Cancel
+                            </button>
+
+                            <button type="submit"
+                                    class="btn btn-primary-custom">
+                                Save Changes
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- DELETE FEATURE MODAL -->
+        <div class="modal fade"
+             id="deleteWhyChooseModal{{ feature.id }}"
+             tabindex="-1"
+             aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Feature</h5>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <i class="fa-solid fa-triangle-exclamation fa-3x text-danger mb-3"></i>
+                        <h5>Are you sure?</h5>
+                        <p>You are about to delete:</p>
+                        <strong>{{ feature.title }}</strong>
+                        <p class="text-secondary mt-2">
+                            This action cannot be undone.
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <form method="POST"
+                              action="{% url 'delete_why_choose_feature' feature.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+            <div class="empty-box text-center p-4">
+                <i class="fa-solid fa-star fa-3x mb-3"></i>
+                <h4>No Features Added</h4>
+                <p class="text-secondary">
+                    Add your first Why Choose Us feature.
+                </p>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+<!-- </section> -->
+
+
+<!-- ADD FEATURE MODAL -->
+<div class="modal fade"
+     id="addWhyChooseModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <form method="POST"
+                  action="{% url 'add_why_choose_feature' %}">
+                {% csrf_token %}
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Why Choose Us Feature</h5>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Feature Title</label>
+                        <input type="text"
+                               name="title"
+                               class="form-control"
+                               placeholder="Verified Properties"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description"
+                                  class="form-control"
+                                  rows="3"
+                                  placeholder="Find trusted rental properties."
+                                  required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Icon Class</label>
+                        <input type="text"
+                               name="icon"
+                               class="form-control"
+                               placeholder="fa-solid fa-shield-halved">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Display Order</label>
+                        <input type="number"
+                               name="display_order"
+                               class="form-control"
+                               min="0"
+                               value="0"
+                               required>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox"
+                               name="is_active"
+                               class="form-check-input"
+                               id="newFeatureActive"
+                               checked>
+                        <label class="form-check-label"
+                               for="newFeatureActive">
+                            Active
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary-custom">
+                        Add Feature
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Bootstrap JS -->
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
-</script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

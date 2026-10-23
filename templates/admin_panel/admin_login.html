@@ -59,7 +59,9 @@
             height: 48px;
             border-radius: 10px;
         }
-
+          .form-label {
+            font-weight: 600;
+        }
         .btn-login {
             width: 100%;
             height: 48px;
@@ -88,15 +90,23 @@
 
 <div class="login-card">
 
-   <p class="login-subtitle">
-    <strong>Property Rental Portal</strong>
+   <!-- <p class="login-subtitle">
+    <i class="fa-solid fa-house"></i>
+   Property Rental Portal
     <span>Find your perfect place </span>
    </p>
 
-    <h3 class="login-title">Admin Login</h3>
+    <h3 class="login-title">Admin Login</h3> -->
 
-    
+    <div class="brand">
 
+        <i class="fa-solid fa-house"></i>
+        Property Rental Portal
+
+    </div>
+
+     <center><h3 class="login-title">Admin Login</h3></center>
+    <br>
     {% if error %}
         <div class="alert alert-danger">
             {{ error }}

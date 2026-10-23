@@ -18,6 +18,11 @@ urlpatterns = [
     path('homepage_management/add-category/',views.add_category, name='add_category'),
     path('homepage_management/edit-category/<int:id>/',views.edit_category,name='edit_category'),
     path('homepage_management/delete-category/<int:id>/',views.delete_category,name='delete_category'),
+    # Admin Panel URLs for managing Home Features
+    path('homepage_management/add-why-choose/',views.add_why_choose_feature,name='add_why_choose_feature'),
+    path('homepage_management/edit-why-choose/<int:id>/',views.edit_why_choose_feature,name='edit_why_choose_feature'),
+    path('homepage_management/delete-why-choose/<int:id>/',views.delete_why_choose_feature,name='delete_why_choose_feature'),
+    
     # Owner Panel URLs
     path('owner_panel/owner_register/',views.owner_register,name='owner_register'),
     path('owner_panel/owner_login/',views.owner_login,name='owner_login'),

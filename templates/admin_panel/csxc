@@ -1,0 +1,175 @@
+.hero-card {
+            background: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-header h5 {
+            margin: 0;
+            color: #f8fafc;
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 190px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #1e293b;
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .hero-info h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .hero-info p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: #064e3b;
+            color: #6ee7b7;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-edit {
+            background: #1e293b;
+            color: #38bdf8;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 7px;
+        }
+
+        .btn-delete {
+            background: #450a0a;
+            color: #fca5a5;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 7px;
+        }
+
+        .empty-box {
+            text-align: center;
+            padding: 70px 20px;
+            background: #111827;
+            border: 1px dashed #334155;
+            border-radius: 15px;
+        }
+
+        .empty-box i {
+            font-size: 50px;
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .empty-box p {
+            color: #94a3b8;
+        }
+
+        .modal-content {
+            background: #111827;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #334155;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #334155;
+        }
+
+        .form-label {
+            color: #cbd5e1;
+        }
+
+        .form-control {
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: white;
+        }
+
+        .form-control:focus {
+            background: #0f172a;
+            color: white;
+            border-color: #38bdf8;
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        @media(max-width: 900px) {
+
+            .sidebar {
+                width: 70px;
+            }
+
+            .sidebar .brand {
+                font-size: 0;
+            }
+
+            .sidebar .brand::after {
+                content: "RE";
+                font-size: 20px;
+            }
+
+            .sidebar ul li a span {
+                display: none;
+            }
+
+            .main {
+                margin-left: 70px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }

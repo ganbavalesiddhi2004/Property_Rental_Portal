@@ -295,13 +295,14 @@ def homepage_management(request):
 
     heroes = HomeHero.objects.all().order_by('-created_at')
     categories = HomeCategory.objects.all().order_by('display_order')
-
+    why_choose_features = WhyChooseFeature.objects.all()
     return render(
         request,
         'admin_panel/homepage_management.html',
         {
             'heroes': heroes,
             'categories': categories,
+            'why_choose_features': why_choose_features,
         }
     )
 def add_hero(request):
@@ -472,4 +473,102 @@ def delete_category(request, id):
     category.delete()
 
     messages.success(request, 'Category deleted successfully.')
+    return redirect('homepage_management')
+
+
+from .models import WhyChooseFeature
+
+def add_why_choose_feature(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+
+    if not hasattr(request.user, 'adminprofile'):
+        return redirect('admin_login')
+
+    if request.method != 'POST':
+        return redirect('homepage_management')
+
+    title = request.POST.get('title', '').strip()
+    description = request.POST.get('description', '').strip()
+    icon = request.POST.get('icon', '').strip()
+    display_order = request.POST.get('display_order', '0')
+
+    if not title or not description:
+        messages.error(request, 'Title and description are required.')
+        return redirect('homepage_management')
+
+    try:
+        display_order = int(display_order)
+        if display_order < 0:
+            raise ValueError
+    except (ValueError, TypeError):
+        messages.error(request, 'Enter a valid display order.')
+        return redirect('homepage_management')
+
+    WhyChooseFeature.objects.create(
+        title=title,
+        description=description,
+        icon=icon or 'fa-solid fa-house',
+        display_order=display_order,
+        is_active=request.POST.get('is_active') == 'on'
+    )
+
+    messages.success(request, 'Feature added successfully.')
+    return redirect('homepage_management')
+
+
+def edit_why_choose_feature(request, id):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+
+    if not hasattr(request.user, 'adminprofile'):
+        return redirect('admin_login')
+
+    feature = get_object_or_404(WhyChooseFeature, id=id)
+
+    if request.method != 'POST':
+        return redirect('homepage_management')
+
+    title = request.POST.get('title', '').strip()
+    description = request.POST.get('description', '').strip()
+    icon = request.POST.get('icon', '').strip()
+    display_order = request.POST.get('display_order', '0')
+
+    if not title or not description:
+        messages.error(request, 'Title and description are required.')
+        return redirect('homepage_management')
+
+    try:
+        display_order = int(display_order)
+        if display_order < 0:
+            raise ValueError
+    except (ValueError, TypeError):
+        messages.error(request, 'Enter a valid display order.')
+        return redirect('homepage_management')
+
+    feature.title = title
+    feature.description = description
+    feature.icon = icon or 'fa-solid fa-house'
+    feature.display_order = display_order
+    feature.is_active = request.POST.get('is_active') == 'on'
+    feature.save()
+
+    messages.success(request, 'Feature updated successfully.')
+    return redirect('homepage_management')
+
+
+def delete_why_choose_feature(request, id):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+
+    if not hasattr(request.user, 'adminprofile'):
+        return redirect('admin_login')
+
+    if request.method != 'POST':
+        return redirect('homepage_management')
+
+    feature = get_object_or_404(WhyChooseFeature, id=id)
+    feature.delete()
+
+    messages.success(request, 'Feature deleted successfully.')
     return redirect('homepage_management')

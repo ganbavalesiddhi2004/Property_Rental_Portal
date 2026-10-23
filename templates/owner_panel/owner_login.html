@@ -31,7 +31,21 @@
             font-family: Arial, sans-serif;
         }
 
-        .login-card {
+        /* .login-card {
+            width: 400px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .brand {
+            text-align: center;
+            color: #2563eb;
+            font-size: 28px;
+            font-weight: bold;
+        } */
+         .login-card {
             width: 400px;
             background: white;
             border-radius: 20px;
@@ -45,6 +59,7 @@
             font-size: 28px;
             font-weight: bold;
         }
+
 
         .subtitle {
             text-align: center;
@@ -86,7 +101,12 @@
             font-weight: bold;
             text-decoration: none;
         }
-
+        .login-title {
+            text-align: center;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
     </style>
 
 </head>
@@ -97,16 +117,20 @@
 
     <div class="brand">
 
-        <i class="fa-solid fa-house"></i>
+        <i class=""></i>
         Property Rental Portal
 
     </div>
 
-    <p class="subtitle">
+     <center><h3 class="login-title">Owner Login</h3></center>
+    <br>
+      <!-- <p class="login-subtitle">
+    <strong>Property Rental Portal</strong>
+    <span>Find your perfect place </span>
+   </p>
 
-        Owner Login
+    <h3 class="login-title">Admin Login</h3> -->
 
-    </p>
 
 
     {% if error %}
