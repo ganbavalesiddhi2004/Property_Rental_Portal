@@ -274,3 +274,105 @@ class WhyChooseFeature(models.Model):
     def __str__(self):
         return self.title
 
+# Owner Dashboard Model
+# Property Model
+
+from django.db import models
+from django.contrib.auth.models import User
+
+
+class Property(models.Model):
+
+    CATEGORY_CHOICES = [
+        ('Room', 'Room'),
+        ('PG', 'PG'),
+        ('1 BHK', '1 BHK'),
+    ]
+
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='rental_properties'
+    )
+
+    category = models.CharField(
+        max_length=20,
+        choices=CATEGORY_CHOICES
+    )
+
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    area = models.CharField(max_length=150)
+    rent = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    image = models.ImageField(
+        upload_to='properties/',
+        blank=True,
+        null=True
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+# Booking Model
+
+from django.conf import settings
+from django.db import models
+
+
+class Booking(models.Model):
+    STATUS_CHOICES = [
+        ('Pending', 'Pending'),
+        ('Accepted', 'Accepted'),
+        ('Rejected', 'Rejected'),
+    ]
+
+    property = models.ForeignKey(
+        'main.Property',
+        on_delete=models.CASCADE,
+        related_name='booking_requests'
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='booking_requests'
+    )
+    booking_date = models.DateField()
+    message = models.TextField(blank=True)
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='Pending'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.property} - {self.status}"
+
+
+# Review Model
+
+from django.conf import settings
+from django.db import models
+
+
+class Review(models.Model):
+    property = models.ForeignKey(
+        'main.Property',
+        on_delete=models.CASCADE,
+        related_name='reviews'
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='property_reviews'
+    )
+    rating = models.PositiveSmallIntegerField(
+        choices=[(i, f'{i} Star') for i in range(1, 6)]
+    )
+    comment = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.property} - {self.rating} stars"

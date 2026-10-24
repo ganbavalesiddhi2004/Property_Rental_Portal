@@ -777,7 +777,7 @@
 
             <h2>
                 Explore <span>Properties</span>
-            </h2>
+            </h2> 
 
             <p>
                 Choose the type of property that suits your needs.
@@ -811,11 +811,19 @@
                 <!-- Category Description -->
                 <p>{{ category.description }}</p>
 
-                <!-- Explore Button -->
+                <!-- Explore Button 
                 <a href="{% url 'home' %}#search"
                    class="btn btn-outline-custom">
                     Explore {{ category.name }}
+                </a>-->
+                
+                <!-- Explore Button -->
+                <a href="{% url 'user_register' %}?category={{ category.name|urlencode }}"
+                class="btn btn-outline-custom">
+                    Explore {{ category.name }}
                 </a>
+
+                
 
             </div>
 

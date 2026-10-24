@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            padding: 30px;
+            color: #0f172a;
+        }
+
+        .profile-card {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        h2 { color: #2563eb; }
+
+        p {
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 7px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #2864f0;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <h2>My Profile</h2>
+
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>First Name:</strong> {{ user.first_name|default:"Not provided" }}</p>
+        <p><strong>Last Name:</strong> {{ user.last_name|default:"Not provided" }}</p>
+        <p><strong>Email:</strong> {{ user.email|default:"Not provided" }}</p>
+
+        <a href="{% url 'user_dashboard' %}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

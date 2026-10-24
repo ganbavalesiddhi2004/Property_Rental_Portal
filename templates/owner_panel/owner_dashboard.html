@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Owner Dashboard | RentEase AI</title>
+    <title>Owner Dashboard | Property Rental Portal</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -404,6 +404,217 @@
 
             margin: 0;
         }
+        /* Form Styles */
+         /* ===== Add Property Form Styling ===== */
+
+#add-property-section {
+    padding: 10px 0 30px;
+}
+
+/* Form card */
+#add-property-section .card {
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    padding: 30px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Form heading */
+#add-property-section h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.5px;
+}
+
+/* Heading underline */
+#add-property-section h3::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    background: #38bdf8;
+    border-radius: 5px;
+    margin-top: 12px;
+    margin-bottom: 22px;
+}
+
+/* Labels */
+#add-property-section .form-label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.2px;
+}
+
+/* Inputs, select and textarea */
+#add-property-section .form-control,
+#add-property-section .form-select {
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 20px !important;
+}
+
+/* Textarea */
+#add-property-section textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Focus effect */
+#add-property-section .form-control:focus,
+#add-property-section .form-select:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+    outline: none;
+}
+
+/* File input */
+#add-property-section input[type="file"] {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Buttons */
+#add-property-section .btn {
+    padding: 11px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+/* Save button */
+#add-property-section .btn-primary {
+    border: 1px solid #38bdf8;
+    background: #0284c7;
+    color: #ffffff;
+}
+
+#add-property-section .btn-primary:hover {
+    background: #0369a1;
+    border-color: #0369a1;
+    transform: translateY(-1px);
+}
+
+/* Cancel button */
+#add-property-section .btn-secondary {
+    margin-left: 8px;
+}
+
+#add-property-section .btn-secondary:hover {
+    transform: translateY(-1px);
+}
+
+/* Mobile responsive */
+@media (max-width: 576px) {
+    #add-property-section .card {
+        padding: 20px !important;
+        border-radius: 12px;
+    }
+
+    #add-property-section h3 {
+        font-size: 22px;
+    }
+
+    #add-property-section .btn {
+        margin: 4px 3px 4px 0;
+    }
+}
+/* edit property section */
+
+/* ===== Edit Property Form ===== */
+
+#edit-property-section {
+    padding: 10px 0 30px;
+}
+
+.edit-property-card {
+    max-width: 750px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    padding: 30px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+.edit-property-card h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.edit-property-card h3::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    background: #38bdf8;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.edit-subtitle {
+    color: #94a3b8;
+    font-size: 14px;
+    margin: 12px 0 25px;
+}
+
+.edit-property-card .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.edit-property-card .form-control,
+.edit-property-card .form-select {
+    padding: 12px 14px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.edit-property-card .form-control:focus,
+.edit-property-card .form-select:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+}
+
+.edit-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.edit-buttons .btn {
+    padding: 11px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.edit-buttons .btn-primary {
+    background: #0284c7;
+    border-color: #38bdf8;
+}
+
+.edit-buttons .btn-primary:hover {
+    background: #0369a1;
+}
+
+@media (max-width: 576px) {
+    .edit-property-card {
+        padding: 20px !important;
+    }
+
+    .edit-property-card h3 {
+        font-size: 22px;
+    }
+}
 
 
         /* =========================
@@ -467,6 +678,317 @@
                 display: none;
             }
         }
+  /* My Properties */
+  
+/* ===== My Properties Section ===== */
+
+#my-properties-section {
+    padding: 10px 0 30px;
+}
+
+.properties-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.properties-heading h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.properties-heading h3::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    background: #38bdf8;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.properties-heading p {
+    margin: 12px 0 0;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.properties-count {
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.10);
+    color: #38bdf8;
+    border-radius: 9px;
+    padding: 9px 14px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Property card */
+
+.property-card {
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+}
+
+.property-image {
+    height: 205px;
+    position: relative;
+    overflow: hidden;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.04);
+}
+
+.property-category {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 7px 12px;
+    border-radius: 7px;
+    background: rgba(15, 23, 42, 0.90);
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.no-property-image {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(148, 163, 184, 0.10);
+    color: #94a3b8;
+}
+
+.no-property-image i {
+    font-size: 38px;
+}
+
+.no-property-image span {
+    font-size: 13px;
+}
+
+/* Property details */
+
+.property-card-body {
+    padding: 22px;
+}
+
+.property-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.property-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 18px;
+}
+
+.property-location i {
+    color: #38bdf8;
+    margin-top: 3px;
+}
+
+.property-rent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 0;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.property-rent span {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.property-rent strong {
+    font-size: 19px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.property-description {
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 16px 0 20px;
+    overflow-wrap: anywhere;
+}
+
+/* Edit and delete buttons */
+
+.property-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.property-actions form {
+    flex: 1;
+    margin: 0;
+}
+
+.property-btn {
+    width: 100%;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+}
+
+.edit-btn:hover {
+    background: #0284c7;
+    color: #ffffff;
+}
+
+.delete-btn {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+/* Empty state */
+
+.empty-properties {
+    text-align: center;
+    padding: 55px 20px;
+    border: 1px dashed rgba(148, 163, 184, 0.35);
+    border-radius: 16px;
+}
+
+.empty-properties > i {
+    font-size: 42px;
+    color: #38bdf8;
+    margin-bottom: 18px;
+}
+
+.empty-properties h5 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.empty-properties p {
+    color: #94a3b8;
+    margin: 10px 0 22px;
+}
+
+@media (max-width: 576px) {
+    .properties-heading h3 {
+        font-size: 22px;
+    }
+
+    .property-card-body {
+        padding: 17px;
+    }
+
+    .property-actions {
+        gap: 8px;
+    }
+
+    .property-btn {
+        padding: 9px 7px;
+        font-size: 12px;
+    }
+}
+/* myprofile */
+
+.profile-card {
+    max-width: 650px;
+    margin: 0 auto;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+.profile-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #173b65;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 auto 15px;
+}
+
+.profile-details p {
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+    overflow-wrap: anywhere;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.profile-actions form {
+    margin: 0;
+}
+
+.profile-actions button,
+#edit-profile-section button {
+    border-radius: 6px;
+    padding: 9px 18px;
+}
+
+
+
+
 
     </style>
 
@@ -475,7 +997,6 @@
 
 <body>
 
-
 <!-- =========================
      SIDEBAR
 ========================= -->
@@ -483,110 +1004,67 @@
 <div class="sidebar">
 
     <div class="logo">
-
         <span><i class="fa-solid fa-house"></i></span>
-        Owner
+        Owner Panel
     </div>
 
-
     <ul>
-
         <li>
-
-            <a href="#" class="active">
-
+            <a href="#" class="menu-link active" data-section="dashboard-section">
                 <i class="fa-solid fa-gauge-high"></i>
-
                 <span>Dashboard</span>
-
             </a>
-
         </li>
-
-
-        <li>
-
-            <a href="#">
-
-                <i class="fa-solid fa-plus"></i>
-
-                <span>Add Property</span>
-
-            </a>
-
-        </li>
-
-
-        <li>
-
-            <a href="#">
-
-                <i class="fa-solid fa-building"></i>
-
-                <span>My Properties</span>
-
-            </a>
-
-        </li>
-
-
-        <li>
-
-            <a href="#">
-
-                <i class="fa-solid fa-calendar-check"></i>
-
-                <span>Booking Requests</span>
-
-            </a>
-
-        </li>
-
-
-        <li>
-
-            <a href="#">
-
-                <i class="fa-solid fa-star"></i>
-
-                <span>Reviews</span>
-
-            </a>
-
-        </li>
-
-
-        <li>
-
-            <a href="#">
-
+         <li>
+            <a href="#" class="menu-link" data-section="profile-section">
                 <i class="fa-solid fa-user"></i>
-
                 <span>My Profile</span>
-
             </a>
-
+        </li>
+        <li>
+            <a href="#" class="menu-link" data-section="add-property-section">
+                <i class="fa-solid fa-plus"></i>
+                <span>Add Property</span>
+            </a>
         </li>
 
+        <li>
+            <a href="#" class="menu-link" data-section="my-properties-section">
+                <i class="fa-solid fa-building"></i>
+                <span>My Properties</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="menu-link" data-section="booking-section">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Booking Requests</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="menu-link" data-section="reviews-section">
+                <i class="fa-solid fa-star"></i>
+                <span>Reviews</span>
+            </a>
+        </li>
+
+        <!-- <li>
+            <a href="#" class="menu-link" data-section="profile-section">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+        </li> -->
     </ul>
 
-
-    <!-- Logout -->
-
     <div class="logout">
-
         <a href="{% url 'owner_logout' %}">
-
             <i class="fa-solid fa-right-from-bracket"></i>
-
             <span>Logout</span>
-
         </a>
-
     </div>
 
 </div>
-
 
 
 <!-- =========================
@@ -595,191 +1073,630 @@
 
 <div class="main-content">
 
-
-    <!-- TOPBAR -->
-
+    <!-- HEADER: Always visible -->
     <div class="topbar">
 
-        <div class="page-title">
-
+        <div class="page-title" id="page-title">
             Owner Dashboard
-
         </div>
-
 
         <div class="owner-info">
 
             <div class="owner-avatar">
-
                 {{ request.user.first_name|first|upper }}
-
             </div>
 
-
             <div class="owner-details">
-
                 <div class="owner-name">
-
                     {{ request.user.first_name }}
-
                 </div>
 
                 <div class="owner-role">
-
                     Property Owner
-
                 </div>
-
             </div>
 
         </div>
-
     </div>
 
 
-
-    <!-- CONTENT -->
-
+    <!-- CENTRAL CONTENT -->
     <div class="content">
 
+        <!-- =========================
+             1. DASHBOARD SECTION
+        ========================== -->
 
-        <!-- WELCOME -->
+        <section id="dashboard-section" class="content-section">
 
-        <div class="welcome-box">
+            <div class="welcome-box">
+                <h3>Welcome, {{ request.user.first_name }}</h3>
+                <p>Manage your rental properties from one place.</p>
+            </div>
 
-            <h3>
-                Welcome, {{ request.user.first_name }} 
-            </h3>
+            <div class="row g-4 mb-5">
 
-            
-
-        </div>
-
-
-
-        <!-- STATISTICS -->
-
-        <div class="row g-4 mb-5">
-
-
-            <!-- Properties -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-
-                        <i class="fa-solid fa-building"></i>
-
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <h4>{{ total_properties }}</h4>
+                        <p>Total Properties</p>
                     </div>
+                </div>
 
-                    <h4>{{ total_properties }}</h4>
-                    <p>Total Properties</p>
-
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <h4>{{ booking_requests }}</h4>
+                        <p>Booking Requests</p>
+                    </div>
                 </div>
 
             </div>
 
+            <div class="section-title">Quick Actions</div>
 
+            <div class="row g-4">
 
-            
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="action-card menu-link"
+                       data-section="add-property-section">
 
+                        <div class="action-icon">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
 
+                        <h6>Add New Property</h6>
+                        <p>Post your Room, PG or 1 BHK property.</p>
 
-            <!-- Bookings -->
+                    </a>
+                </div>
 
-            <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="action-card menu-link"
+                       data-section="my-properties-section">
 
-                <div class="stat-card">
+                        <div class="action-icon">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
 
-                    <div class="stat-icon">
+                        <h6>My Properties</h6>
+                        <p>View and manage your listed properties.</p>
 
-                        <i class="fa-solid fa-calendar-check"></i>
-
-                    </div>
-
-                    <h4>{{ booking_requests }}</h4>
-                    <p>Booking Requests</p>
-
+                    </a>
                 </div>
 
             </div>
 
+        </section>
+
+
+        <!-- =========================
+             2. ADD PROPERTY SECTION
+        ========================== -->
+
+        <section id="add-property-section" class="content-section"
+                 style="display: none;">
+
+            <div class="card shadow-sm p-4">
+
+                <h3 class="mb-4">Add Property</h3>
+
+                <form method="POST"
+                      action="{% url 'add_property' %}"
+                      enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <label class="form-label">Property Category</label>
+                    <select name="category" class="form-select mb-3" required>
+                        <option value="">Select category</option>
+                        <option value="Room">Room</option>
+                        <option value="PG">PG</option>
+                        <option value="1 BHK">1 BHK</option>
+                    </select>
+
+                    <label class="form-label">Property Title</label>
+                    <input type="text" name="title"
+                           class="form-control mb-3"
+                           placeholder="e.g. Spacious Room near Rankala"
+                           required>
+
+                    <label class="form-label">Description</label>
+                    <textarea name="description"
+                              class="form-control mb-3"
+                              rows="4" required></textarea>
+
+                    <label class="form-label">Area in Kolhapur</label>
+                    <input type="text" name="area"
+                           class="form-control mb-3"
+                           placeholder="e.g. Rajarampuri, Kolhapur"
+                           required>
+
+                    <label class="form-label">Monthly Rent (₹)</label>
+                    <input type="number" name="rent"
+                           class="form-control mb-3"
+                           min="0" step="0.01"
+                           placeholder="Enter monthly rent"
+                           required>
+
+                    <label class="form-label">Property Image</label>
+                    <input type="file" name="image"
+                           class="form-control mb-4"
+                           accept="image/*">
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save Property
+                    </button>
+
+                    <button type="button" class="btn btn-secondary"
+                            onclick="showSection('dashboard-section', 'Owner Dashboard')">
+                        Cancel
+                    </button>
+
+                </form>
+            </div>
+
+        </section>
+
+
+       
+<!-- =========================
+     3. MY PROPERTIES SECTION
+========================== -->
+
+<section id="my-properties-section" class="content-section"
+         style="display: none;">
+
+    <div class="properties-heading">
+        <div>
+            <h3>My Properties</h3>
+            <p>View, edit and manage your rental listings.</p>
         </div>
 
+        <span class="properties-count">
+            {{ total_properties }} Properties
+        </span>
+    </div>
 
+    <div class="row g-4">
 
-        <!-- QUICK ACTIONS -->
+        {% for property in properties %}
 
-        <div class="section-title">
+        <div class="col-lg-4 col-md-6">
 
-            Quick Actions
+            <div class="property-card h-100">
 
-        </div>
+                <!-- Property Image -->
+                <div class="property-image">
 
+                    {% if property.image %}
+                    <img src="{{ property.image.url }}"
+                         alt="{{ property.title }}">
+                    {% else %}
+                    <div class="no-property-image">
+                        <i class="fa-solid fa-house"></i>
+                        <span>No Image Available</span>
+                    </div>
+                    {% endif %}
 
-        <div class="row g-4">
+                    <span class="property-category">
+                        {{ property.category }}
+                    </span>
 
+                </div>
 
-            <!-- Add Property -->
+                <!-- Property Details -->
+                <div class="property-card-body">
 
-            <div class="col-lg-4 col-md-6">
+                    <h5 class="property-title">
+                        {{ property.title }}
+                    </h5>
 
-                <a href="#" class="action-card">
+                    <p class="property-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        {{ property.area }}
+                    </p>
 
-                    <div class="action-icon">
+                    <div class="property-rent">
+                        <span>Monthly Rent</span>
+                        <strong>₹{{ property.rent }}</strong>
+                    </div>
 
-                        <i class="fa-solid fa-plus"></i>
+                    <p class="property-description">
+                        {{ property.description|truncatechars:120 }}
+                    </p>
+
+                    <!-- Edit and Delete -->
+                    <div class="property-actions">
+
+                        <button type="button"
+                                class="property-btn edit-btn"
+                                data-edit-url="{% url 'edit_property' property.id %}"
+                                data-id="{{ property.id }}"
+                                data-category="{{ property.category }}"
+                                data-title="{{ property.title }}"
+                                data-description="{{ property.description }}"
+                                data-area="{{ property.area }}"
+                                data-rent="{{ property.rent }}"
+                                onclick="editProperty(this)">
+
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Edit
+                        </button>
+
+                        <form method="POST"
+                              action="{% url 'delete_property' property.id %}"
+                              onsubmit="return confirm('Are you sure you want to delete this property?');">
+
+                            {% csrf_token %}
+
+                            <button type="submit"
+                                    class="property-btn delete-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </button>
+
+                        </form>
 
                     </div>
 
-                    <h6>Add New Property</h6>
-
-                    <p>
-                        Post your Room, PG or 1 BHK property.
-                    </p>
-
-                </a>
-
+                </div>
             </div>
-
-
-
-            <!-- My Properties -->
-
-            <div class="col-lg-4 col-md-6">
-
-                <a href="#" class="action-card">
-
-                    <div class="action-icon">
-
-                        <i class="fa-solid fa-building"></i>
-
-                    </div>
-
-                    <h6>My Properties</h6>
-
-                    <p>
-                        View and manage your listed properties.
-                    </p>
-
-                </a>
-
-            </div>
-
-
-
-        
-
 
         </div>
+
+        {% empty %}
+
+        <div class="col-12">
+            <div class="empty-properties">
+                <i class="fa-solid fa-house-circle-xmark"></i>
+
+                <h5>No Properties Yet</h5>
+
+                <p>You haven't added any rental properties yet.</p>
+
+                <button type="button" class="btn btn-primary"
+                        onclick="showSection('add-property-section', 'Add Property')">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Your First Property
+                </button>
+            </div>
+        </div>
+
+        {% endfor %}
 
     </div>
 
+</section>
+
+
+<!-- =========================
+     4. EDIT PROPERTY SECTION
+     Same Dashboard Page
+========================== -->
+
+<section id="edit-property-section"
+         class="content-section"
+         style="display: none;">
+
+    <div class="card shadow-sm p-4 edit-property-card">
+
+        <h3>Edit Property</h3>
+
+        <p class="edit-subtitle">
+            Update your rental property details below.
+        </p>
+
+        <form id="edit-property-form"
+              method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <label class="form-label">Property Category</label>
+
+            <select name="category" id="edit-category"
+                    class="form-select" required>
+
+                <option value="Room">Room</option>
+                <option value="PG">PG</option>
+                <option value="1 BHK">1 BHK</option>
+
+            </select>
+
+            <label class="form-label">Property Title</label>
+
+            <input type="text" name="title" id="edit-title"
+                   class="form-control"
+                   placeholder="Enter property title" required>
+
+            <label class="form-label">Description</label>
+
+            <textarea name="description" id="edit-description"
+                      class="form-control"
+                      rows="4" required></textarea>
+
+            <label class="form-label">Area in Kolhapur</label>
+
+            <input type="text" name="area" id="edit-area"
+                   class="form-control"
+                   placeholder="Enter area or locality" required>
+
+            <label class="form-label">Monthly Rent (₹)</label>
+
+            <input type="number" name="rent" id="edit-rent"
+                   class="form-control"
+                   min="0" step="0.01" required>
+
+            <label class="form-label">Replace Property Image (optional)</label>
+
+            <input type="file" name="image" id="edit-image"
+                   class="form-control"
+                   accept="image/*">
+
+            <div class="edit-buttons">
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save Changes
+                </button>
+
+                <button type="button" class="btn btn-secondary"
+                        onclick="showSection('my-properties-section', 'My Properties')">
+                    Cancel
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+
+        <!-- =========================
+             4. BOOKING REQUESTS
+        ========================== -->
+
+        <section id="booking-section" class="content-section"
+                 style="display: none;">
+
+            <h3 class="mb-4">Booking Requests</h3>
+
+            <div class="card p-4">
+                <p>Booking requests will appear here.</p>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             5. REVIEWS
+        ========================== -->
+
+        <section id="reviews-section" class="content-section"
+                 style="display: none;">
+
+            <h3 class="mb-4">Reviews</h3>
+
+            <div class="card p-4">
+                <p>Reviews for your properties will appear here.</p>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             6. MY PROFILE
+        ========================== -->
+
+      
+<section id="profile-section" class="content-section" style="display: none;">
+
+    <h3 class="mb-4">My Profile</h3>
+
+    <div class="card p-4 shadow-sm profile-card">
+
+        <h4 class="text-center mb-4">
+            {{ request.user.full_name }}
+        </h4>
+
+        <div class="profile-details">
+            <p>
+                <strong>Username:</strong>
+                {{ request.user.username }}
+            </p>
+            <p>
+                <strong>Password:</strong>
+                ********
+            </p>
+            <p>
+                <strong>Email:</strong>
+                {{ request.user.email }}
+            </p>
+
+            <p>
+                <strong>Role:</strong> Property Owner
+            </p>
+        </div>
+
+        <div class="profile-actions">
+            <button type="button"
+                    class="btn btn-primary"
+                    onclick="showSection('edit-profile-section', 'Edit Profile')">
+                Edit Profile
+            </button>
+
+            <form method="POST"
+                  action="{% url 'delete_owner_profile' %}"
+                  onsubmit="return confirm('Are you sure you want to permanently delete your account? This action cannot be undone.');">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">
+                    Delete Profile
+                </button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- EDIT PROFILE SECTION: Keep this in the same HTML file -->
+
+<section id="edit-profile-section"
+         class="content-section"
+         style="display: none;">
+
+    <h3 class="mb-4">Edit Profile</h3>
+
+    <div class="card p-4 shadow-sm profile-card">
+
+        <form method="POST" action="{% url 'edit_owner_profile' %}">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="profile-username" class="form-label">
+                    Username
+                </label>
+                <input type="text"
+                       id="profile-username"
+                       name="username"
+                       class="form-control"
+                       value="{{ request.user.username }}"
+                       required>
+            </div>
+             <div class="mb-3">
+                <label for="profile-username" class="form-label">
+                    Password
+                </label>
+                <input type="password"
+                       id="profile-password"
+                       name="password"
+                       class="form-control"
+                       placeholder="Enter new password (leave blank to keep current password)">
+            </div>
+            <div class="mb-3">
+                <label for="profile-email" class="form-label">
+                    Email
+                </label>
+                <input type="email"
+                       id="profile-email"
+                       name="email"
+                       class="form-control"
+                       value="{{ request.user.email }}"
+                       required>
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                Save Changes
+            </button>
+
+            <button type="button"
+                    class="btn btn-secondary"
+                    onclick="showSection('profile-section', 'My Profile')">
+                Cancel
+            </button>
+        </form>
+
+    </div>
+</section>
+
+
+    </div>
 </div>
 
 
-</body>
+<!-- =========================
+     SECTION SWITCHING
+========================= -->
+
+<script>
+    function showSection(sectionId, title) {
+        // Hide all central content sections.
+        document.querySelectorAll(".content-section").forEach(function(section) {
+            section.style.display = "none";
+        });
+
+        // Display the selected section.
+        const selectedSection = document.getElementById(sectionId);
+
+        if (selectedSection) {
+            selectedSection.style.display = "block";
+        }
+
+        // Update the title while keeping the topbar visible.
+        document.getElementById("page-title").textContent = title;
+
+        // Update the active sidebar menu item.
+        document.querySelectorAll(".sidebar .menu-link").forEach(function(link) {
+            link.classList.remove("active");
+        });
+
+        document.querySelectorAll(
+            '.sidebar .menu-link[data-section="' + sectionId + '"]'
+        ).forEach(function(link) {
+            link.classList.add("active");
+        });
+    }
+    // Handle edit property button clicks.
+    
+function editProperty(button) {
+    // Fill the form using the selected property's details.
+    document.getElementById("edit-category").value =
+        button.dataset.category;
+
+    document.getElementById("edit-title").value =
+        button.dataset.title;
+
+    document.getElementById("edit-description").value =
+        button.dataset.description;
+
+    document.getElementById("edit-area").value =
+        button.dataset.area;
+
+    document.getElementById("edit-rent").value =
+        button.dataset.rent;
+
+    // Submit to the correct property's edit URL.
+    document.getElementById("edit-property-form").action =
+        button.dataset.editUrl;
+
+    // Clear any previously selected replacement image.
+    document.getElementById("edit-image").value = "";
+
+    // Show the edit form without hiding the sidebar or header.
+    showSection("edit-property-section", "Edit Property");
+    }
+
+window.addEventListener('DOMContentLoaded', function () {
+    if (window.location.hash === '#edit-profile-section') {
+        showSection('edit-profile-section', 'Edit Profile');
+    }
+});
+    // Handle sidebar menu clicks.
+    document.querySelectorAll(".menu-link[data-section]").forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            const sectionId = this.dataset.section;
+            const titleElement = this.querySelector("span");
+            const title = titleElement
+                ? titleElement.textContent.trim()
+                : "Owner Dashboard";
+
+            showSection(sectionId, title);
+        });
+    });
+</script>
 
 </html>
