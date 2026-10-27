@@ -6,6 +6,7 @@ Owner login
 1.
 Email:rajeshp05@gmail.com
 password:rajeshp05
+New Password:owner@123
 2.
 Email:sunilmane02@gmail.com
 password:sunilmane02

@@ -23,6 +23,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
 
@@ -389,71 +391,6 @@
             line-height: 1.7;
         }
 
-        /* ================= AI SECTION ================= */
-
-        .ai-section {
-            background: #111827;
-            border-top: 1px solid rgba(56, 189, 248, 0.1);
-            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-        }
-
-        .ai-box {
-            background: #0f172a;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 25px;
-            padding: 45px;
-        }
-
-        .ai-icon {
-            width: 75px;
-            height: 75px;
-            background: rgba(56, 189, 248, 0.1);
-            color: #38bdf8;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .ai-box h2 {
-            font-weight: 700;
-        }
-
-        .ai-box p {
-            color: #94a3b8;
-            line-height: 1.8;
-        }
-
-        /* ================= CTA ================= */
-
-        .cta-section {
-            padding: 80px 0;
-        }
-
-        .cta-box {
-            background: linear-gradient(
-                135deg,
-                rgba(56,189,248,0.12),
-                rgba(15,23,42,1)
-            );
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 25px;
-            padding: 60px 30px;
-            text-align: center;
-        }
-
-        .cta-box h2 {
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .cta-box p {
-            color: #94a3b8;
-            margin-bottom: 25px;
-        }
-
         /* ================= FOOTER ================= */
 
         footer {
@@ -549,7 +486,296 @@
                 padding: 30px 20px;
             }
         }
+        
+        /* ================= FEATURES SECTION ================= */
+/* ================= FEATURES SECTION ================= */
 
+#features {
+    width: 100%;
+    padding: 70px 0;
+    background: #0f172a;
+}
+
+#features .section-title {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+#features .section-title h2 {
+    margin-bottom: 12px;
+    color: #f8fafc;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+#features .section-title h2 span {
+    color: #38bdf8;
+}
+
+#features .section-title p {
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ================= FEATURE CARDS ================= */
+
+#features .feature-card {
+    background: #111827;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    transition: 0.3s ease;
+}
+
+#features .feature-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= FEATURE ICON ================= */
+
+#features .feature-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(56, 189, 248, 0.1);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #38bdf8;
+    font-size: 28px;
+    transition: 0.3s ease;
+}
+
+#features .feature-card:hover .feature-icon {
+    background: rgba(56, 189, 248, 0.2);
+    transform: scale(1.05);
+}
+
+/* ================= FEATURE TEXT ================= */
+
+#features .feature-card h5 {
+    color: #f8fafc;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#features .feature-card p {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+@media (max-width: 768px) {
+    #features {
+        padding: 45px 0;
+    }
+
+    #features .section-title h2 {
+        font-size: 28px;
+    }
+
+    #features .feature-card {
+        padding: 24px 18px;
+    }
+}
+
+/* ================= AVAILABLE AREAS ================= */
+
+#available-areas {
+    width: 100%;
+    padding: 70px 0;
+    background: #0f172a;
+}
+
+#available-areas .section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+#available-areas .section-title h2 {
+    color: #f8fafc;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+#available-areas .section-title h2 span {
+    color: #38bdf8;
+}
+
+#available-areas .section-title p {
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* AREA CARD */
+
+.area-card {
+    background: #111827;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 18px;
+    padding: 30px 22px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* AREA ICON */
+
+.area-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(56, 189, 248, 0.1);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #38bdf8;
+    font-size: 28px;
+    transition: 0.3s ease;
+}
+
+.area-card:hover .area-icon {
+    background: rgba(56, 189, 248, 0.2);
+    transform: scale(1.05);
+}
+
+/* AREA TEXT */
+
+.area-card h5 {
+    color: #f8fafc;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.area-card p {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+/* EXPLORE LINK */
+
+.area-link {
+    color: #38bdf8;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.area-link:hover {
+    color: #7dd3fc;
+}
+
+.area-link i {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.area-link:hover i {
+    transform: translateX(4px);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+    #available-areas {
+        padding: 45px 0;
+    }
+
+    #available-areas .section-title h2 {
+        font-size: 28px;
+    }
+
+    .area-card {
+        padding: 24px 18px;
+    }
+}
+/* Footer */
+/* ================= FOOTER ================= */
+
+.footer {
+    background: #111827;
+    color: #94a3b8;
+    padding: 35px 0 20px;
+    text-align: center;
+    border-top: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.footer-brand {
+    color: #f8fafc;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer-brand i {
+    color: #38bdf8;
+    margin-right: 8px;
+}
+
+.footer p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 25px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #38bdf8;
+}
+
+.footer .copyright {
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+    padding-top: 18px;
+    font-size: 13px;
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 30px 15px 18px;
+    }
+
+    .footer-brand {
+        font-size: 19px;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+}
     </style>
 </head>
 
@@ -588,8 +814,11 @@
                         Properties
                     </a>
                 </li>
-
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="#available-areas">
+                        Areas
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="#features">
@@ -646,6 +875,19 @@
                                 Admin Login
                             </a>
                         </li>
+                     
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                                <a class="dropdown-item" href="{% url 'user_login' %}">
+                                    <i class="fa-solid fa-user me-2"></i>
+                                    User Login
+                                </a>
+                        </li>
+
+                           
 
                     </ul>
 
@@ -672,6 +914,15 @@
                             >
                                 <i class="fa-solid fa-building me-2"></i>
                                 Owner Register
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="{% url 'user_register' %}"
+                            >
+                                <i class="fa-solid fa-building me-2"></i>
+                                User Register
                             </a>
                         </li>
 
@@ -848,91 +1099,58 @@
 
 </section>
 
+<!-- ================= AVAILABLE AREAS ================= -->
 
-<!-- ================= AI SECTION ================= -->
-
-{% if ai_section %}
-
-<section class="section ai-section">
-
+<section id="available-areas">
     <div class="container">
 
-        <div class="ai-box">
+        <div class="section-title">
+            <h2>Available <span>Areas</span></h2>
+            <p>Find your perfect rental property in Kolhapur.</p>
+        </div>
 
-            <div class="row align-items-center">
+        <div class="row g-4">
 
-                <div class="col-lg-8">
+            {% for area in available_areas %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
 
-                    <div class="ai-icon">
+                <div class="area-card h-100">
 
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-
-                    </div>
-
-                    <h2>
-                        {{ ai_section.title }}
-                    </h2>
-
-                    <p>
-                        {{ ai_section.description }}
-                    </p>
-
-                    <a
-                        href="{{ ai_section.button_link }}"
-                        class="btn btn-primary-custom"
-                    >
-                        <i class="fa-solid fa-robot me-2"></i>
-
-                        {{ ai_section.button_text }}
-
-                    </a>
-
-                </div>
-
-                <div class="col-lg-4 mt-4 mt-lg-0">
-
-                    <div class="mini-feature">
+                    <div class="area-icon">
                         <i class="fa-solid fa-location-dot"></i>
-                        <span>Choose your preferred area</span>
                     </div>
 
-                    <div class="mini-feature">
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                        <span>Set your rental budget</span>
-                    </div>
+                    <h5>{{ area.name }}</h5>
 
-                    <div class="mini-feature">
-                        <i class="fa-solid fa-house"></i>
-                        <span>Select property type</span>
-                    </div>
+                    <p>{{ area.description }}</p>
 
-                    <div class="mini-feature">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        <span>Get personalized suggestions</span>
-                    </div>
-
+                   
                 </div>
 
             </div>
+            {% empty %}
+
+            <div class="col-12 text-center">
+                <p>No available areas at the moment.</p>
+            </div>
+
+            {% endfor %}
 
         </div>
 
     </div>
-
 </section>
 
-{% endif %}
-
-
-<!-- ================= FEATURES ================= -->
+<!-- ================= WHY CHOOSE US ================= -->
 <section class="section" id="features">
 
     <div class="container">
 
+        <!-- Section Heading -->
         <div class="section-title">
 
             <h2>
-                Why Choose <span>?</span>
+                Why Choose <span>Us?</span>
             </h2>
 
             <p>
@@ -941,37 +1159,45 @@
 
         </div>
 
+        <!-- Features List -->
         <div class="row g-4">
 
-            {% for feature in features %}
+            {% for feature in why_choose_features %}
 
-            <div class="col-md-4">
+                {% if feature.is_active %}
 
-                <div class="feature-card">
+                    <div class="col-md-4">
 
-                    <div class="feature-icon">
+                        <div class="feature-card h-100">
 
-                        <i class="{{ feature.icon }}"></i>
+                            <!-- Feature Icon -->
+                            <div class="feature-icon">
+                                {% if feature.icon %}
+                                    <i class="{{ feature.icon }}"></i>
+                                {% else %}
+                                    <i class="fa-solid fa-house"></i>
+                                {% endif %}
+                            </div>
+
+                            <!-- Feature Title -->
+                            <h5>{{ feature.title }}</h5>
+
+                            <!-- Feature Description -->
+                            <p>{{ feature.description }}</p>
+
+                        </div>
 
                     </div>
 
-                    <h5>
-                        {{ feature.title }}
-                    </h5>
-
-                    <p>
-                        {{ feature.description }}
-                    </p>
-
-                </div>
-
-            </div>
+                {% endif %}
 
             {% empty %}
 
-            <p class="text-center text-secondary">
-                No features available.
-            </p>
+                <div class="col-12 text-center">
+                    <p class="text-secondary">
+                        No features available.
+                    </p>
+                </div>
 
             {% endfor %}
 
@@ -981,169 +1207,39 @@
 
 </section>
 
-<!-- ================= CTA ================= -->
-{% if cta %}
 
-<section class="cta-section" id="contact">
-
-    <div class="container">
-
-        <div class="cta-box">
-
-            <h2>
-                {{ cta.title }}
-            </h2>
-
-            <p>
-                {{ cta.description }}
-            </p>
-
-            <a
-                href="{{ cta.button_link }}"
-                class="btn btn-primary-custom"
-            >
-                {{ cta.button_text }}
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-{% endif %}
 
 <!-- ================= FOOTER ================= -->
 
-<footer>
-
+<footer class="footer">
     <div class="container">
 
-        <div class="row g-4">
+        <div class="footer-content">
 
-            <div class="col-lg-5">
-
-                <div class="footer-brand">
-                    <i class="fa-solid fa-house-chimney me-2"></i>
-                    Property Rental Portal
-                </div>
-
-                <p class="footer-text">
-                    A smart property rental and booking portal
-                    designed specifically for finding 1 BHKs,
-                    PGs and Rooms in Kolhapur.
-                </p>
-
+            <div class="footer-brand">
+                <i class="fa-solid fa-house-chimney"></i>
+                Property Rental Portal
             </div>
 
+            <p>
+                Find your perfect 1 BHK, PG, or room in Kolhapur.
+            </p>
 
-            <div class="col-6 col-lg-2">
-
-                <div class="footer-title">
-                    Quick Links
-                </div>
-
-                <ul class="footer-links">
-
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-
-                    <li>
-                        <a href="#properties">Properties</a>
-                    </li>
-
-                    <li>
-                        <a href="#areas">Areas</a>
-                    </li>
-
-                    <li>
-                        <a href="#features">Features</a>
-                    </li>
-
-                </ul>
-
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="#properties">Properties</a>
+                <a href="#areas">Areas</a>
+                <a href="#features">Features</a>
             </div>
 
-
-            <div class="col-6 col-lg-2">
-
-                <div class="footer-title">
-                    Account
-                </div>
-
-                <ul class="footer-links">
-                    <li>
-                        <a href="{% url 'owner_login' %}">
-                            Owner Login
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{% url 'owner_register' %}">
-                            Owner Register
-                        </a>
-                    </li>
-
-                </ul>
-
+            <div class="copyright">
+                © 2026 Property Rental Portal. All Rights Reserved.
             </div>
-
-
-            <div class="col-lg-3">
-
-                <div class="footer-title">
-                    Contact
-                </div>
-
-                <ul class="footer-links">
-
-                {% if contact %}
-
-<li>
-    <i class="fa-solid fa-location-dot me-2"
-       style="color:#38bdf8;"></i>
-
-    {{ contact.location }}
-</li>
-
-<li>
-    <i class="fa-solid fa-envelope me-2"
-       style="color:#38bdf8;"></i>
-
-    {{ contact.email }}
-</li>
-
-{% if contact.phone %}
-
-<li>
-    <i class="fa-solid fa-phone me-2"
-       style="color:#38bdf8;"></i>
-
-    {{ contact.phone }}
-</li>
-
-{% endif %}
-
-{% endif %}
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <div class="copyright">
-
-            © 2026 Property Rental Portal. All Rights Reserved.
 
         </div>
 
     </div>
-
 </footer>
-
 
 <!-- Bootstrap JS -->
 

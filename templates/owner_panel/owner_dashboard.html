@@ -22,7 +22,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 
-
+    <!-- Google Icons -->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
 
         * {
@@ -1464,37 +1467,167 @@
 
 
 
-        <!-- =========================
-             4. BOOKING REQUESTS
-        ========================== -->
+       <!-- =========================
+     4. BOOKING REQUESTS
+========================== -->
 
-        <section id="booking-section" class="content-section"
-                 style="display: none;">
+<section id="booking-section" class="content-section"
+         style="display: none;">
 
-            <h3 class="mb-4">Booking Requests</h3>
+    <h3 class="mb-4">Booking Requests</h3>
 
-            <div class="card p-4">
-                <p>Booking requests will appear here.</p>
+    <div class="card p-4">
+
+        {% if owner_bookings %}
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Property</th>
+                        <th>Requested By</th>
+                        <th>Visit Date</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for booking in owner_bookings %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+
+                        <td>
+                            {{ booking.property.title }}
+                        </td>
+
+                        <td>
+                            {{ booking.user.username }}
+                        </td>
+
+                        <td>
+                            {{ booking.booking_date|date:"d M Y" }}
+                        </td>
+
+                        <td>
+                            {{ booking.message|default:"No message" }}
+                        </td>
+
+                        <td>
+                            {% if booking.status == "Accepted" %}
+                                <span class="badge bg-success">
+                                    Accepted
+                                </span>
+                            {% elif booking.status == "Rejected" %}
+                                <span class="badge bg-danger">
+                                    Rejected
+                                </span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">
+                                    Pending
+                                </span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+        {% else %}
+
+        <div class="text-center py-4">
+            <i class="fa-solid fa-calendar-xmark fa-2x mb-3"></i>
+            <p class="mb-0">No booking requests found for your properties.</p>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+     <!-- =========================
+     5. REVIEWS
+========================== -->
+
+<section id="reviews-section" class="content-section"
+         style="display: none;">
+
+    <h3 class="mb-4">Reviews for Your Properties</h3>
+
+    <div class="card p-4">
+
+        <h5 class="mb-3">
+            Total Reviews: {{ total_reviews }}
+        </h5>
+
+        {% for review in owner_reviews %}
+
+            <div class="owner-review-card">
+
+                <!-- Property Name -->
+                <h5>{{ review.property.title }}</h5>
+
+                <!-- Reviewer Information -->
+                <p>
+                    <strong>Reviewed By:</strong>
+                    {% if review.user.get_full_name %}
+                        {{ review.user.get_full_name }}
+                    {% else %}
+                        {{ review.user.username }}
+                    {% endif %}
+                </p>
+
+                <!-- Rating -->
+                <div class="owner-review-stars"
+                     aria-label="{{ review.rating }} out of 5 stars">
+
+                    {% for value in "12345" %}
+                        {% if forloop.counter <= review.rating %}
+                            <span class="star-filled">★</span>
+                        {% else %}
+                            <span class="star-empty">★</span>
+                        {% endif %}
+                    {% endfor %}
+
+                    <span>({{ review.rating }}/5)</span>
+                </div>
+
+                <!-- Feedback -->
+                <p class="owner-review-comment">
+                    <strong>Feedback:</strong>
+                    {{ review.comment|default:"No written feedback." }}
+                </p>
+
+                <!-- Review Date -->
+                <small class="text-muted">
+                    {{ review.created_at|date:"d M Y" }}
+                </small>
+
             </div>
 
-        </section>
+            <hr>
 
+        {% empty %}
 
-        <!-- =========================
-             5. REVIEWS
-        ========================== -->
+            <div class="text-center p-4">
+                <i class="fa-solid fa-star fa-2x mb-3"></i>
 
-        <section id="reviews-section" class="content-section"
-                 style="display: none;">
-
-            <h3 class="mb-4">Reviews</h3>
-
-            <div class="card p-4">
-                <p>Reviews for your properties will appear here.</p>
+                <p>
+                    No reviews have been submitted for your properties yet.
+                </p>
             </div>
 
-        </section>
+        {% endfor %}
 
+    </div>
+
+</section>
 
         <!-- =========================
              6. MY PROFILE
@@ -1552,7 +1685,6 @@
 
 
 <!-- EDIT PROFILE SECTION: Keep this in the same HTML file -->
-
 <section id="edit-profile-section"
          class="content-section"
          style="display: none;">
@@ -1564,6 +1696,7 @@
         <form method="POST" action="{% url 'edit_owner_profile' %}">
             {% csrf_token %}
 
+            <!-- Username -->
             <div class="mb-3">
                 <label for="profile-username" class="form-label">
                     Username
@@ -1575,20 +1708,39 @@
                        value="{{ request.user.username }}"
                        required>
             </div>
-             <div class="mb-3">
-                <label for="profile-username" class="form-label">
-                    Password
-                </label>
+
+            <!-- Password -->
+            <div class="mb-3">
+    <label for="profile-password" class="form-label">
+        New Password
+    </label>
+
+            <div class="input-group">
                 <input type="password"
-                       id="profile-password"
-                       name="password"
-                       class="form-control"
-                       placeholder="Enter new password (leave blank to keep current password)">
+                    id="profile-password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter new password">
+
+                <button type="button"
+                        class="btn btn-outline-secondary"
+                        id="toggle-owner-password"
+                        aria-label="Show password">
+                    <i class="bi bi-eye" id="owner-password-icon"></i>
+                </button>
             </div>
+
+            <small class="text-muted">
+                Leave blank to keep your current password.
+            </small>
+        </div>
+
+            <!-- Email -->
             <div class="mb-3">
                 <label for="profile-email" class="form-label">
                     Email
                 </label>
+
                 <input type="email"
                        id="profile-email"
                        name="email"
@@ -1597,8 +1749,9 @@
                        required>
             </div>
 
+            <!-- Buttons -->
             <button type="submit" class="btn btn-success">
-                Save Changes
+                <i class="bi bi-check-circle"></i> Save Changes
             </button>
 
             <button type="button"
@@ -1606,10 +1759,12 @@
                     onclick="showSection('profile-section', 'My Profile')">
                 Cancel
             </button>
+
         </form>
 
     </div>
 </section>
+
 
 
     </div>
@@ -1621,6 +1776,27 @@
 ========================= -->
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const passwordInput = document.getElementById("profile-password");
+    const toggleButton = document.getElementById("toggle-owner-password");
+    const passwordIcon = document.getElementById("owner-password-icon");
+
+    if (passwordInput && toggleButton && passwordIcon) {
+        toggleButton.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcon.classList.remove("bi-eye");
+                passwordIcon.classList.add("bi-eye-slash");
+                toggleButton.setAttribute("aria-label", "Hide password");
+            } else {
+                passwordInput.type = "password";
+                passwordIcon.classList.remove("bi-eye-slash");
+                passwordIcon.classList.add("bi-eye");
+                toggleButton.setAttribute("aria-label", "Show password");
+            }
+        });
+    }
+});
     function showSection(sectionId, title) {
         // Hide all central content sections.
         document.querySelectorAll(".content-section").forEach(function(section) {

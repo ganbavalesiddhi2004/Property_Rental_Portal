@@ -376,3 +376,20 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.property} - {self.rating} stars"
+
+
+# Area Model
+# ================= AVAILABLE AREA MODEL =================
+
+class AvailableArea(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    description = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+    display_order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['display_order', 'name']
+
+    def __str__(self):
+        return self.name

@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin Dashboard | Property Rental Portal</title>
 
@@ -18,994 +14,1105 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    
     <!-- Google Font -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">      
-    
-<style>
-/* ================= GLOBAL ================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-}
-
-/* ================= SIDEBAR ================= */
-
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100vh;
-    background: #111827;
-    border-right: 1px solid #1e293b;
-    padding: 25px 15px;
-    z-index: 1000;
-    overflow-y: auto;
-    transition: left 0.3s ease;
-}
-
-.brand {
-    font-size: 21px;
-    font-weight: 600;
-    color: #38bdf8;
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.brand i {
-    color: #38bdf8;
-    margin-right: 8px;
-}
-
-.menu-title {
-    color: #64748b;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 10px 15px;
-    letter-spacing: 1px;
-}
-
-.sidebar-menu {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar-menu li {
-    margin-bottom: 8px;
-}
-
-.sidebar-menu a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 13px 15px;
-    text-decoration: none;
-    color: #cbd5e1;
-    border-radius: 10px;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.sidebar-menu a i {
-    width: 20px;
-    text-align: center;
-}
-
-.sidebar-menu a:hover,
-.sidebar-menu a.active {
-    background: #1e293b;
-    color: #38bdf8;
-}
-
-.logout-link {
-    position: absolute;
-    bottom: 20px;
-    left: 15px;
-    right: 15px;
-}
-
-.logout-link a {
-    color: #f87171;
-}
-
-.logout-link a:hover {
-    background: #450a0a;
-    color: #fca5a5;
-}
-
-/* ================= MAIN CONTENT ================= */
-
-.main-content {
-    margin-left: 250px;
-    min-height: 100vh;
-    background: #0f172a;
-}
-
-/* ================= TOPBAR ================= */
-
-.topbar {
-    min-height: 75px;
-    background: #111827;
-    border-bottom: 1px solid #1e293b;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 15px 30px;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 22px;
-    color: #38bdf8;
-    cursor: pointer;
-}
-
-.search-box {
-    width: 350px;
-    max-width: 100%;
-    position: relative;
-}
-
-.search-box input {
-    width: 100%;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    padding: 10px 15px 10px 40px;
-    outline: none;
-    background: #0f172a;
-    color: #f8fafc;
-}
-
-.search-box input:focus {
-    border-color: #38bdf8;
-}
-
-.search-box input::placeholder {
-    color: #64748b;
-}
-
-.search-box i {
-    position: absolute;
-    left: 15px;
-    top: 13px;
-    color: #64748b;
-}
-
-.topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.notification {
-    position: relative;
-    font-size: 19px;
-    color: #cbd5e1;
-    cursor: pointer;
-}
-
-.notification:hover {
-    color: #38bdf8;
-}
-
-.notification-badge {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: #ef4444;
-    color: white;
-    font-size: 10px;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.admin-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.admin-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #38bdf8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-}
-
-.admin-info strong {
-    display: block;
-    font-size: 14px;
-    color: #f8fafc;
-}
-
-.admin-info span {
-    font-size: 12px;
-    color: #94a3b8;
-}
-
-/* ================= DASHBOARD ================= */
-
-.dashboard {
-    padding: 30px;
-}
-
-.welcome-section {
-    margin-bottom: 30px;
-}
-
-.welcome-section h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #f8fafc;
-    margin-bottom: 8px;
-}
-
-.welcome-section p {
-    color: #94a3b8;
-    margin: 0;
-    font-size: 14px;
-}
-
-/* ================= STAT CARDS ================= */
-
-.stat-card {
-    background: #111827;
-    border-radius: 15px;
-    padding: 22px;
-    border: 1px solid #1e293b;
-    transition: 0.3s;
-    height: 100%;
-    color: #e2e8f0;
-}
-
-.stat-card:hover {
-    transform: translateY(-4px);
-    border-color: #334155;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.stat-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.stat-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-/* Matching dark-theme icon colors */
-
-.icon-blue {
-    background: #1e293b;
-    color: #38bdf8;
-}
-
-.icon-green {
-    background: #064e3b;
-    color: #6ee7b7;
-}
-
-.icon-orange {
-    background: #431407;
-    color: #fdba74;
-}
-
-.icon-purple {
-    background: #3b0764;
-    color: #d8b4fe;
-}
-
-.icon-yellow {
-    background: #422006;
-    color: #fde047;
-}
-
-.icon-red {
-    background: #450a0a;
-    color: #fca5a5;
-}
-
-.stat-number {
-    font-size: 28px;
-    font-weight: 600;
-    color: #f8fafc;
-    margin-top: 18px;
-}
-
-.stat-title {
-    color: #94a3b8;
-    font-size: 14px;
-    margin-top: 3px;
-}
-
-.stat-growth {
-    font-size: 12px;
-    margin-top: 10px;
-    color: #6ee7b7;
-}
-
-/* ================= DASHBOARD SECTIONS ================= */
-
-.dashboard-section {
-    margin-top: 30px;
-}
-
-.section-card {
-    background: #111827;
-    border-radius: 15px;
-    border: 1px solid #1e293b;
-    overflow: hidden;
-    color: #e2e8f0;
-}
-
-.section-header {
-    padding: 20px;
-    border-bottom: 1px solid #1e293b;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.section-header h5 {
-    margin: 0;
-    font-weight: 600;
-    color: #f8fafc;
-}
-
-.view-all {
-    color: #38bdf8;
-    text-decoration: none;
-    font-size: 13px;
-}
-
-.view-all:hover {
-    color: #7dd3fc;
-}
-
-/* ================= TABLE ================= */
-
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.section-card .table {
-    margin: 0;
-    color: #e2e8f0;
-    --bs-table-bg: transparent;
-    --bs-table-color: #e2e8f0;
-    --bs-table-border-color: #1e293b;
-    --bs-table-hover-bg: #1e293b;
-    --bs-table-hover-color: #f8fafc;
-}
-
-.section-card .table th {
-    background: #0f172a;
-    color: #94a3b8;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 15px;
-    border-color: #1e293b;
-    white-space: nowrap;
-}
-
-.section-card .table td {
-    padding: 15px;
-    vertical-align: middle;
-    font-size: 13px;
-    border-color: #1e293b;
-}
-
-.section-card .table tbody tr:hover {
-    background: #1e293b;
-}
-
-.property-name {
-    font-weight: 600;
-    color: #f8fafc;
-}
-
-.property-location {
-    color: #94a3b8;
-    font-size: 12px;
-}
-
-/* ================= STATUS BADGES ================= */
-
-.status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.status-pending {
-    background: #422006;
-    color: #fde68a;
-}
-
-.status-approved {
-    background: #064e3b;
-    color: #6ee7b7;
-}
-
-.status-rejected {
-    background: #450a0a;
-    color: #fca5a5;
-}
-
-/* ================= QUICK ACTIONS ================= */
-
-.quick-action {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #e2e8f0;
-    margin-bottom: 12px;
-    background: #111827;
-    transition: 0.3s;
-}
-
-.quick-action:hover {
-    background: #1e293b;
-    border-color: #334155;
-    color: #f8fafc;
-    transform: translateX(4px);
-}
-
-.quick-icon {
-    width: 42px;
-    min-width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: #1e293b;
-    color: #38bdf8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.quick-action strong {
-    display: block;
-    font-size: 14px;
-    color: #f8fafc;
-}
-
-.quick-action span {
-    color: #94a3b8;
-    font-size: 12px;
-}
-
-/* ================= BUTTONS ================= */
-
-.btn-primary-custom {
-    background: #38bdf8;
-    border: none;
-    color: #0f172a;
-    font-weight: 600;
-    padding: 10px 16px;
-    border-radius: 9px;
-}
-
-.btn-primary-custom:hover {
-    background: #0ea5e9;
-    color: white;
-}
-
-/* ================= EMPTY STATE ================= */
-
-.empty-box {
-    text-align: center;
-    padding: 60px 20px;
-    background: #111827;
-    border: 1px dashed #334155;
-    border-radius: 15px;
-}
-
-.empty-box h5,
-.empty-box h4 {
-    color: #f8fafc;
-}
-
-.empty-box i {
-    font-size: 45px;
-    color: #38bdf8;
-    margin-bottom: 15px;
-}
-
-.empty-box p {
-    color: #94a3b8;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 991px) {
-    .sidebar {
-        left: -250px;
-    }
-
-    .sidebar.show {
-        left: 0;
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .search-box {
-        width: 250px;
-    }
-
-    .dashboard {
-        padding: 25px 20px;
-    }
-}
-
-@media (max-width: 600px) {
-    .topbar {
-        padding: 15px;
-        gap: 12px;
-    }
-
-    .search-box {
-        display: none;
-    }
-
-    .topbar-right {
-        gap: 15px;
-    }
-
-    .admin-info {
-        display: none;
-    }
-
-    .dashboard {
-        padding: 20px 15px;
-    }
-
-    .welcome-section h2 {
-        font-size: 22px;
-    }
-
-    .stat-card {
-        padding: 18px;
-    }
-
-    .section-header {
-        padding: 15px;
-    }
-
-    .section-header h5 {
-        font-size: 15px;
-    }
-}
-</style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* ================= GLOBAL ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background: #0f172a;
+            color: white;
+            padding: 25px 15px;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+        }
+
+        .brand {
+            font-size: 23px;
+            font-weight: 700;
+            color: white;
+            padding: 0 15px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+            white-space: nowrap;
+        }
+
+        .brand i {
+            color: #38bdf8;
+            margin-right: 8px;
+        }
+
+        .brand span {
+            color: #38bdf8;
+        }
+
+        .menu-title {
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 10px 15px;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 15px;
+            text-decoration: none;
+            color: #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .sidebar-menu a i {
+            width: 22px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: #1e293b;
+            color: #38bdf8;
+        }
+
+        .logout-link {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logout-link a {
+            color: #f87171;
+        }
+
+        .logout-link a:hover {
+            background: #2b1a1a;
+            color: #ef4444;
+        }
+
+        /* ================= MAIN CONTENT ================= */
+
+        .main-content {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        /* ================= TOPBAR ================= */
+
+        .topbar {
+            min-height: 75px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            color: #0284c7;
+            cursor: pointer;
+        }
+
+        .page-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #e0f2fe;
+            color: #0284c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        .admin-info {
+            line-height: 1.4;
+        }
+
+        .admin-info strong {
+            display: block;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .admin-info span {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* ================= DASHBOARD ================= */
+
+        .dashboard {
+            padding: 30px;
+        }
+
+        .welcome-section {
+            background: #0f172a;
+            color: white;
+            border-radius: 15px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+
+        .welcome-section h2 {
+            font-size: 25px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .welcome-section p {
+            color: #cbd5e1;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* ================= STAT CARDS ================= */
+
+        .stat-card {
+            background: white;
+            border-radius: 14px;
+            padding: 22px;
+            border: 1px solid #e5e7eb;
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 50px;
+            min-width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .icon-blue {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+
+        .icon-green {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .icon-orange {
+            background: #ffedd5;
+            color: #ea580c;
+        }
+
+        .icon-purple {
+            background: #f3e8ff;
+            color: #9333ea;
+        }
+
+        .icon-yellow {
+            background: #fef9c3;
+            color: #ca8a04;
+        }
+
+        .icon-red {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 15px;
+            overflow-wrap: anywhere;
+        }
+
+        .stat-title {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 3px;
+        }
+
+        .stat-growth {
+            font-size: 12px;
+            margin-top: 12px;
+            color: #64748b;
+        }
+
+        .stat-growth i {
+            margin-right: 5px;
+            color: #0284c7;
+        }
+
+        /* ================= DASHBOARD SECTIONS ================= */
+
+        .dashboard-section {
+            margin-top: 30px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .section-header h5 {
+            margin: 0;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .view-all {
+            color: #0284c7;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .view-all:hover {
+            color: #0369a1;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .section-card .table {
+            margin: 0;
+            color: #334155;
+            --bs-table-bg: transparent;
+            --bs-table-color: #334155;
+            --bs-table-border-color: #e5e7eb;
+            --bs-table-hover-bg: #f8fafc;
+            --bs-table-hover-color: #1e293b;
+        }
+
+        .section-card .table th {
+            background: #f8fafc;
+            color: #64748b;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 15px;
+            white-space: nowrap;
+        }
+
+        .section-card .table td {
+            padding: 15px;
+            vertical-align: middle;
+            font-size: 13px;
+        }
+
+        .property-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .property-location {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        /* ================= STATUS BADGES ================= */
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-approved {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1e293b;
+            margin-bottom: 12px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .quick-action:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: #0284c7;
+            transform: translateX(4px);
+        }
+
+        .quick-icon {
+            width: 44px;
+            min-width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: #e0f2fe;
+            color: #0284c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-action strong {
+            display: block;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .quick-action span {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .btn-primary-custom {
+            display: inline-block;
+            background: #0284c7;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 9px;
+            text-decoration: none;
+        }
+
+        .btn-primary-custom:hover {
+            background: #0369a1;
+            color: white;
+        }
+
+        /* ================= EMPTY STATE ================= */
+
+        .empty-box {
+            text-align: center;
+            padding: 45px 20px;
+            background: white;
+            border: 1px dashed #cbd5e1;
+            border-radius: 14px;
+        }
+
+        .empty-box h5,
+        .empty-box h4 {
+            color: #1e293b;
+        }
+
+        .empty-box i {
+            font-size: 40px;
+            color: #0284c7;
+            margin-bottom: 15px;
+        }
+
+        .empty-box p {
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        /* ================= DJANGO MESSAGES ================= */
+
+        .messages-container {
+            margin-bottom: 20px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 991px) {
+            .sidebar {
+                left: -250px;
+            }
+
+            .sidebar.show {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .dashboard {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                padding: 15px;
+                gap: 12px;
+            }
+
+            .topbar-right {
+                gap: 10px;
+            }
+
+            .admin-info {
+                display: none;
+            }
+
+            .dashboard {
+                padding: 20px 15px;
+            }
+
+            .welcome-section {
+                padding: 22px;
+            }
+
+            .welcome-section h2 {
+                font-size: 21px;
+            }
+
+            .stat-card {
+                padding: 18px;
+            }
+
+            .stat-number {
+                font-size: 25px;
+            }
+
+            .section-header {
+                padding: 15px;
+            }
+
+            .section-header h5 {
+                font-size: 15px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <!-- ================= SIDEBAR ================= -->
 
-<!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
 
-<div class="sidebar" id="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-house"></i>
+            Admin
+        </div>
 
-    <div class="brand">
+        <div class="menu-title">Main Menu</div>
 
-        <i class="fa-solid fa-house"></i>
-        Admin Panel
+        <ul class="sidebar-menu">
 
-    </div>
+            <li>
+                <a href="{% url 'admin_dashboard' %}" class="active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
 
-    <ul class="sidebar-menu">
+            <li>
+                <a href="{% url 'homepage_management' %}">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Homepage</span>
+                </a>
+            </li>
 
-        <li>
-    <a href="{% url 'admin_dashboard' %}" class="active">
-        <i class="fa-solid fa-chart-pie"></i>
-        Dashboard
-    </a>
-</li>
+                <li>
+            <a href="{% url 'users_management' %}">
+                <i class="fa-solid fa-users"></i>
+                <span>Users Management</span>
+            </a>
+        </li>
 
-<li>
-    <a href="{% url 'homepage_management' %}">
-        <i class="fa-solid fa-house"></i>
-        Homepage
-    </a>
-</li>
+    
 
-<li>
-    <a href="#">
-        <i class="fa-solid fa-users"></i>
-        Users
-    </a>
-</li>
+            <li>
+                <a href="{% url 'properties_management' %}">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Properties</span>
+                </a>
+            </li>
 
-<li>
-    <a href="#">
-        <i class="fa-solid fa-user-tie"></i>
-        Owners
-    </a>
-</li>
+            <!-- <li> 
+                <a href="#">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Bookings Requests</span>
+                </a>
+            </li>
 
-<li>
-    <a href="#">
-        <i class="fa-solid fa-building"></i>
-        Properties
-    </a>
-</li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+            </li>
 
-<li>
-    <a href="#">
-        <i class="fa-solid fa-calendar-check"></i>
-        Bookings
-    </a>
-</li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+           -->
+        </ul>
 
+        <div class="logout-link">
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="{% url 'admin_logout' %}">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
+    </aside>
 
-<li>
-    <a href="#">
-        <i class="fa-solid fa-chart-column"></i>
-        Reports
-    </a>
-</li>
+    <!-- ================= MAIN CONTENT ================= -->
 
-<li>
-    <a href="{% url 'admin_logout' %}">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Logout
-    </a>
-</li>
-</ul>
-</div>
+    <main class="main-content">
 
+        <!-- ================= TOPBAR ================= -->
 
-<!-- ================= MAIN CONTENT ================= -->
+        <header class="topbar">
 
-<div class="main-content">
+            <div class="d-flex align-items-center gap-3">
 
+                <div class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
 
-    <!-- ================= TOPBAR ================= -->
+                <div class="page-title">
+                    Admin Dashboard
+                </div>
 
-    <div class="topbar">
+            </div>
 
+            <div class="topbar-right">
 
-        <div class="menu-toggle"
-             onclick="toggleSidebar()">
+                <div class="admin-profile">
 
-            <i class="fa-solid fa-bars"></i>
+                    <div class="admin-avatar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div class="admin-info">
+                        <strong>Admin</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <div class="dashboard">
+
+            <!-- Django Messages -->
+
+            {% if messages %}
+                <div class="messages-container">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show"
+                             role="alert">
+                            {{ message }}
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Welcome Section -->
+
+            <section class="welcome-section">
+
+                <h2>
+                    Welcome, Admin!
+                </h2>
+
+                <p>
+                    Manage users, owners, properties, booking requests, and reviews
+                    from your Property Rental Portal.
+                </p>
+
+            </section>
+
+            <!-- ================= STATISTICS ================= -->
+
+            <section class="row g-4">
+
+                <!-- Total Users -->
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div>
+                                <div class="stat-number">
+                                    {{ total_users|default:0 }}
+                                </div>
+
+                                <div class="stat-title">
+                                    Total Users
+                                </div>
+                            </div>
+
+                            <div class="stat-icon icon-blue">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        </div>
+
+                        <div class="stat-growth">
+                            <i class="fa-solid fa-user-check"></i>
+                            Registered users
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Total Owners -->
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div>
+                                <div class="stat-number">
+                                    {{ total_owners|default:0 }}
+                                </div>
+
+                                <div class="stat-title">
+                                    Total Owners
+                                </div>
+                            </div>
+
+                            <div class="stat-icon icon-green">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                        </div>
+
+                        <div class="stat-growth">
+                            <i class="fa-solid fa-house-user"></i>
+                            Registered property owners
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Total Properties -->
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div>
+                                <div class="stat-number">
+                                    {{ total_properties|default:0 }}
+                                </div>
+
+                                <div class="stat-title">
+                                    Total Properties
+                                </div>
+                            </div>
+
+                            <div class="stat-icon icon-orange">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                        </div>
+
+                        <div class="stat-growth">
+                            <i class="fa-solid fa-house"></i>
+                            Listed properties
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Total Bookings 
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div>
+                                <div class="stat-number">
+                                    {{ total_bookings|default:0 }}
+                                </div>
+
+                                <div class="stat-title">
+                                    Total Bookings
+                                </div>
+                            </div>
+
+                            <div class="stat-icon icon-purple">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="stat-growth">
+                            <i class="fa-solid fa-clock"></i>
+                            Booking requests
+                        </div>
+
+                    </div>
+
+                </div>
+
+               - Total Reviews 
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div>
+                                <div class="stat-number">
+                                    {{ total_reviews|default:0 }}
+                                </div>
+
+                                <div class="stat-title">
+                                    Total Reviews
+                                </div>
+                            </div>
+
+                            <div class="stat-icon icon-yellow">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+
+                        <div class="stat-growth">
+                            <i class="fa-solid fa-comment"></i>
+                            User feedback
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Reports 
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div>
+                                <div class="stat-number">
+                                    {{ total_reports|default:0 }}
+                                </div>
+
+                                <div class="stat-title">
+                                    Reports
+                                </div>
+                            </div>
+
+                            <div class="stat-icon icon-red">
+                                <i class="fa-solid fa-flag"></i>
+                            </div>
+                        </div>
+
+                        <div class="stat-growth">
+                            <i class="fa-solid fa-file-lines"></i>
+                            User complaints
+                        </div>
+
+                    </div>
+
+                </div>
+                -->
+
+            </section>
+
+            <!-- ================= QUICK ACTIONS ================= 
+
+            <section class="dashboard-section">
+
+                <h5 class="mb-3 fw-semibold">
+                    Quick Actions
+                </h5>
+
+                <div class="row g-3">
+
+                    <div class="col-lg-6">
+
+                        <a href="{% url 'homepage_management' %}"
+                           class="quick-action">
+
+                            <div class="quick-icon">
+                                <i class="fa-solid fa-house"></i>
+                            </div>
+
+                            <div>
+                                <strong>Manage Homepage</strong>
+                                <span>Update homepage content and sections.</span>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <a href="#"
+                           class="quick-action">
+
+                            <div class="quick-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <div>
+                                <strong>Manage Users</strong>
+                                <span>View and manage registered users.</span>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <a href="#"
+                           class="quick-action">
+
+                            <div class="quick-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <div>
+                                <strong>Manage Owners</strong>
+                                <span>View registered property owners.</span>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <a href="#"
+                           class="quick-action">
+
+                            <div class="quick-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+
+                            <div>
+                                <strong>Manage Bookings</strong>
+                                <span>Review property booking requests.</span>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+             ================= RECENT PROPERTIES ================= 
+
+            <section class="dashboard-section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <h5>
+                            <i class="fa-solid fa-building me-2"></i>
+                            Recent Properties
+                        </h5>
+
+                        <span class="view-all">
+                            Total: {{ total_properties|default:0 }}
+                        </span>
+
+                    </div>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>Property</th>
+                                    <th>Owner</th>
+                                    <th>Property ID</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                {% for property in recent_properties %}
+
+                                    <tr>
+                                        <td>
+                                            <span class="property-name">
+                                                {{ property.title }}
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            {{ property.owner.username|default:"N/A" }}
+                                        </td>
+
+                                        <td>
+                                            #{{ property.pk }}
+                                        </td>
+                                    </tr>
+
+                                {% empty %}
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="empty-box m-3">
+                                                <i class="fa-solid fa-building"></i>
+                                                <h5>No properties found</h5>
+                                                <p>Properties will appear here when available.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
 
-
-        <div class="search-box">
-
-            
-
-        </div> 
-
-
-        <div class="topbar-right">
-
-
-            <!-- <div class="notification">
-
-                <i class="fa-regular fa-bell"></i>
-
-                <span class="notification-badge">
-                    3
-                </span>
-
-            </div> -->
-
-
-            <div class="admin-profile">
-
-                <div class="admin-avatar">
-                    A
-                </div>
-
-                <div class="admin-info">
-
-                    <strong>Admin</strong>
-
-                    <span>Administrator</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= DASHBOARD ================= -->
-
-    <div class="dashboard">
-
-
-        <!-- Welcome -->
-
-        <div class="welcome-section">
-
-            <h2>
-                Welcome, Admin 
-            </h2>
-
-        </div>
-
-
-        <!-- ================= STATISTICS ================= -->
-
-        <div class="row g-4">
-
-
-            <!-- Users -->
-
-            <div class="col-xl-4 col-md-6">
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-
-                        <div>
-
-                     <div class="stat-number">
-    {{ total_users }}
-</div>
-
-<div class="stat-title">
-    Total Users
-</div>
-
-                        </div>
-
-                        <div class="stat-icon icon-blue">
-
-                            <i class="fa-solid fa-users"></i>
-
-                        </div>
-
-                    </div>
-
-                    <div class="stat-growth">
-
-                        <i class="fa-solid fa-arrow-up"></i>
-                        Registered users
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Owners -->
-
-            <div class="col-xl-4 col-md-6">
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-
-                        <div>
-
-                            <div class="stat-number">
-                            {{ total_owners }}
-                            </div>
-
-                            <div class="stat-title">
-                             Total Owners
-                            </div>
-
-                        </div>
-
-                        <div class="stat-icon icon-green">
-
-                            <i class="fa-solid fa-user-tie"></i>
-
-                        </div>
-
-                    </div>
-
-                    <div class="stat-growth">
-
-                        <i class="fa-solid fa-user-check"></i>
-                        Property owners
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Properties -->
-
-            <div class="col-xl-4 col-md-6">
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-
-                        <div>
-
-                            <div class="stat-number">
-                                0
-                            </div>
-
-                            <div class="stat-title">
-                                Total Properties
-                            </div>
-
-                        </div>
-
-                        <div class="stat-icon icon-orange">
-
-                            <i class="fa-solid fa-building"></i>
-
-                        </div>
-
-                    </div>
-
-                    <div class="stat-growth">
-
-                        <i class="fa-solid fa-house"></i>
-                        Listed properties
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Bookings -->
-
-            <div class="col-xl-4 col-md-6">
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-
-                        <div>
-
-                            <div class="stat-number">
-                                0
-                            </div>
-
-                            <div class="stat-title">
-                                Total Bookings
-                            </div>
-
-                        </div>
-
-                        <div class="stat-icon icon-purple">
-
-                            <i class="fa-solid fa-calendar-check"></i>
-
-                        </div>
-
-                    </div>
-
-                    <div class="stat-growth">
-
-                        <i class="fa-solid fa-clock"></i>
-                        Booking requests
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Reviews -->
-
-            
-
-
-            <!-- Reports -->
-
-            <div class="col-xl-4 col-md-6">
-
-                <div class="stat-card">
-
-                    <div class="stat-top">
-
-                        <div>
-
-                            <div class="stat-number">
-                                0
-                            </div>
-
-                            <div class="stat-title">
-                                Reports
-                            </div>
-
-                        </div>
-
-                        <div class="stat-icon icon-red">
-
-                            <i class="fa-solid fa-flag"></i>
-
-                        </div>
-
-                    </div>
-
-                    <div class="stat-growth">
-
-                        <i class="fa-solid fa-file-lines"></i>
-                        User complaints
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-    function toggleSidebar() {
-
-        document
-            .getElementById("sidebar")
-            .classList
-            .toggle("show");
-
-    }
-
-</script>
-
+    </main>
+-->
+    <!-- Bootstrap JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sidebar Toggle -->
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("show");
+        }
+    </script>
 
 </body>
-
 </html>

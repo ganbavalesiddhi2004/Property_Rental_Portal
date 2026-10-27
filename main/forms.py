@@ -47,3 +47,32 @@ class PropertyForm(forms.ModelForm):
                 }
             ),
         }
+
+
+# area form
+from django import forms
+from .models import AvailableArea
+
+
+class AvailableAreaForm(forms.ModelForm):
+    class Meta:
+        model = AvailableArea
+        fields = ['name', 'description', 'display_order', 'is_active']
+
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter area name'
+            }),
+            'description': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter area description'
+            }),
+            'display_order': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'min': '0'
+            }),
+            'is_active': forms.CheckboxInput(attrs={
+                'class': 'form-check-input'
+            }),
+        }

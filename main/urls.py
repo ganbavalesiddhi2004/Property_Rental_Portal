@@ -22,7 +22,21 @@ urlpatterns = [
     path('homepage_management/add-why-choose/',views.add_why_choose_feature,name='add_why_choose_feature'),
     path('homepage_management/edit-why-choose/<int:id>/',views.edit_why_choose_feature,name='edit_why_choose_feature'),
     path('homepage_management/delete-why-choose/<int:id>/',views.delete_why_choose_feature,name='delete_why_choose_feature'),
-    
+
+    # Admin Panel URLs for managing Available Areas
+    path('homepage_management/add-area/', views.add_area, name='add_area'),
+    path('homepage_management/edit-area/<int:id>/', views.edit_area, name='edit_area'),
+    path('homepage_management/delete-area/<int:id>/', views.delete_area, name='delete_area'),
+
+    # Admin Panel URLs for managing Users
+    path('users-management/',views.users_management,name='users_management'),
+
+    # Admin Panel URLs for managing Properties
+    path(
+    'properties-management/',
+    views.properties_management,
+    name='properties_management'
+),
     # Owner Panel URLs
     path('owner_panel/owner_register/',views.owner_register,name='owner_register'),
     path('owner_panel/owner_login/',views.owner_login,name='owner_login'),
@@ -34,21 +48,22 @@ urlpatterns = [
     # myproperties URLs for editing and deleting properties
     path('owner_panel/edit_property/<int:property_id>/',views.edit_property,name='edit_property'),
     path('owner_panel/delete_property/<int:property_id>/', views.delete_property,name='delete_property'),
+    
     # My Profile URLs
     path('owner_panel/edit_profile/', views.edit_owner_profile, name='edit_owner_profile'),
     path('owner_panel/delete_profile/', views.delete_owner_profile, name='delete_owner_profile'),
 
     # User Panel URLs
-    
-path('user_panel/register/', views.user_register, name='user_register'),
-path('user_panel/login/', views.user_login, name='user_login'),
-path('user_panel/properties/', views.property_list, name='property_list'),
-path('user_panel/logout/', views.user_logout, name='user_logout'),
-path(
-    'user_panel/dashboard/',
-    views.user_dashboard,
-    name='user_dashboard'
-),
+        
+    path('user_panel/register/', views.user_register, name='user_register'),
+    path('user_panel/login/', views.user_login, name='user_login'),
+    path('user_panel/properties/', views.property_list, name='property_list'),
+    path('user_panel/logout/', views.user_logout, name='user_logout'),
+    path(
+        'user_panel/dashboard/',
+        views.user_dashboard,
+        name='user_dashboard'
+    ),
 
 # path('user_panel/profile/', views.user_profile, name='user_profile'),
 
