@@ -276,7 +276,6 @@ class WhyChooseFeature(models.Model):
 
 # Owner Dashboard Model
 # Property Model
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -287,6 +286,21 @@ class Property(models.Model):
         ('Room', 'Room'),
         ('PG', 'PG'),
         ('1 BHK', '1 BHK'),
+    ]
+
+    FURNISHING_CHOICES = [
+        ('Fully Furnished', 'Fully Furnished'),
+        ('Semi Furnished', 'Semi Furnished'),
+        ('Unfurnished', 'Unfurnished'),
+    ]
+
+    TENANT_CHOICES = [
+        ('Any', 'Any'),
+        ('Students', 'Students'),
+        ('Working Professionals', 'Working Professionals'),
+        ('Family', 'Family'),
+        ('Girls', 'Girls'),
+        ('Boys', 'Boys'),
     ]
 
     owner = models.ForeignKey(
@@ -303,7 +317,47 @@ class Property(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     area = models.CharField(max_length=150)
-    rent = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+
+    rent = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0.00
+    )
+
+    furnishing = models.CharField(
+        max_length=30,
+        choices=FURNISHING_CHOICES,
+        default='Unfurnished'
+    )
+
+    # Stores multiple amenities as a list
+    amenities = models.JSONField(default=list, blank=True)
+
+    parking = models.BooleanField(default=False)
+
+    bedrooms = models.PositiveSmallIntegerField(
+        default=0
+    )
+
+    bathrooms = models.PositiveSmallIntegerField(
+        default=0
+    )
+
+    floor_number = models.IntegerField(
+        default=0
+    )
+
+    available_from = models.DateField(
+        null=True,
+        blank=True
+    )
+
+    preferred_tenant = models.CharField(
+        max_length=30,
+        choices=TENANT_CHOICES,
+        default='Any'
+    )
+
     image = models.ImageField(
         upload_to='properties/',
         blank=True,

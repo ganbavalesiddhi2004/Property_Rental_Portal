@@ -80,7 +80,16 @@ def admin_login(request):
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import AdminProfile, OwnerProfile
+from datetime import date, datetime
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.utils import timezone
+
+from openpyxl import Workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
 
 def admin_dashboard(request):
 
@@ -232,54 +241,12 @@ def owner_login(request):
 
     return render(request, 'owner_panel/owner_login.html')
 
-# # =========================
-# # OWNER DASHBOARD
-# # =========================
-
-# from django.shortcuts import render, redirect
-# from .models import Property, Booking
-
-
-# def owner_dashboard(request):
-
-#     if not request.user.is_authenticated:
-#         return redirect('owner_login')
-
-#     if not hasattr(request.user, 'ownerprofile'):
-#         return redirect('owner_login')
-
-#     # Get properties belonging to the logged-in owner
-#     properties = Property.objects.filter(
-#         owner=request.user
-#     ).order_by('-id')
-
-#     # Get booking requests for this owner's properties
-#     owner_bookings = Booking.objects.filter(
-#         property__owner=request.user
-#     ).select_related(
-#         'property', 'user'
-#     ).order_by('-id')
-
-#     # Dashboard context
-#     context = {
-#         'properties': properties,
-#         'total_properties': properties.count(),
-#         'booking_requests': owner_bookings.count(),
-#         'owner_bookings': owner_bookings,
-#     }
-
-#     return render(
-#         request,
-#         'owner_panel/owner_dashboard.html',
-#         context
-#     )
-
 # =========================
 # OWNER DASHBOARD
 # =========================
 
 from django.shortcuts import render, redirect
-from .models import Property, Booking
+from .models import Property, Booking, AvailableArea, Review
 
 
 def owner_dashboard(request):
@@ -297,7 +264,7 @@ def owner_dashboard(request):
         owner=request.user
     ).order_by('-id')
 
-    # Get booking requests only for this owner's properties
+    # Get booking requests for this owner's properties
     owner_bookings = Booking.objects.filter(
         property__owner=request.user
     ).select_related(
@@ -306,21 +273,45 @@ def owner_dashboard(request):
     ).order_by('-id')
 
     # Get reviews for this owner's properties
-    # Get reviews only for this owner's properties
     owner_reviews = Review.objects.filter(
         property__owner=request.user
     ).select_related(
-        'property', 'user'
+        'property',
+        'user'
     ).order_by('-id')
+
+    # Get active areas added by Admin
+    areas = AvailableArea.objects.filter(
+        is_active=True
+    ).order_by('display_order', 'name')
+
+    # Available amenities for Add/Edit Property forms
+    amenities_options = [
+        'Wi-Fi',
+        'Water Supply',
+        'Power Backup',
+        'Security',
+        'Lift',
+        'Washing Machine',
+    ]
 
     # Dashboard context
     context = {
         'properties': properties,
         'total_properties': properties.count(),
+
         'booking_requests': owner_bookings.count(),
         'owner_bookings': owner_bookings,
+
         'owner_reviews': owner_reviews,
         'total_reviews': owner_reviews.count(),
+
+        # Keep 'areas' for existing template code
+        'areas': areas,
+
+        # Use these names in the Add/Edit Property forms
+        'available_areas': areas,
+        'amenities_options': amenities_options,
     }
 
     return render(
@@ -329,8 +320,310 @@ def owner_dashboard(request):
         context
     )
 
+# ownwer report view
+# =========================
+# OWNER REPORTS
+# =========================
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.utils import timezone
+
+from openpyxl import Workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
+
+from .models import Property, Booking, Review
 
 
+@login_required
+def owner_reports(request):
+
+    if not hasattr(request.user, 'ownerprofile'):
+        return redirect('owner_login')
+
+    # Get only this owner's data
+    properties = Property.objects.filter(
+        owner=request.user
+    ).order_by('-id')
+
+    bookings = Booking.objects.filter(
+        property__owner=request.user
+    ).select_related(
+        'property', 'user'
+    ).order_by('-id')
+
+    reviews = Review.objects.filter(
+        property__owner=request.user
+    ).select_related(
+        'property', 'user'
+    ).order_by('-id')
+
+    report_type = request.GET.get('report', 'properties')
+
+    # Summary information
+    context = {
+        'report_type': report_type,
+        'total_properties': properties.count(),
+        'total_bookings': bookings.count(),
+        'total_reviews': reviews.count(),
+        'properties': properties,
+        'bookings': bookings,
+        'reviews': reviews,
+    }
+
+    return render(
+        request,
+        'owner_panel/owner_reports.html',
+        context
+    )
+from datetime import date, datetime, time
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.utils import timezone
+
+from openpyxl import Workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
+
+
+# =========================
+# EXPORT REPORT TO EXCEL
+# =========================
+
+@login_required
+def export_owner_reports(request):
+
+    if not hasattr(request.user, 'ownerprofile'):
+        return redirect('owner_login')
+
+    # Fetch owner-related data
+    properties = Property.objects.filter(
+        owner=request.user
+    ).order_by('-id')
+
+    bookings = Booking.objects.filter(
+        property__owner=request.user
+    ).select_related(
+        'property', 'user'
+    ).order_by('-id')
+
+    reviews = Review.objects.filter(
+        property__owner=request.user
+    ).select_related(
+        'property', 'user'
+    ).order_by('-id')
+
+    # Create workbook
+    workbook = Workbook()
+
+    report_sheets = [
+        ('Properties', properties),
+        ('Bookings', bookings),
+        ('Reviews', reviews),
+    ]
+
+    # =========================
+    # SUMMARY SHEET
+    # =========================
+
+    summary = workbook.active
+    summary.title = 'Summary'
+
+    summary.append(['OWNER RENTAL REPORT'])
+
+    summary.append([
+        'Generated On',
+        timezone.localtime().strftime('%d-%m-%Y %H:%M')
+    ])
+
+    summary.append([])
+    summary.append(['Report Metric', 'Total'])
+    summary.append(['Total Properties', properties.count()])
+    summary.append(['Total Booking Requests', bookings.count()])
+    summary.append(['Total Reviews', reviews.count()])
+
+    summary['A1'].font = Font(bold=True, size=16)
+    summary['A4'].font = Font(bold=True)
+    summary['B4'].font = Font(bold=True)
+
+    summary.column_dimensions['A'].width = 30
+    summary.column_dimensions['B'].width = 25
+
+    # =========================
+    # CONVERT VALUES FOR EXCEL
+    # =========================
+
+    def convert_excel_value(value):
+
+        if value is None:
+            return ''
+
+        # Convert lists, tuples, and sets
+        if isinstance(value, (list, tuple, set)):
+            return ', '.join(
+                str(item) for item in value
+            )
+
+        # Convert dictionaries
+        if isinstance(value, dict):
+            return str(value)
+
+        # Remove timezone information from datetime values
+        if isinstance(value, datetime):
+
+            if timezone.is_aware(value):
+                value = timezone.make_naive(
+                    value,
+                    timezone.get_current_timezone()
+                )
+
+            return value
+
+        # Remove timezone information from time values
+        if isinstance(value, time):
+
+            if value.tzinfo is not None:
+                value = value.replace(tzinfo=None)
+
+            return value
+
+        # Keep supported Excel values unchanged
+        if isinstance(value, (str, int, float, bool, date)):
+            return value
+
+        # Convert other unsupported values into text
+        return str(value)
+
+    # =========================
+    # CREATE REPORT SHEETS
+    # =========================
+
+    for sheet_name, queryset in report_sheets:
+
+        worksheet = workbook.create_sheet(
+            title=sheet_name
+        )
+
+        # Get database model fields
+        model_fields = [
+            field
+            for field in queryset.model._meta.concrete_fields
+            if not field.many_to_many
+        ]
+
+        # Add headers
+        headers = [
+            field.verbose_name.title()
+            for field in model_fields
+        ]
+
+        worksheet.append(headers)
+
+        # Add database records
+        for obj in queryset:
+
+            row = []
+
+            for field in model_fields:
+
+                value = getattr(
+                    obj,
+                    field.attname
+                )
+
+                # Display readable foreign-key values
+                if field.is_relation and field.many_to_one:
+
+                    related_obj = getattr(
+                        obj,
+                        field.name
+                    )
+
+                    value = (
+                        str(related_obj)
+                        if related_obj is not None
+                        else ''
+                    )
+
+                # Convert value before adding it to Excel
+                value = convert_excel_value(value)
+
+                row.append(value)
+
+            worksheet.append(row)
+
+        # =========================
+        # STYLE HEADERS
+        # =========================
+
+        for cell in worksheet[1]:
+
+            cell.font = Font(
+                bold=True,
+                color='FFFFFF'
+            )
+
+            cell.fill = PatternFill(
+                start_color='1F4E78',
+                end_color='1F4E78',
+                fill_type='solid'
+            )
+
+            cell.alignment = Alignment(
+                horizontal='center',
+                vertical='center'
+            )
+
+        # =========================
+        # FORMAT COLUMNS
+        # =========================
+
+        worksheet.freeze_panes = 'A2'
+        worksheet.auto_filter.ref = worksheet.dimensions
+
+        for column_cells in worksheet.columns:
+
+            max_length = 0
+
+            column_letter = get_column_letter(
+                column_cells[0].column
+            )
+
+            for cell in column_cells:
+
+                if cell.value is not None:
+
+                    max_length = max(
+                        max_length,
+                        len(str(cell.value))
+                    )
+
+            worksheet.column_dimensions[
+                column_letter
+            ].width = min(max_length + 3, 35)
+
+    # =========================
+    # DOWNLOAD EXCEL FILE
+    # =========================
+
+    response = HttpResponse(
+        content_type=(
+            'application/vnd.openxmlformats-officedocument.'
+            'spreadsheetml.sheet'
+        )
+    )
+
+    response['Content-Disposition'] = (
+        'attachment; filename="Owner_Rental_Reports.xlsx"'
+    )
+
+    workbook.save(response)
+
+    return response
 
 # =========================
 # OWNER LOGOUT
@@ -806,30 +1099,81 @@ def properties_management(request):
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Property
+from .models import Property, AvailableArea
+
+# Owner Panel Views for Add Properties
+from .models import Property, AvailableArea
+from datetime import date
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import Property, AvailableArea
 
 
 @login_required
 def add_property(request):
+
+    areas = AvailableArea.objects.filter(
+        is_active=True
+    ).order_by('display_order', 'name')
+
     if request.method == 'POST':
+
         category = request.POST.get('category')
         title = request.POST.get('title', '').strip()
         description = request.POST.get('description', '').strip()
         area = request.POST.get('area', '').strip()
         rent = request.POST.get('rent')
+
+        furnishing = request.POST.get('furnishing', 'Unfurnished')
+        amenities = request.POST.getlist('amenities')
+        parking = request.POST.get('parking') == 'yes'
+        bedrooms = request.POST.get('bedrooms') or 0
+        bathrooms = request.POST.get('bathrooms') or 0
+        floor_number = request.POST.get('floor_number') or 0
+        available_from = request.POST.get('available_from') or None
+        preferred_tenant = request.POST.get('preferred_tenant', 'Any')
         image = request.FILES.get('image')
 
         if not all([category, title, description, area, rent]):
             messages.error(request, 'Please fill in all required fields.')
-            return redirect('add_property')
+            return render(
+                request,
+                'owner_panel/add_property.html',
+                {'areas': areas}
+            )
+
+        if not areas.filter(name__iexact=area).exists():
+            messages.error(request, 'Please select a valid area.')
+            return render(
+                request,
+                'owner_panel/add_property.html',
+                {'areas': areas}
+            )
 
         try:
             rent = float(rent)
+
             if rent <= 0:
                 raise ValueError
+
+            bedrooms = int(bedrooms)
+            bathrooms = int(bathrooms)
+            floor_number = int(floor_number)
+
+            if bedrooms < 0 or bathrooms < 0:
+                raise ValueError
+
+            if available_from:
+                available_from = date.fromisoformat(available_from)
+
         except (ValueError, TypeError):
-            messages.error(request, 'Enter a valid rent amount.')
-            return redirect('add_property')
+            messages.error(request, 'Please enter valid property details.')
+            return render(
+                request,
+                'owner_panel/add_property.html',
+                {'areas': areas}
+            )
 
         Property.objects.create(
             owner=request.user,
@@ -838,15 +1182,26 @@ def add_property(request):
             description=description,
             area=area,
             rent=rent,
+            furnishing=furnishing,
+            amenities=amenities,
+            parking=parking,
+            bedrooms=bedrooms,
+            bathrooms=bathrooms,
+            floor_number=floor_number,
+            available_from=available_from,
+            preferred_tenant=preferred_tenant,
             image=image
         )
 
         messages.success(request, 'Property added successfully!')
         return redirect('owner_dashboard')
 
-    return render(request, 'owner_panel/add_property.html')
-
-
+    return render(
+        request,
+        'owner_panel/add_property.html',
+        {'areas': areas}
+    )
+# Owner Panel Views for My Properties
 @login_required
 def my_properties(request):
     properties = Property.objects.filter(
@@ -863,10 +1218,16 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Property
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import Property, AvailableArea
 
 
 @login_required
 def edit_property(request, property_id):
+
+    # Get the property belonging to the logged-in owner
     property_obj = get_object_or_404(
         Property,
         id=property_id,
@@ -874,26 +1235,78 @@ def edit_property(request, property_id):
     )
 
     if request.method == 'POST':
+
+        # Basic property details
         property_obj.category = request.POST.get('category')
-        property_obj.title = request.POST.get('title')
-        property_obj.description = request.POST.get('description')
-        property_obj.area = request.POST.get('area')
+        property_obj.title = request.POST.get('title', '').strip()
+        property_obj.description = request.POST.get('description', '').strip()
+        property_obj.area = request.POST.get('area', '').strip()
         property_obj.rent = request.POST.get('rent')
 
+        # Furnishing
+        property_obj.furnishing = request.POST.get('furnishing', '')
+
+        # Amenities: multiple checkbox values
+        property_obj.amenities = request.POST.getlist('amenities')
+
+        # Parking
+        property_obj.parking = (
+            request.POST.get('parking') == 'yes'
+        )
+
+        # Bedrooms and bathrooms
+        property_obj.bedrooms = request.POST.get('bedrooms') or None
+        property_obj.bathrooms = request.POST.get('bathrooms') or None
+
+        # Floor number
+        property_obj.floor_number = (
+            request.POST.get('floor_number') or None
+        )
+
+        # Available date
+        property_obj.available_from = (
+            request.POST.get('available_from') or None
+        )
+
+        # Preferred tenant
+        property_obj.preferred_tenant = request.POST.get(
+            'preferred_tenant', ''
+        )
+
+        # Replace image only when a new image is uploaded
         if request.FILES.get('image'):
             property_obj.image = request.FILES['image']
 
         property_obj.save()
 
-        messages.success(request, 'Property updated successfully.')
+        messages.success(
+            request,
+            'Property updated successfully!'
+        )
+
         return redirect('owner_dashboard')
+
+    context = {
+        'property': property_obj,
+        'available_areas': AvailableArea.objects.filter(
+            is_active=True
+        ).order_by('display_order', 'name'),
+
+        'amenities_options': [
+            'Wi-Fi',
+            'Water Supply',
+            'Power Backup',
+            'Security',
+            'Lift',
+            'Washing Machine',
+        ],
+    }
 
     return render(
         request,
         'owner_panel/edit_property.html',
-        {'property': property_obj}
+        context
     )
-
 
 @login_required
 def delete_property(request, property_id):

@@ -9,7 +9,7 @@
           content="width=device-width, initial-scale=1.0">
 
     <title>Owner Dashboard | Property Rental Portal</title>
-
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
@@ -730,32 +730,42 @@
     font-weight: 600;
 }
 
-/* Property card */
+/* =========================
+   COMPACT PROPERTY CARDS
+========================= */
 
 .property-card {
-    border: 1px solid rgba(148, 163, 184, 0.20);
-    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.07);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .property-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.13);
 }
 
+/* Property image */
+
 .property-image {
-    height: 205px;
+    height: 165px;
     position: relative;
     overflow: hidden;
+    background: #f1f5f9;
+    flex-shrink: 0;
 }
 
 .property-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.35s ease;
+    transition: transform 0.3s ease;
 }
 
 .property-card:hover .property-image img {
@@ -764,13 +774,13 @@
 
 .property-category {
     position: absolute;
-    top: 14px;
-    left: 14px;
-    padding: 7px 12px;
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
     border-radius: 7px;
-    background: rgba(15, 23, 42, 0.90);
+    background: #0f172a;
     color: #38bdf8;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
 }
 
@@ -780,80 +790,90 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    background: rgba(148, 163, 184, 0.10);
+    gap: 8px;
     color: #94a3b8;
+    background: #f1f5f9;
 }
 
 .no-property-image i {
-    font-size: 38px;
+    font-size: 32px;
 }
 
 .no-property-image span {
-    font-size: 13px;
+    font-size: 12px;
 }
 
-/* Property details */
+/* Compact card content */
 
 .property-card-body {
-    padding: 22px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .property-title {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
-    margin-bottom: 12px;
+    color: #172033;
+    margin-bottom: 8px;
     overflow-wrap: anywhere;
 }
 
 .property-location {
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
+    align-items: center;
+    gap: 7px;
     font-size: 13px;
-    color: #94a3b8;
-    margin-bottom: 18px;
+    color: #64748b;
+    margin-bottom: 12px;
 }
 
 .property-location i {
-    color: #38bdf8;
-    margin-top: 3px;
+    color: #0ea5e9;
 }
+
+/* Rent */
 
 .property-rent {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    padding: 13px 0;
-    border-top: 1px solid rgba(148, 163, 184, 0.18);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    gap: 8px;
+    padding: 11px 0;
+    margin-bottom: 12px;
+    border-top: 1px solid #edf0f5;
+    border-bottom: 1px solid #edf0f5;
 }
 
 .property-rent span {
-    font-size: 13px;
-    color: #94a3b8;
+    font-size: 12px;
+    color: #64748b;
 }
 
 .property-rent strong {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 700;
-    color: #38bdf8;
+    color: #0284c7;
 }
 
+/* Short description */
+
 .property-description {
-    font-size: 13px;
-    line-height: 1.7;
-    margin: 16px 0 20px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0 0 12px;
     overflow-wrap: anywhere;
 }
 
-/* Edit and delete buttons */
+/* Buttons */
 
 .property-actions {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     margin-top: auto;
+    padding-top: 8px;
 }
 
 .property-actions form {
@@ -863,35 +883,45 @@
 
 .property-btn {
     width: 100%;
-    min-height: 42px;
+    min-height: 37px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border-radius: 9px;
-    font-size: 13px;
+    gap: 6px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 12px;
     font-weight: 600;
-    text-decoration: none;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.edit-btn {
-    background: rgba(56, 189, 248, 0.12);
+.view-btn {
+    background: #e0f2fe;
     border: 1px solid #38bdf8;
-    color: #38bdf8;
+    color: #0369a1;
 }
 
-.edit-btn:hover {
+.view-btn:hover {
     background: #0284c7;
     color: #ffffff;
 }
 
+.edit-btn {
+   background: #e0f2fe;
+    border: 1px solid #38bdf8;
+    color: #0369a1
+}
+
+.edit-btn:hover {
+   background: #0284c7;
+    color: #ffffff;
+}
+
 .delete-btn {
-    background: rgba(239, 68, 68, 0.08);
-    border: 1px solid #ef4444;
-    color: #ef4444;
+    background: #fef2f2;
+    border: 1px solid #f87171;
+    color: #dc2626;
 }
 
 .delete-btn:hover {
@@ -899,49 +929,349 @@
     color: #ffffff;
 }
 
-/* Empty state */
+/* =========================
+   PROPERTY DETAILS MODAL
+========================= */
 
-.empty-properties {
-    text-align: center;
-    padding: 55px 20px;
-    border: 1px dashed rgba(148, 163, 184, 0.35);
+.property-details-modal .modal-content {
+    border: none;
     border-radius: 16px;
+    overflow: hidden;
 }
 
-.empty-properties > i {
-    font-size: 42px;
-    color: #38bdf8;
-    margin-bottom: 18px;
+.property-details-modal .modal-header {
+    background: #0f172a;
+    color: #ffffff;
+    border-bottom: none;
+    padding: 18px 22px;
 }
 
-.empty-properties h5 {
-    font-size: 20px;
+.property-details-modal .modal-title {
+    font-size: 19px;
     font-weight: 700;
 }
 
-.empty-properties p {
-    color: #94a3b8;
-    margin: 10px 0 22px;
+.property-details-modal .btn-close {
+    filter: invert(1);
 }
 
+.property-details-modal .modal-body {
+    padding: 22px;
+}
+
+.details-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.details-item {
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.details-item .detail-label {
+    display: block;
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.details-item .detail-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #172033;
+}
+
+.details-full {
+    grid-column: 1 / -1;
+}
+
+.details-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.details-amenities .badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 7px 9px;
+}
+
+/* Mobile */
+
 @media (max-width: 576px) {
-    .properties-heading h3 {
-        font-size: 22px;
+    .property-image {
+        height: 175px;
     }
 
     .property-card-body {
-        padding: 17px;
+        padding: 14px;
+    }
+
+    .property-title {
+        font-size: 16px;
     }
 
     .property-actions {
-        gap: 8px;
+        gap: 6px;
     }
 
     .property-btn {
-        padding: 9px 7px;
-        font-size: 12px;
+        padding: 8px 5px;
+        font-size: 11px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-full {
+        grid-column: auto;
+    }
+
+    .property-details-modal .modal-body {
+        padding: 15px;
+    }
+
+    .details-image {
+        height: 180px;
     }
 }
+
+/* Compact property cards */
+
+.property-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.13);
+}
+
+.property-image {
+    height: 165px;
+    position: relative;
+    overflow: hidden;
+    background: #f1f5f9;
+    flex-shrink: 0;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.property-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.property-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.property-location {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.property-rent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    margin-bottom: 12px;
+    border-top: 1px solid #edf0f5;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.property-rent span {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.property-rent strong {
+    font-size: 18px;
+    color: #0284c7;
+}
+
+.property-description {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.property-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.property-actions form {
+    flex: 1;
+    margin: 0;
+}
+
+.property-btn {
+    width: 100%;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 7px 5px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.view-btn {
+    background: #e0f2fe;
+    border: 1px solid #38bdf8;
+    color: #0369a1;
+}
+
+.edit-btn {
+    background: #eff6ff;
+    border: 1px solid #60a5fa;
+    color: #2563eb;
+}
+
+.delete-btn {
+    background: #fef2f2;
+    border: 1px solid #f87171;
+    color: #dc2626;
+}
+
+/* Details popup */
+
+.property-details-modal .modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.property-details-modal .modal-header {
+    background: #0f172a;
+    color: #fff;
+    padding: 18px 22px;
+}
+
+.property-details-modal .btn-close {
+    filter: invert(1);
+}
+
+.property-details-modal .modal-body {
+    padding: 22px;
+}
+
+.details-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.details-item {
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.detail-label {
+    display: block;
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #172033;
+    white-space: pre-wrap;
+}
+
+.details-full {
+    grid-column: 1 / -1;
+}
+
+.details-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.details-amenities .badge {
+    padding: 7px 9px;
+    font-weight: 500;
+}
+
+@media (max-width: 576px) {
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-full {
+        grid-column: auto;
+    }
+
+    .details-image {
+        height: 180px;
+    }
+
+    .property-actions {
+        gap: 5px;
+    }
+
+    .property-btn {
+        font-size: 10px;
+    }
+}
+
+
 /* myprofile */
 
 .profile-card {
@@ -988,9 +1318,243 @@
     border-radius: 6px;
     padding: 9px 18px;
 }
+/* Report Buttons */
+.report-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border: 1px solid #1b72b0;
+    border-radius: 6px;
+    background: #1b72b0;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
 
+.report-view-btn:hover {
+    background: #1d4ed8;
+}
 
+.report-view-btn i {
+    font-size: 12px;
+}
+/* =========================
+   OWNER REPORTS SECTION
+========================= */
 
+#owner-reports-section {
+    padding: 20px 0;
+}
+
+/* Main report container */
+#owner-reports-section > .card {
+    border: none;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07) !important;
+}
+
+/* Report header */
+#owner-reports-section #owner-report-title {
+    color: #1e293b;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#owner-reports-section #owner-report-title i {
+    color: #2563eb;
+}
+
+#owner-reports-section .text-muted {
+    color: #64748b !important;
+    font-size: 14px;
+}
+
+/* =========================
+   MODERN OWNER REPORT BUTTONS
+========================= */
+
+#owner-reports-section .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Download Excel Button */
+#owner-reports-section .btn-success {
+    background: linear-gradient(135deg, #15803d, #16a34a);
+    border-color: #15803d;
+    color: #ffffff;
+    box-shadow: 0 3px 8px rgba(22, 163, 74, 0.15);
+}
+
+#owner-reports-section .btn-success i {
+    font-size: 15px;
+}
+
+#owner-reports-section .btn-success:hover {
+    background: linear-gradient(135deg, #166534, #15803d);
+    border-color: #166534;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(22, 163, 74, 0.25);
+}
+
+/* Back Button */
+#owner-reports-section .btn-secondary {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #334155;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+#owner-reports-section .btn-secondary i {
+    font-size: 13px;
+    transition: transform 0.25s ease;
+}
+
+#owner-reports-section .btn-secondary:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+    color: #1e293b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.10);
+}
+
+#owner-reports-section .btn-secondary:hover i {
+    transform: translateX(-3px);
+}
+
+/* Keyboard Focus */
+#owner-reports-section .btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+/* Button Click Effect */
+#owner-reports-section .btn:active {
+    transform: scale(0.97);
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+    #owner-reports-section .btn {
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+    #owner-reports-section .btn {
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+}
+
+/* Report titles */
+#owner-reports-section .owner-report-content h5 {
+    margin-top: 10px;
+    margin-bottom: 20px !important;
+    color: #1e3a8a;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+/* Table container */
+#owner-reports-section .table-responsive {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow-x: auto;
+    background: #ffffff;
+}
+
+/* Table */
+#owner-reports-section table {
+    margin-bottom: 0;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* Table headings */
+#owner-reports-section .table thead th {
+    padding: 14px 16px;
+    background: #1e293b;
+    color: #ffffff;
+    border-color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    vertical-align: middle;
+}
+
+/* Table cells */
+#owner-reports-section .table tbody td {
+    padding: 13px 16px;
+    color: #334155;
+    border-color: #e2e8f0;
+    vertical-align: middle;
+}
+
+/* Alternating rows */
+#owner-reports-section .table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* Row hover */
+#owner-reports-section .table-hover tbody tr:hover {
+    background: #eff6ff;
+    transition: background 0.2s ease;
+}
+
+/* Empty report message */
+#owner-reports-section .table tbody td.text-center {
+    padding: 25px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    #owner-reports-section {
+        padding: 12px 0;
+    }
+
+    #owner-reports-section > .card {
+        padding: 18px !important;
+    }
+
+    #owner-reports-section #owner-report-title {
+        font-size: 21px;
+    }
+
+    #owner-reports-section .btn {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    #owner-reports-section .owner-report-content h5 {
+        font-size: 17px;
+    }
+
+    #owner-reports-section table {
+        font-size: 13px;
+    }
+}
 
 
     </style>
@@ -1052,20 +1616,15 @@
             </a>
         </li>
 
-        <!-- <li>
-            <a href="#" class="menu-link" data-section="profile-section">
-                <i class="fa-solid fa-user"></i>
-                <span>My Profile</span>
-            </a>
-        </li> -->
-    </ul>
-
-    <div class="logout">
-        <a href="{% url 'owner_logout' %}">
+     
+        <li>
+            <a href="{% url 'owner_logout' %}">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span>Logout</span>
         </a>
-    </div>
+        </li>
+    </ul>
+
 
 </div>
 
@@ -1119,136 +1678,486 @@
 
             <div class="row g-4 mb-5">
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-                        <h4>{{ total_properties }}</h4>
-                        <p>Total Properties</p>
-                    </div>
-                </div>
+    <!-- Total Properties -->
+    <div class="col-lg-4 col-md-6">
+        <div class="stat-card report-clickable"
+             onclick="showOwnerReport('properties-report')">
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-calendar-check"></i>
-                        </div>
-                        <h4>{{ booking_requests }}</h4>
-                        <p>Booking Requests</p>
-                    </div>
-                </div>
-
+            <div class="stat-icon">
+                <i class="fa-solid fa-building"></i>
             </div>
 
-            <div class="section-title">Quick Actions</div>
+            <h4>{{ total_properties }}</h4>
+            <p>Total Properties</p>
+            <button type="button" class="report-view-btn"
+                    onclick="event.stopPropagation(); showOwnerReport('properties-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
 
-            <div class="row g-4">
+    <!-- Booking Requests -->
+    <div class="col-lg-4 col-md-6">
+        <div class="stat-card report-clickable"
+             onclick="showOwnerReport('bookings-report')">
 
-                <div class="col-lg-4 col-md-6">
-                    <a href="#" class="action-card menu-link"
-                       data-section="add-property-section">
-
-                        <div class="action-icon">
-                            <i class="fa-solid fa-plus"></i>
-                        </div>
-
-                        <h6>Add New Property</h6>
-                        <p>Post your Room, PG or 1 BHK property.</p>
-
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <a href="#" class="action-card menu-link"
-                       data-section="my-properties-section">
-
-                        <div class="action-icon">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-
-                        <h6>My Properties</h6>
-                        <p>View and manage your listed properties.</p>
-
-                    </a>
-                </div>
-
+            <div class="stat-icon">
+                <i class="fa-solid fa-calendar-check"></i>
             </div>
 
-        </section>
+            <h4>{{ booking_requests }}</h4>
+            <p>Booking Requests</p>
+            <button type="button" class="report-view-btn"
+                    onclick="event.stopPropagation(); showOwnerReport('bookings-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="col-lg-4 col-md-6">
+        <div class="stat-card report-clickable"
+             onclick="showOwnerReport('reviews-report')">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <h4>{{ total_reviews }}</h4>
+            <p>Reviews</p>
+            <button type="button" class="report-view-btn"
+                    onclick="event.stopPropagation(); showOwnerReport('reviews-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     OWNER REPORTS SECTION
+========================= -->
+
+<section id="owner-reports-section"
+         class="content-section"
+         style="display: none;">
+
+    <div class="card shadow-sm p-4">
+
+        <!-- REPORT HEADER -->
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+            <div>
+                <h3 class="mb-2" id="owner-report-title">
+                    <i class="fa-solid fa-chart-line me-2"></i>
+                    Owner Reports
+                </h3>
+
+                <p class="text-muted mb-0">
+                    Analyze your properties, booking requests, and customer reviews.
+                </p>
+            </div>
+
+        </div>
 
 
         <!-- =========================
-             2. ADD PROPERTY SECTION
+             REPORT 1: PROPERTIES
         ========================== -->
 
-        <section id="add-property-section" class="content-section"
-                 style="display: none;">
+        <div id="properties-report"
+             class="owner-report-content">
 
-            <div class="card shadow-sm p-4">
+            
 
-                <h3 class="mb-4">Add Property</h3>
+            <div class="table-responsive">
 
-                <form method="POST"
-                      action="{% url 'add_property' %}"
-                      enctype="multipart/form-data">
+                <table class="table table-bordered table-hover align-middle">
 
-                    {% csrf_token %}
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Sr No.</th>
+                            <th>Property Title</th>
+                            <th>Category</th>
+                            <th>Area</th>
+                            <th>Monthly Rent</th>
+                            <th>Listed Date</th>
+                        </tr>
+                    </thead>
 
-                    <label class="form-label">Property Category</label>
-                    <select name="category" class="form-select mb-3" required>
-                        <option value="">Select category</option>
-                        <option value="Room">Room</option>
-                        <option value="PG">PG</option>
-                        <option value="1 BHK">1 BHK</option>
-                    </select>
+                    <tbody>
 
-                    <label class="form-label">Property Title</label>
-                    <input type="text" name="title"
-                           class="form-control mb-3"
-                           placeholder="e.g. Spacious Room near Rankala"
-                           required>
+                        {% for property in properties %}
 
-                    <label class="form-label">Description</label>
-                    <textarea name="description"
-                              class="form-control mb-3"
-                              rows="4" required></textarea>
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ property.title }}</td>
+                            <td>{{ property.category }}</td>
+                            <td>{{ property.area }}</td>
+                            <td>₹{{ property.rent }}</td>
+                            <td>{{ property.created_at|date:"d-m-Y" }}</td>
+                        </tr>
 
-                    <label class="form-label">Area in Kolhapur</label>
-                    <input type="text" name="area"
-                           class="form-control mb-3"
-                           placeholder="e.g. Rajarampuri, Kolhapur"
-                           required>
+                        {% empty %}
 
-                    <label class="form-label">Monthly Rent (₹)</label>
-                    <input type="number" name="rent"
-                           class="form-control mb-3"
-                           min="0" step="0.01"
-                           placeholder="Enter monthly rent"
-                           required>
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                No properties found.
+                            </td>
+                        </tr>
 
-                    <label class="form-label">Property Image</label>
-                    <input type="file" name="image"
-                           class="form-control mb-4"
-                           accept="image/*">
+                        {% endfor %}
 
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa-solid fa-floppy-disk"></i>
-                        Save Property
-                    </button>
+                    </tbody>
 
-                    <button type="button" class="btn btn-secondary"
-                            onclick="showSection('dashboard-section', 'Owner Dashboard')">
-                        Cancel
-                    </button>
+                </table>
 
-                </form>
             </div>
 
-        </section>
+        </div>
 
 
-       
+        <!-- =========================
+             REPORT 2: BOOKINGS
+        ========================== -->
+
+        <div id="bookings-report"
+             class="owner-report-content"
+             style="display: none;">
+
+        
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Property</th>
+                            <th>Area</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for booking in owner_bookings %}
+
+                        <tr>
+                            <td>{{ booking.id }}</td>
+                            <td>{{ booking.property.title }}</td>
+                            <td>{{ booking.property.area }}</td>
+                            <td>{{ booking.user.username }}</td>
+                            <td>
+                                {{ booking.status|default:"Not specified" }}
+                            </td>
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                No booking requests found.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             REPORT 3: REVIEWS
+        ========================== -->
+
+        <div id="reviews-report"
+             class="owner-report-content"
+             style="display: none;">
+
+           
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Property</th>
+                            <th>Area</th>
+                            <th>Customer</th>
+                            <th>Rating</th>
+                            <th>Review</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for review in owner_reviews %}
+
+                        <tr>
+                            <td>{{ review.property.title }}</td>
+                            <td>{{ review.property.area }}</td>
+                            <td>{{ review.user.username }}</td>
+                            <td>{{ review.rating|default:"N/A" }}</td>
+                            <td>{{ review.comment|default:"No comment" }}</td>
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                No reviews found.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             REPORT ACTION BUTTONS
+        ========================== -->
+
+        <div class="d-flex justify-content-end align-items-center gap-3 flex-wrap mt-4 pt-3 border-top">
+
+            <!-- DOWNLOAD EXCEL -->
+            <a href="{% url 'export_owner_reports' %}"
+               class="btn btn-success">
+
+                <i class="fa-solid fa-file-excel me-2"></i>
+                Download Excel
+
+            </a>
+
+            <!-- BACK TO DASHBOARD -->
+            <button type="button"
+                    class="btn btn-secondary"
+                    onclick="showSection('dashboard-section', 'Owner Dashboard')">
+
+                <i class="fa-solid fa-arrow-left me-2"></i>
+                Back
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+</section>
+<!-- =========================
+     ADD PROPERTY SECTION
+========================== -->
+
+<section id="add-property-section" class="content-section"
+         style="display: none;">
+
+    <div class="card shadow-sm p-4">
+
+        <h3 class="mb-4">
+            <i class="fa-solid fa-house me-2"></i>
+            Add Property
+        </h3>
+
+        <form method="POST"
+              action="{% url 'add_property' %}"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <!-- 1. Property Category -->
+            <label class="form-label">Property Category</label>
+            <select name="category" class="form-select mb-3" required>
+                <option value="">Select category</option>
+                <option value="Room">Room</option>
+                <option value="PG">PG</option>
+                <option value="1 BHK">1 BHK</option>
+            
+            </select>
+
+            <!-- 2. Property Title -->
+            <label class="form-label">Property Title</label>
+            <input type="text" name="title"
+                   class="form-control mb-3"
+                   placeholder="e.g. Spacious Room near Rankala"
+                   required>
+
+            <!-- 3. Description -->
+            <label class="form-label">Description</label>
+            <textarea name="description"
+                      class="form-control mb-3"
+                      rows="4"
+                      placeholder="Describe your property"
+                      required></textarea>
+
+                            <!-- Area in Kolhapur -->
+                <label class="form-label">Area in Kolhapur</label>
+
+                <select name="area" class="form-select mb-3" required>
+                    <option value="">Select Area</option>
+
+                    {% for area in areas %}
+                        <option value="{{ area.name }}">
+                            {{ area.name }}
+                        </option>
+                    {% empty %}
+                        <option value="" disabled>No areas available</option>
+                    {% endfor %}
+                </select>
+            <!-- 5. Monthly Rent -->
+            <label class="form-label">Monthly Rent (₹)</label>
+            <input type="number" name="rent"
+                   class="form-control mb-3"
+                   min="0" step="0.01"
+                   placeholder="Enter monthly rent"
+                   required>
+
+            <!-- 6. Furnishing -->
+            <label class="form-label">Furnishing</label>
+            <select name="furnishing" class="form-select mb-3" required>
+                <option value="">Select furnishing</option>
+                <option value="Unfurnished">Unfurnished</option>
+                <option value="Semi-Furnished">Semi-Furnished</option>
+                <option value="Fully-Furnished">Fully-Furnished</option>
+            </select>
+
+            <!-- 7. Amenities -->
+            <label class="form-label">Amenities</label>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="amenities"
+                               value="Wi-Fi" class="form-check-input">
+                        <label class="form-check-label">Wi-Fi</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="amenities"
+                               value="Water Supply" class="form-check-input">
+                        <label class="form-check-label">Water Supply</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="amenities"
+                               value="Power Backup" class="form-check-input">
+                        <label class="form-check-label">Power Backup</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="amenities"
+                               value="Security" class="form-check-input">
+                        <label class="form-check-label">Security</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="amenities"
+                               value="Lift" class="form-check-input">
+                        <label class="form-check-label">Lift</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <input type="checkbox" name="amenities"
+                               value="Washing Machine" class="form-check-input">
+                        <label class="form-check-label">Washing Machine</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Parking -->
+            <label class="form-label">Parking Availability</label>
+            <select name="parking" class="form-select mb-3" required>
+                <option value="">Select parking availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+                <option value="Two-Wheeler Only">Two-Wheeler Only</option>
+            </select>
+
+            <!-- 9. Bedrooms -->
+            <label class="form-label">Number of Bedrooms</label>
+            <input type="number" name="bedrooms"
+                   class="form-control mb-3"
+                   min="0" max="20"
+                   value="1" required>
+
+            <!-- 10. Bathrooms -->
+            <label class="form-label">Number of Bathrooms</label>
+            <input type="number" name="bathrooms"
+                   class="form-control mb-3"
+                   min="0" max="20"
+                   value="1" required>
+
+            <!-- 11. Floor Number -->
+            <label class="form-label">Floor Number</label>
+            <input type="number" name="floor_number"
+                   class="form-control mb-3"
+                   min="0" max="200"
+                   placeholder="Enter floor number">
+
+            <!-- 12. Available From -->
+            <label class="form-label">Available From</label>
+            <input type="date" name="available_from"
+                   class="form-control mb-3">
+
+            <!-- 13. Preferred Tenant -->
+            <label class="form-label">Preferred Tenant</label>
+            <select name="preferred_tenant" class="form-select mb-3">
+                <option value="">No preference</option>
+                <option value="Students">Students</option>
+                <option value="Working Professionals">Working Professionals</option>
+                <option value="Family">Family</option>
+                <option value="Anyone">Anyone</option>
+            </select>
+
+            <!-- 14. Property Image -->
+            <label class="form-label">Property Image</label>
+            <input type="file" name="image"
+                   class="form-control mb-4"
+                   accept="image/*">
+
+            <!-- BUTTONS -->
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-floppy-disk me-2"></i>
+                Save Property
+            </button>
+
+            <button type="button"
+                    class="btn btn-secondary"
+                    onclick="showSection('dashboard-section', 'Owner Dashboard')">
+                Cancel
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
 <!-- =========================
      3. MY PROPERTIES SECTION
 ========================== -->
@@ -1279,13 +2188,13 @@
                 <div class="property-image">
 
                     {% if property.image %}
-                    <img src="{{ property.image.url }}"
-                         alt="{{ property.title }}">
+                        <img src="{{ property.image.url }}"
+                             alt="{{ property.title }}">
                     {% else %}
-                    <div class="no-property-image">
-                        <i class="fa-solid fa-house"></i>
-                        <span>No Image Available</span>
-                    </div>
+                        <div class="no-property-image">
+                            <i class="fa-solid fa-house"></i>
+                            <span>No Image Available</span>
+                        </div>
                     {% endif %}
 
                     <span class="property-category">
@@ -1294,7 +2203,7 @@
 
                 </div>
 
-                <!-- Property Details -->
+                <!-- Compact Property Information -->
                 <div class="property-card-body">
 
                     <h5 class="property-title">
@@ -1312,12 +2221,41 @@
                     </div>
 
                     <p class="property-description">
-                        {{ property.description|truncatechars:120 }}
+                        {{ property.description|truncatechars:75 }}
                     </p>
 
-                    <!-- Edit and Delete -->
+                    <!-- View, Edit and Delete -->
                     <div class="property-actions">
 
+                        <!-- View Details Button -->
+                        <button type="button"
+                                class="property-btn view-btn"
+                                onclick="showPropertyDetails(this)"
+
+                                data-title="{{ property.title|escape }}"
+                                data-category="{{ property.category|escape }}"
+                                data-area="{{ property.area|escape }}"
+                                data-rent="{{ property.rent }}"
+                                data-description="{{ property.description|escape }}"
+
+                                data-furnishing="{{ property.get_furnishing_display|default:'Not specified'|escape }}"
+                                data-amenities="{{ property.amenities|join:', '|default:'Not specified'|escape }}"
+                                data-parking="{{ property.parking|yesno:'Available,Not Available' }}"
+
+                                data-bedrooms="{{ property.bedrooms|default_if_none:'Not specified' }}"
+                                data-bathrooms="{{ property.bathrooms|default_if_none:'Not specified' }}"
+                                data-floor="{{ property.floor_number|default_if_none:'Not specified' }}"
+
+                                data-available="{{ property.available_from|date:'d M Y'|default:'Not specified' }}"
+                                data-tenant="{{ property.get_preferred_tenant_display|default:'Not specified'|escape }}"
+
+                                data-image="{% if property.image %}{{ property.image.url|escape }}{% endif %}">
+
+                            <i class="fa-solid fa-eye"></i>
+                            View
+                        </button>
+
+                        <!-- Edit Button -->
                         <button type="button"
                                 class="property-btn edit-btn"
                                 data-edit-url="{% url 'edit_property' property.id %}"
@@ -1327,12 +2265,21 @@
                                 data-description="{{ property.description }}"
                                 data-area="{{ property.area }}"
                                 data-rent="{{ property.rent }}"
+                                data-furnishing="{{ property.furnishing }}"
+                                data-amenities="{{ property.amenities|join:', ' }}"
+                                data-parking="{{ property.parking|yesno:'yes,no' }}"
+                                data-bedrooms="{{ property.bedrooms }}"
+                                data-bathrooms="{{ property.bathrooms }}"
+                                data-floor-number="{{ property.floor_number }}"
+                                data-available-from="{{ property.available_from|date:'Y-m-d' }}"
+                                data-preferred-tenant="{{ property.preferred_tenant }}"
                                 onclick="editProperty(this)">
 
                             <i class="fa-solid fa-pen-to-square"></i>
                             Edit
                         </button>
 
+                        <!-- Delete Button -->
                         <form method="POST"
                               action="{% url 'delete_property' property.id %}"
                               onsubmit="return confirm('Are you sure you want to delete this property?');">
@@ -1359,17 +2306,21 @@
 
         <div class="col-12">
             <div class="empty-properties">
+
                 <i class="fa-solid fa-house-circle-xmark"></i>
 
                 <h5>No Properties Yet</h5>
 
                 <p>You haven't added any rental properties yet.</p>
 
-                <button type="button" class="btn btn-primary"
+                <button type="button"
+                        class="btn btn-primary"
                         onclick="showSection('add-property-section', 'Add Property')">
+
                     <i class="fa-solid fa-plus"></i>
                     Add Your First Property
                 </button>
+
             </div>
         </div>
 
@@ -1378,6 +2329,125 @@
     </div>
 
 </section>
+
+
+<!-- =========================
+     PROPERTY DETAILS MODAL
+========================== -->
+
+<div class="modal fade property-details-modal"
+     id="propertyDetailsModal"
+     tabindex="-1"
+     aria-labelledby="propertyDetailsTitle"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="propertyDetailsTitle">
+                    Property Details
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <img id="detailsImage"
+                     class="details-image"
+                     alt="Property image"
+                     hidden>
+
+                <h4 id="detailsHeading" class="mb-3"></h4>
+
+                <div class="details-grid">
+
+                    <div class="details-item">
+                        <span class="detail-label">Category</span>
+                        <span class="detail-value" id="detailsCategory"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Monthly Rent</span>
+                        <span class="detail-value" id="detailsRent"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Area</span>
+                        <span class="detail-value" id="detailsArea"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Furnishing</span>
+                        <span class="detail-value" id="detailsFurnishing"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Parking</span>
+                        <span class="detail-value" id="detailsParking"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Bedrooms</span>
+                        <span class="detail-value" id="detailsBedrooms"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Bathrooms</span>
+                        <span class="detail-value" id="detailsBathrooms"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Floor Number</span>
+                        <span class="detail-value" id="detailsFloor"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Available From</span>
+                        <span class="detail-value" id="detailsAvailable"></span>
+                    </div>
+
+                    <div class="details-item">
+                        <span class="detail-label">Preferred Tenant</span>
+                        <span class="detail-value" id="detailsTenant"></span>
+                    </div>
+
+                    <div class="details-item details-full">
+                        <span class="detail-label">Description</span>
+                        <span class="detail-value" id="detailsDescription"></span>
+                    </div>
+
+                    <div class="details-item details-full">
+                        <span class="detail-label">Amenities</span>
+                        <div id="detailsAmenities" class="details-amenities"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- =========================
@@ -1391,7 +2461,10 @@
 
     <div class="card shadow-sm p-4 edit-property-card">
 
-        <h3>Edit Property</h3>
+        <h3>
+            <i class="fa-solid fa-pen-to-square"></i>
+            Edit Property
+        </h3>
 
         <p class="edit-subtitle">
             Update your rental property details below.
@@ -1403,55 +2476,212 @@
 
             {% csrf_token %}
 
+            <!-- Property Category -->
             <label class="form-label">Property Category</label>
 
             <select name="category" id="edit-category"
-                    class="form-select" required>
+                    class="form-select mb-3" required>
 
                 <option value="Room">Room</option>
                 <option value="PG">PG</option>
                 <option value="1 BHK">1 BHK</option>
+            </select>
+
+            <!-- Property Title -->
+            <label class="form-label">Property Title</label>
+
+            <input type="text"
+                   name="title"
+                   id="edit-title"
+                   class="form-control mb-3"
+                   placeholder="Enter property title"
+                   required>
+
+            <!-- Description -->
+            <label class="form-label">Description</label>
+
+            <textarea name="description"
+                      id="edit-description"
+                      class="form-control mb-3"
+                      rows="4"
+                      placeholder="Describe your property"
+                      required></textarea>
+
+            <!-- Area -->
+            <label class="form-label">Area in Kolhapur</label>
+
+            <select name="area" id="edit-area"
+                    class="form-select mb-3" required>
+
+                <option value="">Select Area</option>
+
+                {% for area_option in available_areas %}
+                    <option value="{{ area_option.name }}">
+                        {{ area_option.name }}
+                    </option>
+                {% endfor %}
 
             </select>
 
-            <label class="form-label">Property Title</label>
-
-            <input type="text" name="title" id="edit-title"
-                   class="form-control"
-                   placeholder="Enter property title" required>
-
-            <label class="form-label">Description</label>
-
-            <textarea name="description" id="edit-description"
-                      class="form-control"
-                      rows="4" required></textarea>
-
-            <label class="form-label">Area in Kolhapur</label>
-
-            <input type="text" name="area" id="edit-area"
-                   class="form-control"
-                   placeholder="Enter area or locality" required>
-
+            <!-- Monthly Rent -->
             <label class="form-label">Monthly Rent (₹)</label>
 
-            <input type="number" name="rent" id="edit-rent"
-                   class="form-control"
-                   min="0" step="0.01" required>
+            <input type="number"
+                   name="rent"
+                   id="edit-rent"
+                   class="form-control mb-3"
+                   min="1"
+                   step="0.01"
+                   placeholder="Enter monthly rent"
+                   required>
 
-            <label class="form-label">Replace Property Image (optional)</label>
+            <!-- Furnishing -->
+            <label class="form-label">Furnishing</label>
 
-            <input type="file" name="image" id="edit-image"
-                   class="form-control"
-                   accept="image/*">
+            <select name="furnishing"
+                    id="edit-furnishing"
+                    class="form-select mb-3" required>
 
-            <div class="edit-buttons">
+                <option value="">Select furnishing</option>
+                <option value="Furnished">Furnished</option>
+                <option value="Semi-Furnished">Semi-Furnished</option>
+                <option value="Unfurnished">Unfurnished</option>
+
+            </select>
+
+            <!-- Amenities -->
+            <label class="form-label">Amenities</label>
+
+            <div class="row mb-3">
+
+                {% for amenity in amenities_options %}
+                    <div class="col-md-4 col-6 mb-2">
+                        <div class="form-check">
+
+                            <input type="checkbox"
+                                   name="amenities"
+                                   value="{{ amenity }}"
+                                   id="edit-amenity-{{ forloop.counter }}"
+                                   class="form-check-input edit-amenity">
+
+                            <label class="form-check-label"
+                                   for="edit-amenity-{{ forloop.counter }}">
+                                {{ amenity }}
+                            </label>
+
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <p class="text-muted">
+                            No amenities configured.
+                        </p>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <!-- Parking -->
+            <label class="form-label">Parking</label>
+
+            <select name="parking"
+                    id="edit-parking"
+                    class="form-select mb-3" required>
+
+                <option value="yes">Available</option>
+                <option value="no">Not Available</option>
+
+            </select>
+
+            <!-- Bedrooms -->
+            <label class="form-label">Bedrooms</label>
+
+            <input type="number"
+                   name="bedrooms"
+                   id="edit-bedrooms"
+                   class="form-control mb-3"
+                   min="0"
+                   placeholder="Number of bedrooms">
+
+            <!-- Bathrooms -->
+            <label class="form-label">Bathrooms</label>
+
+            <input type="number"
+                   name="bathrooms"
+                   id="edit-bathrooms"
+                   class="form-control mb-3"
+                   min="0"
+                   placeholder="Number of bathrooms">
+
+            <!-- Floor Number -->
+            <label class="form-label">Floor Number</label>
+
+            <input type="number"
+                   name="floor_number"
+                   id="edit-floor-number"
+                   class="form-control mb-3"
+                   placeholder="Enter floor number">
+
+            <!-- Available From -->
+            <label class="form-label">Available From</label>
+
+            <input type="date"
+                   name="available_from"
+                   id="edit-available-from"
+                   class="form-control mb-3">
+
+            <!-- Preferred Tenant -->
+            <label class="form-label">Preferred Tenant</label>
+
+            <select name="preferred_tenant"
+                    id="edit-preferred-tenant"
+                    class="form-select mb-3">
+
+                <option value="">No preference</option>
+                <option value="Family">Family</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Student">Student</option>
+                <option value="Working Professional">
+                    Working Professional
+                </option>
+
+            </select>
+
+            <!-- Existing Image -->
+            <div class="mb-3">
+                <label class="form-label">Current Property Image</label>
+
+                <div id="edit-current-image-container"
+                     class="mb-2"
+                     style="display:none;">
+
+                    <img id="edit-current-image"
+                         src=""
+                         alt="Current property image"
+                         style="width:150px;height:100px;object-fit:cover;border-radius:8px;">
+                </div>
+
+                <label class="form-label">
+                    Replace Property Image (optional)
+                </label>
+
+                <input type="file"
+                       name="image"
+                       id="edit-image"
+                       class="form-control"
+                       accept="image/*">
+            </div>
+
+            <!-- Buttons -->
+            <div class="edit-buttons d-flex gap-2 mt-4">
 
                 <button type="submit" class="btn btn-primary">
                     <i class="fa-solid fa-floppy-disk"></i>
                     Save Changes
                 </button>
 
-                <button type="button" class="btn btn-secondary"
+                <button type="button"
+                        class="btn btn-secondary"
                         onclick="showSection('my-properties-section', 'My Properties')">
                     Cancel
                 </button>
@@ -1463,6 +2693,7 @@
     </div>
 
 </section>
+
 
 
 
@@ -1634,6 +2865,10 @@
         ========================== -->
 
       
+<!-- =========================
+     6. MY PROFILE
+========================== -->
+
 <section id="profile-section" class="content-section" style="display: none;">
 
     <h3 class="mb-4">My Profile</h3>
@@ -1641,43 +2876,109 @@
     <div class="card p-4 shadow-sm profile-card">
 
         <h4 class="text-center mb-4">
-            {{ request.user.full_name }}
+            <i class="fa-solid fa-circle-user me-2"></i>
+            {{ request.user.full_name|default:request.user.username }}
         </h4>
 
         <div class="profile-details">
-            <p>
-                <strong>Username:</strong>
-                {{ request.user.username }}
-            </p>
-            <p>
-                <strong>Password:</strong>
-                ********
-            </p>
-            <p>
-                <strong>Email:</strong>
-                {{ request.user.email }}
-            </p>
 
-            <p>
-                <strong>Role:</strong> Property Owner
-            </p>
+            <div class="row">
+
+                
+
+                <!-- 2. Username -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Username:</strong><br>
+                        {{ request.user.username|default:"Not provided" }}
+                    </p>
+                </div>
+
+                <!-- 3. Email -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Email Address:</strong><br>
+                        {{ request.user.email|default:"Not provided" }}
+                    </p>
+                </div>
+
+                <!-- 4. Role -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Role:</strong><br>
+                        Property Owner
+                    </p>
+                </div>
+
+                
+                <!-- Full Name -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Full Name:</strong><br>
+                        {% if request.user.full_name %}
+                            {{ request.user.full_name }}
+                        {% elif request.user.first_name %}
+                            {{ request.user.first_name }}
+                        {% else %}
+                            Not provided
+                        {% endif %}
+                    </p>
+                </div>
+
+
+                <!-- 7. Account Status -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Account Status:</strong><br>
+                        {% if request.user.is_active %}
+                            <span class="badge bg-success">Active</span>
+                        {% else %}
+                            <span class="badge bg-danger">Inactive</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+                <!-- 8. Date Joined -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Registration Date:</strong><br>
+                        {{ request.user.date_joined|date:"d M Y"|default:"Not available" }}
+                    </p>
+                </div>
+
+                <!-- 10. User ID -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Account ID:</strong><br>
+                        {{ request.user.id }}
+                    </p>
+                </div>
+
+            </div>
         </div>
 
-        <div class="profile-actions">
+        <div class="profile-actions d-flex justify-content-center gap-3 flex-wrap mt-3">
+
             <button type="button"
                     class="btn btn-primary"
                     onclick="showSection('edit-profile-section', 'Edit Profile')">
+                <i class="fa-solid fa-pen-to-square me-2"></i>
                 Edit Profile
             </button>
 
             <form method="POST"
                   action="{% url 'delete_owner_profile' %}"
                   onsubmit="return confirm('Are you sure you want to permanently delete your account? This action cannot be undone.');">
+
                 {% csrf_token %}
+
                 <button type="submit" class="btn btn-danger">
+                    <i class="fa-solid fa-trash me-2"></i>
                     Delete Profile
                 </button>
+
             </form>
+
         </div>
 
     </div>
@@ -1774,8 +3075,234 @@
 <!-- =========================
      SECTION SWITCHING
 ========================= -->
-
 <script>
+function showOwnerReport(reportId) {
+
+    // Hide all content sections without changing the sidebar or header.
+    document.querySelectorAll('.content-section').forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    // Display the reports section.
+    const reportsSection = document.getElementById('owner-reports-section');
+    reportsSection.style.display = 'block';
+
+    // Hide every report before opening the selected one.
+    document.querySelectorAll('.owner-report-content').forEach(function(report) {
+        report.style.display = 'none';
+    });
+
+    // Show the selected report.
+    const selectedReport = document.getElementById(reportId);
+
+    if (selectedReport) {
+        selectedReport.style.display = 'block';
+    }
+
+    // Update the heading.
+    const titles = {
+        'properties-report': 'Property Performance Report',
+        'bookings-report': 'Booking Requests Report',
+        'reviews-report': 'Customer Reviews Report'
+    };
+
+    document.getElementById('owner-report-title').innerHTML =
+        '<i class="fa-solid fa-chart-line me-2"></i>' +
+        (titles[reportId] || 'Owner Reports');
+
+    // Scroll to the main report content.
+    reportsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+</script>
+<script>
+
+function showPropertyDetails(button) {
+
+    const fields = {
+        detailsHeading: 'title',
+        detailsCategory: 'category',
+        detailsArea: 'area',
+        detailsFurnishing: 'furnishing',
+        detailsParking: 'parking',
+        detailsBedrooms: 'bedrooms',
+        detailsBathrooms: 'bathrooms',
+        detailsFloor: 'floor',
+        detailsAvailable: 'available',
+        detailsTenant: 'tenant',
+        detailsDescription: 'description'
+    };
+
+    Object.entries(fields).forEach(([elementId, dataName]) => {
+
+        document.getElementById(elementId).textContent =
+            button.dataset[dataName] || 'Not specified';
+
+    });
+
+    document.getElementById('detailsRent').textContent =
+        '₹' + (button.dataset.rent || '0') + ' / month';
+
+    // Property image
+    const image = document.getElementById('detailsImage');
+    const imageUrl = button.dataset.image;
+
+    image.hidden = !imageUrl;
+
+    if (imageUrl) {
+        image.src = imageUrl;
+    } else {
+        image.removeAttribute('src');
+    }
+
+    // Amenities
+    const container = document.getElementById('detailsAmenities');
+
+    container.replaceChildren();
+
+    const amenities = (button.dataset.amenities || '')
+        .split(',')
+        .map(item => item.trim())
+        .filter(item => item && item !== 'Not specified');
+
+    if (amenities.length > 0) {
+
+        amenities.forEach(amenity => {
+
+            const badge = document.createElement('span');
+
+            badge.className = 'badge bg-info text-dark';
+            badge.textContent = amenity;
+
+            container.appendChild(badge);
+
+        });
+
+    } else {
+
+        container.textContent = 'Not specified';
+
+    }
+
+    // Open modal
+    const modalElement = document.getElementById('propertyDetailsModal');
+
+    bootstrap.Modal.getOrCreateInstance(modalElement).show();
+}
+</script>
+<script>
+function showOwnerReport(reportId) {
+
+    const reportsSection = document.getElementById(
+        'owner-reports-section'
+    );
+
+    document.querySelectorAll('.owner-report-content').forEach(
+        function (report) {
+            report.style.display = 'none';
+        }
+    );
+
+    const selectedReport = document.getElementById(reportId);
+
+    if (!selectedReport) {
+        return;
+    }
+
+    selectedReport.style.display = 'block';
+    reportsSection.style.display = 'block';
+
+    const titles = {
+        'properties-report': 'Property Performance Report',
+        'bookings-report': 'Booking Requests Report',
+        'reviews-report': 'Customer Reviews Report'
+    };
+
+    document.getElementById('owner-report-title').textContent =
+        titles[reportId] || 'Owner Reports';
+
+    reportsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+function hideOwnerReports() {
+    document.getElementById('owner-reports-section').style.display =
+        'none';
+}
+</script>
+<script>
+   function editProperty(button) {
+    const form = document.getElementById('edit-property-form');
+
+    form.action = button.dataset.editUrl;
+
+    document.getElementById('edit-category').value =
+        button.dataset.category || '';
+
+    document.getElementById('edit-title').value =
+        button.dataset.title || '';
+
+    document.getElementById('edit-description').value =
+        button.dataset.description || '';
+
+    document.getElementById('edit-area').value =
+        button.dataset.area || '';
+
+    document.getElementById('edit-rent').value =
+        button.dataset.rent || '';
+
+    document.getElementById('edit-furnishing').value =
+        button.dataset.furnishing || '';
+
+    document.getElementById('edit-parking').value =
+        button.dataset.parking || 'no';
+
+    document.getElementById('edit-bedrooms').value =
+        button.dataset.bedrooms || '';
+
+    document.getElementById('edit-bathrooms').value =
+        button.dataset.bathrooms || '';
+
+    document.getElementById('edit-floor-number').value =
+        button.dataset.floorNumber || '';
+
+    document.getElementById('edit-available-from').value =
+        button.dataset.availableFrom || '';
+
+    document.getElementById('edit-preferred-tenant').value =
+        button.dataset.preferredTenant || '';
+
+    // Select existing amenities
+    const selectedAmenities = (button.dataset.amenities || '')
+        .split(',')
+        .map(item => item.trim())
+        .filter(Boolean);
+
+    document.querySelectorAll('.edit-amenity').forEach(checkbox => {
+        checkbox.checked = selectedAmenities.includes(checkbox.value);
+    });
+
+    // Display existing image
+    const imageUrl = button.dataset.image;
+    const imageContainer =
+        document.getElementById('edit-current-image-container');
+    const currentImage =
+        document.getElementById('edit-current-image');
+
+    imageContainer.style.display = imageUrl ? 'block' : 'none';
+
+    if (imageUrl) {
+        currentImage.src = imageUrl;
+    } else {
+        currentImage.removeAttribute('src');
+    }
+
+    showSection('edit-property-section', 'Edit Property');
+}
     document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.getElementById("profile-password");
     const toggleButton = document.getElementById("toggle-owner-password");
@@ -1873,6 +3400,7 @@ window.addEventListener('DOMContentLoaded', function () {
             showSection(sectionId, title);
         });
     });
+    
 </script>
 
 </html>

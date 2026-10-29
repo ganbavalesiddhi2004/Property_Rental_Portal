@@ -42,6 +42,19 @@ urlpatterns = [
     path('owner_panel/owner_login/',views.owner_login,name='owner_login'),
     path('owner_panel/owner_dashboard/',views.owner_dashboard,name='owner_dashboard'),
     path('owner_panel/owner_logout/',views.owner_logout,name='owner_logout'),   
+   # owner panel reports URLs
+   path(
+    'owner_panel/reports/',
+    views.owner_reports,
+    name='owner_reports'
+),
+
+path(
+    'owner_panel/reports/export/',
+    views.export_owner_reports,
+    name='export_owner_reports'
+),  
+   
     # owner panel URLs for managing properties
     path('owner_panel/add_property/', views.add_property, name='add_property'),
     path('owner_panel/my_properties/', views.my_properties, name='my_properties'),
