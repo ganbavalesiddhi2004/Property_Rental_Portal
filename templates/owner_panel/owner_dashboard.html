@@ -334,290 +334,255 @@
         }
 
 
-        /* =========================
-           QUICK ACTIONS
-        ========================= */
-
-        .section-title {
-            font-size: 18px;
-
-            font-weight: 600;
-
-            margin-bottom: 18px;
-        }
-
-
-        .action-card {
-            background: white;
-
-            border: 1px solid #e5e7eb;
-
-            border-radius: 14px;
-
-            padding: 22px;
-
-            text-decoration: none;
-
-            color: #1e293b;
-
-            display: block;
-
-            transition: 0.3s;
-        }
-
-        .action-card:hover {
-            transform: translateY(-3px);
-
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-
-            color: #0284c7;
-        }
-
-
-        .action-icon {
-            width: 45px;
-            height: 45px;
-
-            border-radius: 10px;
-
-            background: #f0f9ff;
-
-            color: #0284c7;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            margin-bottom: 12px;
-        }
-
-
-        .action-card h6 {
-            font-weight: 600;
-
-            margin-bottom: 5px;
-        }
-
-        .action-card p {
-            font-size: 12px;
-
-            color: #64748b;
-
-            margin: 0;
-        }
-        /* Form Styles */
-         /* ===== Add Property Form Styling ===== */
+    
+ 
+/* Add Property Form */
 
 #add-property-section {
-    padding: 10px 0 30px;
+    padding: 10px;
 }
 
-/* Form card */
 #add-property-section .card {
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 16px;
-    padding: 30px !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    transition: 0.3s ease;
 }
 
-/* Form heading */
+#add-property-section .card:hover {
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Heading */
 #add-property-section h3 {
-    font-size: 25px;
+    font-size: 21px;
     font-weight: 700;
-    margin-bottom: 8px !important;
-    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+    color: #1e3a5f;
 }
 
-/* Heading underline */
 #add-property-section h3::after {
     content: "";
     display: block;
-    width: 55px;
-    height: 4px;
-    background: #38bdf8;
+    width: 40px;
+    height: 3px;
+    margin-top: 7px;
+    background: #0ea5e9;
     border-radius: 5px;
-    margin-top: 12px;
-    margin-bottom: 22px;
 }
 
 /* Labels */
 #add-property-section .form-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: 0.2px;
+    margin-bottom: 5px;
 }
 
-/* Inputs, select and textarea */
+/* Inputs */
 #add-property-section .form-control,
 #add-property-section .form-select {
-    border: 1px solid #cbd5e1;
-    border-radius: 9px;
-    padding: 12px 14px;
-    font-size: 14px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    margin-bottom: 20px !important;
+    font-size: 13px;
+    padding: 8px 10px;
+    margin-bottom: 12px !important;
+    border: 1px solid #d1dbe8;
+    border-radius: 7px;
+    transition: 0.25s ease;
 }
 
-/* Textarea */
 #add-property-section textarea.form-control {
-    min-height: 120px;
+    min-height: 75px;
     resize: vertical;
 }
 
-/* Focus effect */
+/* Focus Effect */
 #add-property-section .form-control:focus,
 #add-property-section .form-select:focus {
-    border-color: #38bdf8;
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
-    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
 }
 
-/* File input */
+/* File Input */
 #add-property-section input[type="file"] {
-    padding: 10px;
+    padding: 7px;
     cursor: pointer;
 }
 
 /* Buttons */
 #add-property-section .btn {
-    padding: 11px 20px;
-    border-radius: 9px;
-    font-size: 14px;
+    padding: 8px 16px;
+    font-size: 13px;
     font-weight: 600;
-    transition: all 0.2s ease;
+    border-radius: 7px;
+    transition: 0.25s ease;
 }
 
-/* Save button */
 #add-property-section .btn-primary {
-    border: 1px solid #38bdf8;
     background: #0284c7;
-    color: #ffffff;
+    border-color: #0284c7;
 }
 
 #add-property-section .btn-primary:hover {
     background: #0369a1;
-    border-color: #0369a1;
-    transform: translateY(-1px);
-}
-
-/* Cancel button */
-#add-property-section .btn-secondary {
-    margin-left: 8px;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
 }
 
 #add-property-section .btn-secondary:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
-/* Mobile responsive */
+/* Mobile */
 @media (max-width: 576px) {
+    #add-property-section {
+        padding: 5px;
+    }
+
     #add-property-section .card {
-        padding: 20px !important;
-        border-radius: 12px;
+        padding: 15px !important;
     }
 
     #add-property-section h3 {
-        font-size: 22px;
-    }
-
-    #add-property-section .btn {
-        margin: 4px 3px 4px 0;
+        font-size: 19px;
     }
 }
-/* edit property section */
 
-/* ===== Edit Property Form ===== */
+
+
+/* Edit Property Form */
 
 #edit-property-section {
-    padding: 10px 0 30px;
+    padding: 10px;
 }
 
 .edit-property-card {
-    max-width: 750px;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 16px;
-    padding: 30px !important;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+    max-width: 700px;
+    margin: auto;
+    padding: 20px !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
 }
 
+.edit-property-card:hover {
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Heading */
+
 .edit-property-card h3 {
-    font-size: 25px;
+    font-size: 21px;
     font-weight: 700;
-    margin-bottom: 8px;
+    color: #1e3a5f;
+    margin-bottom: 15px;
 }
 
 .edit-property-card h3::after {
     content: "";
     display: block;
-    width: 55px;
-    height: 4px;
-    background: #38bdf8;
+    width: 40px;
+    height: 3px;
+    background: #0ea5e9;
     border-radius: 5px;
-    margin-top: 12px;
+    margin-top: 7px;
 }
 
 .edit-subtitle {
-    color: #94a3b8;
-    font-size: 14px;
-    margin: 12px 0 25px;
+    color: #64748b;
+    font-size: 12px;
+    margin: 8px 0 18px;
 }
+
+/* Labels */
 
 .edit-property-card .form-label {
     display: block;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
+
+/* Inputs */
 
 .edit-property-card .form-control,
 .edit-property-card .form-select {
-    padding: 12px 14px;
-    border-radius: 9px;
-    margin-bottom: 20px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 13px;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    border: 1px solid #d1dbe8;
+    border-radius: 7px;
+    transition: 0.25s ease;
 }
 
 .edit-property-card .form-control:focus,
 .edit-property-card .form-select:focus {
-    border-color: #38bdf8;
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+    outline: none;
 }
+
+/* Textarea */
+
+.edit-property-card textarea.form-control {
+    min-height: 75px;
+    resize: vertical;
+}
+
+/* Buttons */
 
 .edit-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     margin-top: 5px;
 }
 
 .edit-buttons .btn {
-    padding: 11px 20px;
-    border-radius: 9px;
-    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
     font-weight: 600;
+    transition: 0.25s ease;
 }
 
 .edit-buttons .btn-primary {
     background: #0284c7;
-    border-color: #38bdf8;
+    border-color: #0284c7;
 }
 
 .edit-buttons .btn-primary:hover {
     background: #0369a1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
 }
 
+.edit-buttons .btn-secondary:hover {
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsive */
+
 @media (max-width: 576px) {
+    #edit-property-section {
+        padding: 5px;
+    }
+
     .edit-property-card {
-        padding: 20px !important;
+        padding: 15px !important;
     }
 
     .edit-property-card h3 {
-        font-size: 22px;
+        font-size: 19px;
+    }
+
+    .edit-buttons .btn {
+        padding: 8px 12px;
     }
 }
+
 
 
         /* =========================
@@ -1555,6 +1520,71 @@
         font-size: 13px;
     }
 }
+  /* owner profile */
+  
+/* My Profile */
+#profile-section {
+    padding: 20px;
+}
+
+.profile-card {
+    max-width: 950px;
+    margin: auto;
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+
+
+.profile-card h4 {
+    color: #0369a1;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.profile-details p {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    
+    transition: 0.3s;
+}
+
+.profile-details p:hover {
+    background: #eaf2ff;
+    transform: translateY(-3px);
+}
+
+.profile-details strong {
+    color: #333;
+}
+
+.profile-actions .btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.profile-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 767px) {
+    .profile-card {
+        padding: 15px !important;
+    }
+
+    .profile-actions form,
+    .profile-actions .btn {
+        width: 100%;
+    }
+}
+/* edit profile */
 
 
     </style>
@@ -2864,27 +2894,35 @@
              6. MY PROFILE
         ========================== -->
 
-      
-<!-- =========================
-     6. MY PROFILE
-========================== -->
+    
 
 <section id="profile-section" class="content-section" style="display: none;">
 
-    <h3 class="mb-4">My Profile</h3>
-
+   
     <div class="card p-4 shadow-sm profile-card">
 
         <h4 class="text-center mb-4">
             <i class="fa-solid fa-circle-user me-2"></i>
-            {{ request.user.full_name|default:request.user.username }}
+            My Profile
         </h4>
 
         <div class="profile-details">
 
             <div class="row">
 
-                
+                 <!-- 1.Full Name -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Full Name:</strong><br>
+                        {% if request.user.full_name %}
+                            {{ request.user.full_name }}
+                        {% elif request.user.first_name %}
+                            {{ request.user.first_name }}
+                        {% else %}
+                            Not provided
+                        {% endif %}
+                    </p>
+                </div>
 
                 <!-- 2. Username -->
                 <div class="col-md-6 mb-3">
@@ -2910,23 +2948,7 @@
                     </p>
                 </div>
 
-                
-                <!-- Full Name -->
-                <div class="col-md-6 mb-3">
-                    <p>
-                        <strong>Full Name:</strong><br>
-                        {% if request.user.full_name %}
-                            {{ request.user.full_name }}
-                        {% elif request.user.first_name %}
-                            {{ request.user.first_name }}
-                        {% else %}
-                            Not provided
-                        {% endif %}
-                    </p>
-                </div>
-
-
-                <!-- 7. Account Status -->
+                <!-- 5. Account Status -->
                 <div class="col-md-6 mb-3">
                     <p>
                         <strong>Account Status:</strong><br>
@@ -2938,7 +2960,7 @@
                     </p>
                 </div>
 
-                <!-- 8. Date Joined -->
+                <!-- 6. Date Joined -->
                 <div class="col-md-6 mb-3">
                     <p>
                         <strong>Registration Date:</strong><br>
@@ -2946,13 +2968,28 @@
                     </p>
                 </div>
 
-                <!-- 10. User ID -->
+                <!-- 7. User ID -->
                 <div class="col-md-6 mb-3">
                     <p>
                         <strong>Account ID:</strong><br>
                         {{ request.user.id }}
                     </p>
                 </div>
+               <!-- 8. Account Type -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Account Type:</strong><br>
+                        Owner Account
+                    </p>
+                </div>
+                <!-- 9. Email Verified -->
+                <div class="col-md-6 mb-3">
+                    <p>
+                        <strong>Email:</strong><br>
+                        {{ request.user.email|default:"Not provided" }}
+                    </p>
+                </div>
+                                
 
             </div>
         </div>
@@ -2990,7 +3027,7 @@
          class="content-section"
          style="display: none;">
 
-    <h3 class="mb-4">Edit Profile</h3>
+    <!-- <h3 class="mb-4">Edit Profile</h3> -->
 
     <div class="card p-4 shadow-sm profile-card">
 
@@ -3076,6 +3113,7 @@
      SECTION SWITCHING
 ========================= -->
 <script>
+    
 function showOwnerReport(reportId) {
 
     // Hide all content sections without changing the sidebar or header.

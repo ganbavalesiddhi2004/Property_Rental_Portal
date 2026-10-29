@@ -77,7 +77,7 @@ path(
         views.user_dashboard,
         name='user_dashboard'
     ),
-
+   
 # path('user_panel/profile/', views.user_profile, name='user_profile'),
 
 ]

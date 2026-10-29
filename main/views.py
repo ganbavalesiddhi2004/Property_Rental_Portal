@@ -90,30 +90,59 @@ from django.utils import timezone
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
+from django.contrib.auth import get_user_model
+from .models import AdminProfile, OwnerProfile, Property, Booking, Review
+
+User = get_user_model()
 
 def admin_dashboard(request):
-
-    # Check whether the user is logged in
     if not request.user.is_authenticated:
         return redirect('admin_login')
 
-    # Check whether the logged-in user is an admin
     if not AdminProfile.objects.filter(user=request.user).exists():
         return redirect('admin_login')
 
-    # Count normal users (excluding admins and owners)
     total_users = User.objects.filter(
-        adminprofile__isnull=True,
+        is_superuser=False,
+        is_staff=False,
         ownerprofile__isnull=True
     ).count()
 
-    # Count registered owners
     total_owners = OwnerProfile.objects.count()
 
-    # Send data to the dashboard template
+    report_users = User.objects.filter(
+        is_superuser=False,
+        is_staff=False,
+        ownerprofile__isnull=True
+    ).order_by('-date_joined')
+
+    report_owners = User.objects.filter(
+        ownerprofile__isnull=False
+    ).order_by('-date_joined')
+
+    report_properties = Property.objects.select_related(
+        'owner'
+    ).order_by('-created_at')
+
+    report_bookings = Booking.objects.select_related(
+        'user', 'property'
+    ).order_by('-pk')
+
+    report_reviews = Review.objects.select_related(
+        'user', 'property'
+    ).order_by('-created_at')
+
     context = {
         'total_users': total_users,
         'total_owners': total_owners,
+        'total_properties': report_properties.count(),
+        'total_bookings': report_bookings.count(),
+        'total_reviews': report_reviews.count(),
+        'report_users': report_users,
+        'report_owners': report_owners,
+        'report_properties': report_properties,
+        'report_bookings': report_bookings,
+        'report_reviews': report_reviews,
     }
 
     return render(
@@ -1571,6 +1600,20 @@ from .models import Property, Booking, Review
 
 User = get_user_model()
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from .models import Property
+
+
+from datetime import date
+
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+
+from .models import Property, Booking,Review
 
 @login_required
 def user_dashboard(request):
@@ -1579,24 +1622,135 @@ def user_dashboard(request):
     if hasattr(request.user, 'ownerprofile'):
         return redirect('owner_dashboard')
 
+    # Get the selected dashboard section
     section = request.GET.get('section', 'dashboard')
 
+    # Fetch properties added by owners
+    recent_properties = Property.objects.all().order_by('-created_at')
+
+    # Current logged-in user
+    user = request.user
+
+    # Dashboard navigation URLs
+    profile_url = reverse('user_dashboard') + '?section=profile'
+    bookings_url = reverse('user_dashboard') + '?section=bookings'
+    reviews_url = reverse('user_dashboard') + '?section=reviews'
+    properties_url = reverse('user_dashboard') + '?section=properties'
+
+    # Today's date
+    today = date.today()
+
+    # Get the selected property ID for the Reviews section
+    property_id = request.GET.get('property_id')
+    selected_property = None
+    property_reviews = Review.objects.none()
+
+    if property_id:
+        selected_property = get_object_or_404(
+            Property,
+            pk=property_id
+        )
+
+    property_reviews = Review.objects.filter(
+        property=selected_property
+    ).select_related('user').order_by('-created_at')
+    my_reviews = Review.objects.filter(
+    user=request.user
+    ).select_related('property').order_by('-created_at')
+    # Allowed dashboard sections
     allowed_sections = [
         'dashboard',
         'profile',
         'properties',
         'bookings',
         'reviews',
+        'recent_properties',
     ]
 
     if section not in allowed_sections:
         section = 'dashboard'
 
-    user = request.user
+    # Handle POST requests
+    if request.method == 'POST':
 
-    profile_url = reverse('user_dashboard') + '?section=profile'
-    bookings_url = reverse('user_dashboard') + '?section=bookings'
-    reviews_url = reverse('user_dashboard') + '?section=reviews'
+        action = request.POST.get('action')
+
+        # Quick booking directly from a property card
+        if action == 'quick_booking':
+
+            property_id = request.POST.get('property_id')
+
+            selected_property = get_object_or_404(
+                Property,
+                pk=property_id
+            )
+
+            # Prevent booking your own property
+            if selected_property.owner_id == user.id:
+                messages.error(
+                    request,
+                    "You cannot book your own property."
+                )
+                return redirect(properties_url)
+
+            # Prevent duplicate pending booking requests
+            existing_booking = Booking.objects.filter(
+                user=user,
+                property=selected_property,
+                status='Pending'
+            ).exists()
+
+            if existing_booking:
+                messages.warning(
+                    request,
+                    "You already have a pending request for this property."
+                )
+            else:
+                Booking.objects.create(
+                    user=user,
+                    property=selected_property,
+                    booking_date=today,
+                    message="Quick booking request",
+                    status='Pending'
+                )
+
+                messages.success(
+                    request,
+                    "Booking request submitted successfully!"
+                )
+
+            # Redirect to Booking History
+            return redirect(bookings_url)
+
+    # Fetch the logged-in user's booking requests
+    my_bookings = Booking.objects.filter(
+        user=user
+    ).select_related('property').order_by('-pk')
+
+    # Fetch the logged-in user's reviews
+    my_reviews = Review.objects.filter(
+        user=user
+    ).select_related('property').order_by('-created_at')
+
+    # Dashboard context
+    context = {
+        'user': user,
+        'section': section,
+        'recent_properties': recent_properties,
+        'my_bookings': my_bookings,
+        'my_reviews': my_reviews,
+        'property_reviews': property_reviews,
+        'selected_property': selected_property,
+        'property_id': property_id,
+        'today': today,
+        'profile_url': profile_url,
+        'bookings_url': bookings_url,
+        'reviews_url': reviews_url,
+        'properties_url': properties_url,
+        'selected_property': selected_property,
+        'property_reviews': property_reviews,
+        'my_reviews': my_reviews,
+    }
 
     if request.method == 'POST':
         action = request.POST.get('action')
@@ -2058,3 +2212,36 @@ def user_profile(request):
 # Area viewa
 
 from .models import AvailableArea
+# propert details
+
+# def admin_dashboard(request):
+
+#     # Check whether the user is logged in
+#     if not request.user.is_authenticated:
+#         return redirect('admin_login')
+
+#     # Check whether the logged-in user is an admin
+#     if not AdminProfile.objects.filter(user=request.user).exists():
+#         return redirect('admin_login')
+
+#     # Count normal users (excluding admins and owners)
+#     total_users = User.objects.filter(
+#         adminprofile__isnull=True,
+#         ownerprofile__isnull=True
+#     ).count()
+
+#     # Count registered owners
+#     total_owners = OwnerProfile.objects.count()
+
+#     # Send data to the dashboard template
+#     context = {
+#         'total_users': total_users,
+#         'total_owners': total_owners,
+#     }
+
+#     return render(
+#         request,
+#         'admin_panel/admin_dashboard.html',
+#         context
+#     )
+# Give me updated code

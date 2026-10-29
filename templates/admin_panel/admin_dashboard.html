@@ -585,6 +585,146 @@
                 font-size: 15px;
             }
         }
+        /* Reports */
+        
+/* ADMIN REPORT CARDS */
+.admin-report-statistics {
+    margin-bottom: 30px;
+}
+
+.admin-report-statistics .stat-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.admin-report-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 4px;
+    background: #1976b9;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-report-btn:hover {
+    background: #125c91;
+}
+
+/* ADMIN REPORT SECTION */
+#admin-reports-section {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.admin-report-card {
+    padding: 25px;
+    background: #fff;
+    border: 1px solid #edf0f5;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
+}
+
+#admin-report-title {
+    margin-bottom: 8px;
+    color: #172b45;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.admin-report-description {
+    margin-bottom: 25px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* REPORT TABLE */
+.admin-report-table {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.admin-report-table thead th {
+    padding: 16px;
+    background: #1e293b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    border: 1px solid #344256;
+}
+
+.admin-report-table tbody td {
+    padding: 14px 16px;
+    color: #334155;
+    font-size: 13px;
+    vertical-align: middle;
+    border: 1px solid #dce4ed;
+}
+
+/* ACTION BUTTONS */
+.admin-report-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #dce4ed;
+}
+
+.admin-download-btn,
+.admin-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-download-btn {
+    background: #159447;
+    color: #fff;
+    border: none;
+}
+
+.admin-download-btn:hover {
+    background: #107b39;
+}
+
+.admin-back-btn {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+
+.admin-back-btn:hover {
+    background: #e2e8f0;
+}
+
+@media (max-width: 767px) {
+    .admin-report-card {
+        padding: 15px;
+    }
+
+    .admin-report-actions {
+        flex-direction: column;
+    }
+
+    .admin-download-btn,
+    .admin-back-btn {
+        width: 100%;
+    }
+}
+
     </style>
 </head>
 
@@ -744,364 +884,430 @@
 
             </section>
 
-            <!-- ================= STATISTICS ================= -->
+<!-- =========================================
+     ADMIN REPORT STATISTICS
+========================================= -->
 
-            <section class="row g-4">
+<section class="row g-4 admin-report-statistics">
 
-                <!-- Total Users -->
+    <!-- TOTAL USERS -->
+    <div class="col-xl-4 col-md-6 col-sm-6">
+        <div class="stat-card">
 
-                <div class="col-xl-4 col-md-6 col-sm-6">
-
-                    <div class="stat-card">
-
-                        <div class="stat-top">
-                            <div>
-                                <div class="stat-number">
-                                    {{ total_users|default:0 }}
-                                </div>
-
-                                <div class="stat-title">
-                                    Total Users
-                                </div>
-                            </div>
-
-                            <div class="stat-icon icon-blue">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
-                        </div>
-
-                        <div class="stat-growth">
-                            <i class="fa-solid fa-user-check"></i>
-                            Registered users
-                        </div>
-
+            <div class="stat-top">
+                <div>
+                    <div class="stat-number">
+                        {{ total_users|default:0 }}
                     </div>
-
+                    <div class="stat-title">Total Users</div>
                 </div>
 
-                <!-- Total Owners -->
+                <div class="stat-icon icon-blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+            </div>
 
-                <div class="col-xl-4 col-md-6 col-sm-6">
+            <div class="stat-growth">
+                <i class="fa-solid fa-user-check"></i>
+                Registered users
+            </div>
 
-                    <div class="stat-card">
+            <button type="button"
+                    class="admin-report-btn"
+                    onclick="showAdminReport('admin-users-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
 
-                        <div class="stat-top">
-                            <div>
-                                <div class="stat-number">
-                                    {{ total_owners|default:0 }}
-                                </div>
+        </div>
+    </div>
 
-                                <div class="stat-title">
-                                    Total Owners
-                                </div>
-                            </div>
 
-                            <div class="stat-icon icon-green">
-                                <i class="fa-solid fa-user-tie"></i>
-                            </div>
-                        </div>
+    <!-- TOTAL OWNERS -->
+    <div class="col-xl-4 col-md-6 col-sm-6">
+        <div class="stat-card">
 
-                        <div class="stat-growth">
-                            <i class="fa-solid fa-house-user"></i>
-                            Registered property owners
-                        </div>
-
+            <div class="stat-top">
+                <div>
+                    <div class="stat-number">
+                        {{ total_owners|default:0 }}
                     </div>
-
+                    <div class="stat-title">Total Owners</div>
                 </div>
 
-                <!-- Total Properties -->
+                <div class="stat-icon icon-green">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+            </div>
 
-                <div class="col-xl-4 col-md-6 col-sm-6">
+            <div class="stat-growth">
+                <i class="fa-solid fa-house-user"></i>
+                Registered property owners
+            </div>
 
-                    <div class="stat-card">
+            <button type="button"
+                    class="admin-report-btn"
+                    onclick="showAdminReport('admin-owners-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
 
-                        <div class="stat-top">
-                            <div>
-                                <div class="stat-number">
-                                    {{ total_properties|default:0 }}
-                                </div>
+        </div>
+    </div>
 
-                                <div class="stat-title">
-                                    Total Properties
-                                </div>
-                            </div>
 
-                            <div class="stat-icon icon-orange">
-                                <i class="fa-solid fa-building"></i>
-                            </div>
-                        </div>
+    <!-- TOTAL PROPERTIES -->
+    <div class="col-xl-4 col-md-6 col-sm-6">
+        <div class="stat-card">
 
-                        <div class="stat-growth">
-                            <i class="fa-solid fa-house"></i>
-                            Listed properties
-                        </div>
-
+            <div class="stat-top">
+                <div>
+                    <div class="stat-number">
+                        {{ total_properties|default:0 }}
                     </div>
-
+                    <div class="stat-title">Total Properties</div>
                 </div>
 
-                <!-- Total Bookings 
+                <div class="stat-icon icon-orange">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+            </div>
 
-                <div class="col-xl-4 col-md-6 col-sm-6">
+            <div class="stat-growth">
+                <i class="fa-solid fa-house"></i>
+                Listed properties
+            </div>
 
-                    <div class="stat-card">
+            <button type="button"
+                    class="admin-report-btn"
+                    onclick="showAdminReport('admin-properties-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
 
-                        <div class="stat-top">
-                            <div>
-                                <div class="stat-number">
-                                    {{ total_bookings|default:0 }}
-                                </div>
+        </div>
+    </div>
 
-                                <div class="stat-title">
-                                    Total Bookings
-                                </div>
-                            </div>
 
-                            <div class="stat-icon icon-purple">
-                                <i class="fa-solid fa-calendar-check"></i>
-                            </div>
-                        </div>
+    <!-- TOTAL BOOKINGS -->
+    <div class="col-xl-4 col-md-6 col-sm-6">
+        <div class="stat-card">
 
-                        <div class="stat-growth">
-                            <i class="fa-solid fa-clock"></i>
-                            Booking requests
-                        </div>
-
+            <div class="stat-top">
+                <div>
+                    <div class="stat-number">
+                        {{ total_bookings|default:0 }}
                     </div>
-
+                    <div class="stat-title">Total Bookings</div>
                 </div>
 
-               - Total Reviews 
+                <div class="stat-icon icon-purple">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+            </div>
 
-                <div class="col-xl-4 col-md-6 col-sm-6">
+            <div class="stat-growth">
+                <i class="fa-solid fa-clock"></i>
+                Booking requests
+            </div>
 
-                    <div class="stat-card">
+            <button type="button"
+                    class="admin-report-btn"
+                    onclick="showAdminReport('admin-bookings-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
 
-                        <div class="stat-top">
-                            <div>
-                                <div class="stat-number">
-                                    {{ total_reviews|default:0 }}
-                                </div>
+        </div>
+    </div>
 
-                                <div class="stat-title">
-                                    Total Reviews
-                                </div>
-                            </div>
 
-                            <div class="stat-icon icon-yellow">
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                        </div>
+    <!-- TOTAL REVIEWS -->
+    <div class="col-xl-4 col-md-6 col-sm-6">
+        <div class="stat-card">
 
-                        <div class="stat-growth">
-                            <i class="fa-solid fa-comment"></i>
-                            User feedback
-                        </div>
-
+            <div class="stat-top">
+                <div>
+                    <div class="stat-number">
+                        {{ total_reviews|default:0 }}
                     </div>
-
+                    <div class="stat-title">Total Reviews</div>
                 </div>
 
-                <!-- Reports 
-
-                <div class="col-xl-4 col-md-6 col-sm-6">
-
-                    <div class="stat-card">
-
-                        <div class="stat-top">
-                            <div>
-                                <div class="stat-number">
-                                    {{ total_reports|default:0 }}
-                                </div>
-
-                                <div class="stat-title">
-                                    Reports
-                                </div>
-                            </div>
-
-                            <div class="stat-icon icon-red">
-                                <i class="fa-solid fa-flag"></i>
-                            </div>
-                        </div>
-
-                        <div class="stat-growth">
-                            <i class="fa-solid fa-file-lines"></i>
-                            User complaints
-                        </div>
-
-                    </div>
-
+                <div class="stat-icon icon-yellow">
+                    <i class="fa-solid fa-star"></i>
                 </div>
-                -->
+            </div>
 
-            </section>
+            <div class="stat-growth">
+                <i class="fa-solid fa-comment"></i>
+                User feedback
+            </div>
 
-            <!-- ================= QUICK ACTIONS ================= 
+            <button type="button"
+                    class="admin-report-btn"
+                    onclick="showAdminReport('admin-reviews-report')">
+                View Report <i class="fa-solid fa-arrow-right"></i>
+            </button>
 
-            <section class="dashboard-section">
+        </div>
+    </div>
 
-                <h5 class="mb-3 fw-semibold">
-                    Quick Actions
-                </h5>
+</section>
 
-                <div class="row g-3">
 
-                    <div class="col-lg-6">
+<!-- =========================================
+     ADMIN REPORTS SECTION
+     Place OUTSIDE the dashboard-only condition
+========================================= -->
 
-                        <a href="{% url 'homepage_management' %}"
-                           class="quick-action">
+<section id="admin-reports-section"
+         class="admin-content-section"
+         style="display: none;">
 
-                            <div class="quick-icon">
-                                <i class="fa-solid fa-house"></i>
-                            </div>
+    <div class="admin-report-card">
 
-                            <div>
-                                <strong>Manage Homepage</strong>
-                                <span>Update homepage content and sections.</span>
-                            </div>
+        <h3 id="admin-report-title">
+            <i class="fa-solid fa-chart-line me-2"></i>
+            Admin Report
+        </h3>
 
-                        </a>
+        <p class="admin-report-description">
+            View and analyze users, owners, properties, bookings, and reviews.
+        </p>
 
-                    </div>
 
-                    <div class="col-lg-6">
+        <!-- USERS REPORT -->
+        <div id="admin-users-report"
+             class="admin-report-content"
+             style="display: none;">
 
-                        <a href="#"
-                           class="quick-action">
+            <div class="table-responsive">
+                <table class="table admin-report-table">
+                    <thead>
+                        <tr>
+                            <th>SR NO.</th>
+                            <th>USERNAME</th>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
+                            <th>EMAIL</th>
+                            <th>JOINED DATE</th>
+                        </tr>
+                    </thead>
 
-                            <div class="quick-icon">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
-
-                            <div>
-                                <strong>Manage Users</strong>
-                                <span>View and manage registered users.</span>
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                    <div class="col-lg-6">
-
-                        <a href="#"
-                           class="quick-action">
-
-                            <div class="quick-icon">
-                                <i class="fa-solid fa-user-tie"></i>
-                            </div>
-
-                            <div>
-                                <strong>Manage Owners</strong>
-                                <span>View registered property owners.</span>
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                    <div class="col-lg-6">
-
-                        <a href="#"
-                           class="quick-action">
-
-                            <div class="quick-icon">
-                                <i class="fa-solid fa-calendar-check"></i>
-                            </div>
-
-                            <div>
-                                <strong>Manage Bookings</strong>
-                                <span>Review property booking requests.</span>
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-             ================= RECENT PROPERTIES ================= 
-
-            <section class="dashboard-section">
-
-                <div class="section-card">
-
-                    <div class="section-header">
-
-                        <h5>
-                            <i class="fa-solid fa-building me-2"></i>
-                            Recent Properties
-                        </h5>
-
-                        <span class="view-all">
-                            Total: {{ total_properties|default:0 }}
-                        </span>
-
-                    </div>
-
-                    <div class="table-responsive">
-
-                        <table class="table table-hover">
-
-                            <thead>
-                                <tr>
-                                    <th>Property</th>
-                                    <th>Owner</th>
-                                    <th>Property ID</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-
-                                {% for property in recent_properties %}
-
-                                    <tr>
-                                        <td>
-                                            <span class="property-name">
-                                                {{ property.title }}
-                                            </span>
-                                        </td>
-
-                                        <td>
-                                            {{ property.owner.username|default:"N/A" }}
-                                        </td>
-
-                                        <td>
-                                            #{{ property.pk }}
-                                        </td>
-                                    </tr>
-
-                                {% empty %}
-
-                                    <tr>
-                                        <td colspan="3">
-                                            <div class="empty-box m-3">
-                                                <i class="fa-solid fa-building"></i>
-                                                <h5>No properties found</h5>
-                                                <p>Properties will appear here when available.</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                {% endfor %}
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-                </div>
-
-            </section>
+                    <tbody>
+                        {% for account in report_users %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ account.username }}</td>
+                            <td>{{ account.first_name|default:"-" }}</td>
+                            <td>{{ account.last_name|default:"-" }}</td>
+                            <td>{{ account.email|default:"-" }}</td>
+                            <td>{{ account.date_joined|date:"d-m-Y" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                No users found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
-    </main>
--->
+
+        <!-- OWNERS REPORT -->
+        <div id="admin-owners-report"
+             class="admin-report-content"
+             style="display: none;">
+
+            <div class="table-responsive">
+                <table class="table admin-report-table">
+                    <thead>
+                        <tr>
+                            <th>SR NO.</th>
+                            <th>USERNAME</th>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
+                            <th>EMAIL</th>
+                            <th>JOINED DATE</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for account in report_owners %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ account.username }}</td>
+                            <td>{{ account.first_name|default:"-" }}</td>
+                            <td>{{ account.last_name|default:"-" }}</td>
+                            <td>{{ account.email|default:"-" }}</td>
+                            <td>{{ account.date_joined|date:"d-m-Y" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                No owners found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- PROPERTIES REPORT -->
+        <div id="admin-properties-report"
+             class="admin-report-content"
+             style="display: none;">
+
+            <div class="table-responsive">
+                <table class="table admin-report-table">
+                    <thead>
+                        <tr>
+                            <th>SR NO.</th>
+                            <th>PROPERTY TITLE</th>
+                            <th>CATEGORY</th>
+                            <th>AREA</th>
+                            <th>MONTHLY RENT</th>
+                            <th>OWNER</th>
+                            <th>LISTED DATE</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for property in report_properties %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ property.title }}</td>
+                            <td>{{ property.category }}</td>
+                            <td>{{ property.area }}</td>
+                            <td>₹{{ property.rent }}</td>
+                            <td>{{ property.owner.username|default:"-" }}</td>
+                            <td>{{ property.created_at|date:"d-m-Y" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                No properties found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- BOOKINGS REPORT -->
+        <div id="admin-bookings-report"
+             class="admin-report-content"
+             style="display: none;">
+
+            <div class="table-responsive">
+                <table class="table admin-report-table">
+                    <thead>
+                        <tr>
+                            <th>SR NO.</th>
+                            <th>USER</th>
+                            <th>PROPERTY</th>
+                            <th>BOOKING DATE</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for booking in report_bookings %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ booking.user.username }}</td>
+                            <td>{{ booking.property.title }}</td>
+                            <td>{{ booking.booking_date|date:"d-m-Y" }}</td>
+                            <td>{{ booking.status }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                No bookings found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- REVIEWS REPORT -->
+        <div id="admin-reviews-report"
+             class="admin-report-content"
+             style="display: none;">
+
+            <div class="table-responsive">
+                <table class="table admin-report-table">
+                    <thead>
+                        <tr>
+                            <th>SR NO.</th>
+                            <th>USER</th>
+                            <th>PROPERTY</th>
+                            <th>RATING</th>
+                            <th>COMMENT</th>
+                            <th>REVIEW DATE</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for review in report_reviews %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ review.user.username }}</td>
+                            <td>{{ review.property.title }}</td>
+                            <td>{{ review.rating }}/5</td>
+                            <td>{{ review.comment|default:"-" }}</td>
+                            <td>{{ review.created_at|date:"d-m-Y" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                No reviews found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <!-- REPORT ACTIONS -->
+        <div class="admin-report-actions">
+
+            <button type="button"
+                    class="admin-download-btn"
+                    onclick="downloadAdminReportCSV()">
+                <i class="fa-solid fa-file-excel"></i>
+                Download Excel
+            </button>
+
+            <button type="button"
+                    class="admin-back-btn"
+                    onclick="closeAdminReports()">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+            
     <!-- Bootstrap JavaScript -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -1113,6 +1319,141 @@
             document.getElementById("sidebar").classList.toggle("show");
         }
     </script>
+    
+<script>
+function showAdminReport(reportId) {
+
+    const reportsSection =
+        document.getElementById('admin-reports-section');
+
+    const selectedReport =
+        document.getElementById(reportId);
+
+    if (!reportsSection || !selectedReport) {
+        console.error('Admin report section or report ID is missing.');
+        return;
+    }
+
+    // Hide dashboard content sections, without hiding the report itself
+    document.querySelectorAll('.admin-content-section').forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    reportsSection.style.display = 'block';
+
+    document.querySelectorAll('.admin-report-content').forEach(function(report) {
+        report.style.display = 'none';
+    });
+
+    selectedReport.style.display = 'block';
+
+    const titles = {
+        'admin-users-report': 'Total Users Report',
+        'admin-owners-report': 'Total Owners Report',
+        'admin-properties-report': 'Total Properties Report',
+        'admin-bookings-report': 'Total Bookings Report',
+        'admin-reviews-report': 'Total Reviews Report'
+    };
+
+    const title = document.getElementById('admin-report-title');
+
+    if (title) {
+        title.innerHTML =
+            '<i class="fa-solid fa-chart-line me-2"></i>' +
+            titles[reportId];
+    }
+
+    reportsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+
+function closeAdminReports() {
+
+    const reportsSection =
+        document.getElementById('admin-reports-section');
+
+    if (reportsSection) {
+        reportsSection.style.display = 'none';
+    }
+
+    // Change this ID if your actual dashboard section uses another ID
+    const dashboardSection =
+        document.getElementById('admin-dashboard-section');
+
+    if (dashboardSection) {
+        dashboardSection.style.display = 'block';
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+function downloadAdminReportCSV() {
+
+    const reportsSection =
+        document.getElementById('admin-reports-section');
+
+    if (!reportsSection) {
+        alert('Admin reports section was not found.');
+        return;
+    }
+
+    const reports = reportsSection.querySelectorAll('.admin-report-content');
+    let selectedReport = null;
+
+    reports.forEach(function(report) {
+        if (report.style.display !== 'none') {
+            selectedReport = report;
+        }
+    });
+
+    if (!selectedReport) {
+        alert('Please select a report first.');
+        return;
+    }
+
+    const table = selectedReport.querySelector('table');
+
+    if (!table) {
+        alert('No report table was found.');
+        return;
+    }
+
+    const csvRows = [];
+
+    table.querySelectorAll('tr').forEach(function(row) {
+        const values = Array.from(row.querySelectorAll('th, td')).map(function(cell) {
+            return '"' + cell.innerText.trim().replace(/"/g, '""') + '"';
+        });
+
+        csvRows.push(values.join(','));
+    });
+
+    const blob = new Blob(
+        ['\uFEFF' + csvRows.join('\r\n')],
+        { type: 'text/csv;charset=utf-8;' }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = selectedReport.id + '.csv';
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+}
+</script>
+
 
 </body>
 </html>

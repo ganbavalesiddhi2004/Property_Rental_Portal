@@ -403,81 +403,94 @@
             }
         }
 
-        /* Profile form */
+       /* ===== Compact Interactive Profile ===== */
 
-/* Main Profile Section */
 .profile-content {
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 25px 20px 40px;
-    box-sizing: border-box;
+    max-width: 750px;
+    margin: auto;
+    padding: 10px;
 }
 
 /* Section Headings */
 .profile-content h2,
 .profile-content h3 {
-    color: #0f172a;
+    color: #1e293b;
     font-weight: 700;
 }
 
 .profile-content h2 {
-    font-size: 22px;
-    margin: 0 0 20px;
+    font-size: 18px;
+    margin-bottom: 12px;
 }
 
 .profile-content h3 {
-    font-size: 19px;
-    margin: 32px 0 18px;
+    font-size: 16px;
+    margin: 18px 0 10px;
 }
 
-/* Profile Cards */
+/* Profile Card */
 .profile-card {
     width: 100%;
-    max-width: 650px;
-    margin: 0 auto 30px;
-    padding: 30px 35px;
-    background: #ffffff;
+    max-width: 500px;
+    margin: 0 auto 16px;
+    padding: 16px 20px;
+    background: #fff;
     border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+    transition: 0.3s ease;
 }
 
-/* Profile Forms */
-.profile-card form {
-    width: 100%;
-    max-width: 450px;
-    margin: 0 auto;
+.profile-card:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+    transform: translateY(-2px);
 }
 
 /* Profile Icon */
+.profile-card .icon-box,
 .profile-card .profile-icon {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 0 20px;
+    margin-bottom: 10px;
+    border-radius: 9px;
     background: #e0f2fe;
     color: #0284c7;
-    border-radius: 12px;
-    font-size: 22px;
+    font-size: 17px;
+    transition: 0.3s ease;
 }
 
-/* Form Rows */
-.profile-row {
+.profile-card .icon-box:hover,
+.profile-card .profile-icon:hover {
+    background: #0284c7;
+    color: #fff;
+    transform: rotate(-5deg) scale(1.08);
+}
+
+/* Form */
+.profile-card form {
     width: 100%;
-    padding: 14px 0;
-    border-bottom: 1px solid #edf0f5;
-    box-sizing: border-box;
+    max-width: 380px;
+    margin: auto;
 }
 
-.profile-row label {
+/* Profile Rows */
+.profile-row {
+    padding: 7px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.profile-row strong,
+.profile-row label,
+.profile-card .form-group label {
     display: block;
-    margin-bottom: 7px;
-    color: #1e293b;
-    font-size: 13px;
+    margin-bottom: 4px;
+    color: #334155;
+    font-size: 11px;
     font-weight: 600;
 }
 
@@ -485,89 +498,105 @@
 .profile-card input {
     display: block;
     width: 100%;
-    max-width: 100%;
-    min-height: 46px;
-    padding: 11px 14px;
-    margin: 0;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    min-height: 33px;
+    padding: 6px 9px;
+    border: 1px solid #dbe3ed;
+    border-radius: 6px;
     background: #f8fafc;
     color: #0f172a;
-    font-family: inherit;
-    font-size: 14px;
+    font-size: 12px;
     box-sizing: border-box;
-    transition: border-color 0.2s ease,
-                box-shadow 0.2s ease,
-                background 0.2s ease;
+    transition: 0.25s ease;
 }
 
 .profile-card input:hover {
-    border-color: #94a3b8;
+    border-color: #60a5fa;
+    background: #fff;
 }
 
 .profile-card input:focus {
     outline: none;
-    border-color: #2864f0;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(40, 100, 240, 0.12);
+    border-color: #0284c7;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+/* Read-only Fields */
+.profile-card input[readonly] {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+/* Password Form Groups */
+.profile-card .form-group {
+    margin-bottom: 10px;
 }
 
 /* Buttons */
-.profile-card .primary-btn {
+.profile-card .primary-btn,
+.profile-card .danger-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
-    min-height: 46px;
-    margin: 22px 0 0;
-    padding: 12px 18px;
+    min-height: 34px;
+    margin-top: 13px;
+    padding: 7px 12px;
     border: none;
-    border-radius: 8px;
-    background: #2864f0;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 14px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #0284c7, #2563eb);
+    color: #fff;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: 0.25s ease;
 }
 
 .profile-card .primary-btn:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #0369a1, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.22);
 }
 
-/* Delete Account Button */
+/* Delete Button */
 .profile-card .danger-btn {
-    background: #dc2626;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
 .profile-card .danger-btn:hover {
     background: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(220, 38, 38, 0.2);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Button Click Effect */
+.profile-card .primary-btn:active,
+.profile-card .danger-btn:active {
+    transform: scale(0.97);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
     .profile-content {
-        padding: 20px 14px 30px;
+        padding: 8px;
     }
 
     .profile-card {
-        padding: 24px 20px;
-        border-radius: 12px;
+        padding: 13px;
+        border-radius: 9px;
     }
 
     .profile-card form {
         max-width: 100%;
     }
+}
 
-    .profile-content h2 {
-        font-size: 20px;
-    }
-
-    .profile-content h3 {
-        font-size: 18px;
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .profile-card,
+    .profile-card * {
+        transition: none !important;
     }
 }
 /* Properties */
@@ -1326,11 +1355,967 @@
         padding: 20px;
     }
 }
-/* edit and */
+.property-extra-details p,
+.property-details > p {
+    margin: 12px 0;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.property-details p i {
+    margin-right: 5px;
+    color: #2563eb;
+}
+
+.property-amenities {
+    margin-top: 16px;
+}
+
+.amenities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.amenity-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+/* =========================
+   COMPACT PROPERTY CARDS
+========================= */
+
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+.property-card {
+    min-width: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.13);
+}
+
+/* =========================
+   PROPERTY IMAGE
+========================= */
+
+.property-image {
+    height: 165px;
+    position: relative;
+    overflow: hidden;
+    background: #f1f5f9;
+    flex-shrink: 0;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.04);
+}
 
 
 
+.no-property-image {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #94a3b8;
+    background: #f1f5f9;
+}
 
+.no-property-image i {
+    font-size: 32px;
+}
+
+.no-property-image span {
+    font-size: 12px;
+}
+
+/* =========================
+   PROPERTY CARD BODY
+========================= */
+
+.property-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.property-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #172033;
+    margin: 10px 0 8px;
+    overflow-wrap: anywhere;
+}
+
+.property-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.property-location i {
+    color: #0ea5e9;
+    margin-top: 3px;
+}
+
+/* =========================
+   RENT
+========================= */
+
+.property-rent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 0;
+    margin-bottom: 12px;
+    border-top: 1px solid #edf0f5;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.property-rent span {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.property-rent strong {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0284c7;
+}
+
+/* Support existing rent heading */
+.property-rent h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0284c7;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   SHORT DESCRIPTION
+========================= */
+
+.property-description {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   ADDITIONAL PROPERTY DETAILS
+========================= */
+
+.property-extra-details {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+}
+
+.property-extra-details[hidden] {
+    display: none !important;
+}
+
+.property-extra-details p {
+    margin: 8px 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #475569;
+    overflow-wrap: anywhere;
+}
+
+.property-extra-details p i {
+    margin-right: 5px;
+    color: #0284c7;
+}
+
+.property-amenities {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #334155;
+}
+
+.amenities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.amenity-badge {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 15px;
+    background: #e0f2fe;
+    color: #075985;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   THREE ACTION BUTTONS
+========================= */
+
+.property-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.property-actions form {
+    width: 100%;
+    margin: 0;
+}
+
+.property-btn {
+    width: 100%;
+    min-height: 37px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-sizing: border-box;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* View Details */
+.view-btn {
+    background: #e0f2fe;
+    border: 1px solid #38bdf8;
+    color: #0369a1;
+}
+
+.view-btn:hover {
+    background: #0284c7;
+    border-color: #0284c7;
+    color: #ffffff;
+}
+
+/* Booking Request */
+.booking-btn {
+    background: #2563eb;
+    border: 1px solid #2563eb;
+    color: #ffffff;
+}
+
+.booking-btn:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+/* Show Reviews */
+.reviews-btn {
+    background: #fff7ed;
+    border: 1px solid #fdba74;
+    color: #c2410c;
+}
+
+.reviews-btn:hover {
+    background: #ea580c;
+    border-color: #ea580c;
+    color: #ffffff;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 35px 20px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #64748b;
+    text-align: center;
+}
+
+.empty-state > i {
+    margin-bottom: 12px;
+    font-size: 36px;
+    color: #94a3b8;
+}
+
+.empty-state h3 {
+    color: #172033;
+    font-size: 18px;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+    .properties-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .property-image {
+        height: 190px;
+    }
+}
+
+/* Property Actions */
+.property-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.property-actions form {
+    width: 100%;
+    margin: 0;
+}
+
+.property-btn {
+    width: 100%;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 12px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* View Details */
+.view-btn {
+    background: #e0f2fe;
+    border-color: #38bdf8;
+    color: #0369a1;
+}
+
+.view-btn:hover {
+    background: #0284c7;
+    color: #ffffff;
+}
+
+/* Booking Request */
+.booking-btn {
+    background:  #0369a7;
+    border-color: #0369a7;
+    color: #ffffff;
+}
+
+.booking-btn:hover {
+    background: #1d4ed8;
+}
+
+/* Show Reviews */
+.reviews-btn {
+    background: #fff7ed;
+    border-color: #fdba74;
+    color: #c2410c;
+}
+
+.reviews-btn:hover {
+    background: #ea580c;
+    color: #ffffff;
+}
+
+/* Hide Details Initially */
+.property-extra-details[hidden] {
+    display: none !important;
+}
+/* Booking Request Button */
+.booking-btn {
+    width: 100%;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 12px;
+
+    background:  #0369a7;
+    color: #ffffff;
+    border: 1px solid  #0369a7;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.booking-btn i {
+    font-size: 13px;
+}
+
+.booking-btn:hover {
+    background: #0369a7;
+    border-color: #0369a7;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+    transform: translateY(-1px);
+}
+
+.booking-btn:active {
+    transform: scale(0.98);
+}
+
+.booking-btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* Keep the form aligned inside the property card */
+.property-actions form {
+    width: 100%;
+    margin: 0;
+}
+/* =========================
+   EDIT REVIEW BUTTON
+========================= */
+
+.review-edit-details {
+    margin-top: 15px;
+}
+
+.review-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: #e8f0fe;
+    color: #2457a7;
+    border: 1px solid #c8dafc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.3s ease;
+}
+
+.review-edit-btn::-webkit-details-marker {
+    display: none;
+}
+
+.review-edit-btn:hover {
+    background: #2457a7;
+    color: #ffffff;
+    border-color: #2457a7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(36, 87, 167, 0.2);
+}
+
+
+/* =========================
+   EDIT REVIEW FORM
+========================= */
+
+.review-edit-form {
+    margin-top: 15px;
+    padding: 20px;
+    background: #f8faff;
+    border: 1px solid #dce6f5;
+    border-radius: 12px;
+}
+
+.review-edit-form .review-field {
+    margin-bottom: 15px;
+}
+
+.review-edit-form input[type="radio"] {
+    cursor: pointer;
+}
+
+.review-edit-form textarea,
+.review-edit-form select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #d5dce5;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.review-edit-form textarea:focus,
+.review-edit-form select:focus {
+    border-color: #2457a7;
+    box-shadow: 0 0 0 3px rgba(36, 87, 167, 0.1);
+}
+
+
+/* =========================
+   DELETE REVIEW BUTTON
+========================= */
+
+.review-delete-form {
+    margin-top: 12px;
+}
+
+.review-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: #fff0f0;
+    color: #dc3545;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.review-delete-btn:hover {
+    background: #dc3545;
+    color: #ffffff;
+    border-color: #dc3545;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+}
+
+
+/* =========================
+   REVIEW ITEM SPACING
+========================= */
+
+.review-item .review-edit-details,
+.review-item .review-delete-form {
+    margin-bottom: 10px;
+}
+
+.review-item .review-edit-details[open] .review-edit-btn {
+    background: #2457a7;
+    color: #ffffff;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 576px) {
+    .review-edit-btn,
+    .review-delete-btn {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+
+    .review-edit-form {
+        padding: 14px;
+    }
+}
+
+
+/* =========================================
+   1. USER REPORT STATISTICS LAYOUT
+========================================= */
+
+.user-report-statistics {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 0 -12px 30px;
+    row-gap: 24px;
+}
+
+/* Three equal-width cards on desktop */
+.user-report-statistics > .col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    display: flex;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   2. STATISTICS CARD
+========================================= */
+
+.user-report-statistics .user-stat-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 194px;
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 15px;
+    box-sizing: border-box;
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.user-report-statistics .user-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================
+   3. STATISTICS ICON
+========================================= */
+
+.user-report-statistics .user-stat-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    margin-bottom: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e0f2fe;
+    color: #0784c7;
+    border-radius: 12px;
+    font-size: 22px;
+}
+
+
+/* =========================================
+   4. STATISTICS NUMBER
+========================================= */
+
+.user-report-statistics .user-stat-card h3 {
+    margin: 0 0 5px;
+    color: #111827;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   5. STATISTICS LABEL
+========================================= */
+
+.user-report-statistics .user-stat-card p {
+    margin: 0 0 8px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   6. VIEW REPORT BUTTON
+========================================= */
+
+.user-report-statistics .report-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    margin-top: auto;
+    padding: 9px 15px;
+
+    background: #1976b9;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+
+    transition: background 0.3s ease;
+}
+
+.user-report-statistics .report-view-btn:hover {
+    background: #125c91;
+}
+
+
+/* =========================================
+   7. USER REPORT MAIN SECTION
+========================================= */
+
+#user-reports-section {
+    width: 100%;
+    margin-top: 30px;
+    box-sizing: border-box;
+}
+
+.user-report-card {
+    width: 100%;
+    padding: 25px;
+
+    background: #ffffff;
+    border: 1px solid #edf0f5;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
+    box-sizing: border-box;
+}
+
+#user-report-title {
+    margin: 0 0 8px;
+    color: #172b45;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.user-report-description {
+    margin: 0 0 25px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   8. REPORT TABLE
+========================================= */
+
+.user-report-table {
+    width: 100%;
+    margin-bottom: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #d9e1eb;
+    border-radius: 9px;
+}
+
+/* Table headings */
+.user-report-table thead th {
+    padding: 16px;
+
+    background: #1e293b;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    border: 1px solid #344256;
+}
+
+/* Table data */
+.user-report-table tbody td {
+    padding: 14px 16px;
+
+    color: #334155;
+    font-size: 13px;
+    vertical-align: middle;
+
+    border: 1px solid #dce4ed;
+    overflow-wrap: anywhere;
+}
+
+/* Table hover */
+.user-report-table tbody tr:hover td {
+    background: #f8fafc;
+}
+
+
+/* =========================================
+   9. REPORT ACTION BUTTONS
+========================================= */
+
+.user-report-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #dce4ed;
+}
+
+/* Download Excel */
+.download-excel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 20px;
+
+    background: #159447;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: background 0.3s ease;
+}
+
+.download-excel-btn:hover {
+    background: #107b39;
+}
+
+/* Back button */
+.user-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 20px;
+
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background 0.3s ease;
+}
+
+.user-back-btn:hover {
+    background: #e2e8f0;
+}
+
+
+/* =========================================
+   10. TABLET RESPONSIVENESS
+========================================= */
+
+@media (min-width: 576px) and (max-width: 991px) {
+
+    .user-report-statistics > .col-lg-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .user-report-card {
+        padding: 20px;
+    }
+
+    .user-report-table {
+        min-width: 700px;
+    }
+}
+
+
+/* =========================================
+   11. MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 575px) {
+
+    .user-report-statistics > .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .user-report-statistics {
+        margin-right: -8px;
+        margin-left: -8px;
+        row-gap: 16px;
+    }
+
+    .user-report-statistics > .col-lg-4 {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .user-report-card {
+        padding: 15px;
+    }
+
+    #user-report-title {
+        font-size: 20px;
+    }
+
+    .user-report-table {
+        min-width: 700px;
+    }
+
+    .user-report-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .download-excel-btn,
+    .user-back-btn {
+        width: 100%;
+    }
+}
 
     </style>
 </head>
@@ -1373,7 +2358,6 @@
             <i class="fa-solid fa-star"></i>
             <span>Review</span>
         </a>
-
         <a href="{% url 'user_logout' %}" class="logout">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span>Logout</span>
@@ -1410,72 +2394,352 @@
 </div>
     </header>
 
-    <section class="content">
 
-        {% if messages %}
-            {% for message in messages %}
-                <div class="message">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
+<section class="content">
 
-        {% if section == 'dashboard' %}
+    <!-- Django Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
 
+
+    <!-- ==========================================
+         USER DASHBOARD
+    =========================================== -->
+
+    {% if section == 'dashboard' %}
+
+        <div id="dashboard-section" class="content-section">
+
+            <!-- Welcome Section -->
             <div class="welcome">
-                <h1>Welcome, {{ request.user.first_name|default:request.user.username }}!</h1>
-                <p>Find your perfect room, flat, or PG in one place.</p>
+                <h1>
+                    Welcome, {{ request.user.first_name|default:request.user.username }}!
+                </h1>
+                <p>
+                    Find your perfect room, flat, or PG in one place.
+                </p>
             </div>
 
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="icon-box"><i class="fa-solid fa-building"></i></div>
-                    <h3>{{ total_properties|default:0 }}</h3>
-                    <p>Available Properties</p>
+
+            <!-- USER REPORT STATISTICS -->
+            <div class="row g-4 user-report-statistics">
+
+                <!-- Available Properties -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="user-stat-card">
+
+                        <div class="user-stat-icon">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+
+                        <h3>{{ total_properties|default:0 }}</h3>
+                        <p>Available Properties</p>
+
+                        <button
+                            type="button"
+                            class="report-view-btn"
+                            onclick="showUserReport('user-properties-report')">
+
+                            View Report
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="icon-box"><i class="fa-solid fa-calendar-check"></i></div>
-                    <h3>{{ total_bookings|default:0 }}</h3>
-                    <p>My Booking Requests</p>
+
+                <!-- My Booking Requests -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="user-stat-card">
+
+                        <div class="user-stat-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <h3>{{ total_bookings|default:0 }}</h3>
+                        <p>My Booking Requests</p>
+
+                        <button
+                            type="button"
+                            class="report-view-btn"
+                            onclick="showUserReport('user-bookings-report')">
+
+                            View Report
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="icon-box"><i class="fa-solid fa-star"></i></div>
-                    <h3>{{ total_reviews|default:0 }}</h3>
-                    <p>My Reviews</p>
+
+                <!-- My Reviews -->
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="user-stat-card">
+
+                        <div class="user-stat-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <h3>{{ total_reviews|default:0 }}</h3>
+                        <p>My Reviews</p>
+
+                        <button
+                            type="button"
+                            class="report-view-btn"
+                            onclick="showUserReport('user-reviews-report')">
+
+                            View Report
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
                 </div>
+
             </div>
 
-            <h2 class="section-title">Quick Actions</h2>
+        </div>
 
-            <div class="actions">
-                <a href="{% url 'user_dashboard' %}?section=properties" class="action-card">
-                    <div class="icon-box"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <h3>Explore Properties</h3>
-                    <p>Find rooms, 1 BHK flats, and PGs added by owners.</p>
-                </a>
 
-                <a href="{% url 'user_dashboard' %}?section=bookings" class="action-card">
-                    <div class="icon-box"><i class="fa-solid fa-calendar-plus"></i></div>
-                    <h3>Booking Requests</h3>
-                    <p>View your booking requests.</p>
-                </a>
 
-                <a href="{% url 'user_dashboard' %}?section=profile" class="action-card">
-                    <div class="icon-box"><i class="fa-solid fa-user"></i></div>
-                    <h3>My Profile</h3>
-                    <p>View your personal information.</p>
-                </a>
 
-                <a href="{% url 'user_dashboard' %}?section=reviews" class="action-card">
-                    <div class="icon-box"><i class="fa-solid fa-star"></i></div>
-                    <h3>Add a Review</h3>
-                    <p>Share your feedback.</p>
-                </a>
+    <!-- ==========================================
+         USER REPORTS SECTION
+         Keep this OUTSIDE the dashboard condition
+    =========================================== -->
+
+    <section
+        id="user-reports-section"
+        class="content-section"
+        style="display: none;">
+
+        <div class="user-report-card">
+
+            <!-- Report Heading -->
+            <h3 id="user-report-title">
+                <i class="fa-solid fa-chart-line me-2"></i>
+                My Reports
+            </h3>
+
+            <p class="user-report-description">
+                View your properties, booking requests, and reviews.
+            </p>
+
+
+            <!-- ======================================
+                 1. AVAILABLE PROPERTIES REPORT
+            ======================================= -->
+
+            <div
+                id="user-properties-report"
+                class="user-report-content"
+                style="display: none;">
+
+                <div class="table-responsive">
+
+                    <table class="table user-report-table">
+
+                        <thead>
+                            <tr>
+                                <th>SR NO.</th>
+                                <th>PROPERTY TITLE</th>
+                                <th>CATEGORY</th>
+                                <th>AREA</th>
+                                <th>MONTHLY RENT</th>
+                                <th>LISTED DATE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for property in recent_properties %}
+
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ property.title }}</td>
+                                    <td>{{ property.category }}</td>
+                                    <td>{{ property.area }}</td>
+                                    <td>₹{{ property.rent }}</td>
+                                    <td>{{ property.created_at|date:"d-m-Y" }}</td>
+                                </tr>
+
+                            {% empty %}
+
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        No properties available.
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
             </div>
+
+
+            <!-- ======================================
+                 2. BOOKING REQUESTS REPORT
+            ======================================= -->
+
+            <div
+                id="user-bookings-report"
+                class="user-report-content"
+                style="display: none;">
+
+                <div class="table-responsive">
+
+                    <table class="table user-report-table">
+
+                        <thead>
+                            <tr>
+                                <th>SR NO.</th>
+                                <th>PROPERTY</th>
+                                <th>AREA</th>
+                                <th>BOOKING DATE</th>
+                                <th>STATUS</th>
+                                <th>MESSAGE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for booking in my_bookings %}
+
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ booking.property.title }}</td>
+                                    <td>{{ booking.property.area }}</td>
+                                    <td>{{ booking.booking_date|date:"d-m-Y" }}</td>
+                                    <td>{{ booking.status }}</td>
+                                    <td>{{ booking.message|default:"-" }}</td>
+                                </tr>
+
+                            {% empty %}
+
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        No booking requests found.
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ======================================
+                 3. MY REVIEWS REPORT
+            ======================================= -->
+
+            <div
+                id="user-reviews-report"
+                class="user-report-content"
+                style="display: none;">
+
+                <div class="table-responsive">
+
+                    <table class="table user-report-table">
+
+                        <thead>
+                            <tr>
+                                <th>SR NO.</th>
+                                <th>PROPERTY</th>
+                                <th>AREA</th>
+                                <th>RATING</th>
+                                <th>COMMENT</th>
+                                <th>REVIEW DATE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for review in my_reviews %}
+
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ review.property.title }}</td>
+                                    <td>{{ review.property.area }}</td>
+                                    <td>{{ review.rating }}/5</td>
+                                    <td>{{ review.comment }}</td>
+                                    <td>{{ review.created_at|date:"d-m-Y" }}</td>
+                                </tr>
+
+                            {% empty %}
+
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        No reviews found.
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ======================================
+                 REPORT ACTION BUTTONS
+            ======================================= -->
+
+            <div class="user-report-actions">
+
+                <button
+                    type="button"
+                    class="download-excel-btn"
+                    onclick="downloadUserReportExcel()">
+
+                    <i class="fa-solid fa-file-excel"></i>
+                    Download Excel
+
+                </button>
+
+                <button
+                    type="button"
+                    class="user-back-btn"
+                    onclick="closeUserReports()">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back
+
+                </button>
+
+            </div>
+
+        </div>
+
+   
+
+
+
+
+
+
 
             {% elif section == 'profile' %}
 
-            <center>
+            <!-- <center>
                 <h2 class="section-title">Personal Information</h2>
             </center>
 
@@ -1583,92 +2847,376 @@
                         <i class="fa-solid fa-trash"></i> Delete My Account
                     </button>
                 </form>
-      </div>
+      </div> -->
 
  
+<!-- =========================
+     USER PROFILE SECTION
+========================== -->
+
+<!-- Personal Information -->
+<center>
+    <h2 class="section-title">Personal Information</h2>
+</center>
+
+<div class="profile-card">
+
+    <div class="icon-box">
+        <i class="fa-solid fa-user"></i>
+    </div>
+
+    <form method="POST" action="{% url 'user_dashboard' %}?section=profile">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="edit_profile">
+
+
+        <div class="profile-row">
+            <strong>First Name</strong>
+            <input type="text" name="first_name"
+                   value="{{ request.user.first_name }}">
+        </div>
+
+        <div class="profile-row">
+            <strong>Last Name</strong>
+            <input type="text" name="last_name"
+                   value="{{ request.user.last_name }}">
+        </div>
+        
+        <div class="profile-row">
+            <strong>Username</strong>
+            <input type="text" name="username"
+                   value="{{ request.user.username }}" required>
+        </div>
+
+       
+        <div class="profile-row">
+            <strong>Email Address</strong>
+            <input type="email" name="email"
+                   value="{{ request.user.email }}">
+        </div>
+
+      
+
+        <div class="profile-row">
+            <strong>Account ID</strong>
+            <input type="text" value="{{ request.user.id }}" readonly>
+        </div>
+
+        <div class="profile-row">
+            <strong>Role</strong>
+            <input type="text" value="Property User" readonly>
+        </div>
+
+        <div class="profile-row">
+            <strong>Account Type</strong>
+            <input type="text" value="User Account" readonly>
+        </div>
+
+        <div class="profile-row">
+            <strong>Account Status</strong>
+            <input type="text"
+                   value="{% if request.user.is_active %}Active{% else %}Inactive{% endif %}"
+                   readonly>
+        </div>
+
+        <div class="profile-row">
+            <strong>Registration Date</strong>
+            <input type="text"
+                   value="{{ request.user.date_joined|date:'d M Y' }}"
+                   readonly>
+        </div>
+
+        <div class="profile-row">
+            <strong>Last Login</strong>
+            <input type="text"
+                   value="{{ request.user.last_login|date:'d M Y, h:i A'|default:'Not available' }}"
+                   readonly>
+        </div>
+
+
+        <button type="submit" class="primary-btn">
+            <i class="fa-solid fa-pen"></i> Save Profile
+        </button>
+    </form>
+</div>
+
+
+<!-- =========================
+     CHANGE PASSWORD
+========================== -->
+
+<center>
+    <h2 class="section-title" style="margin-top:30px;">
+        Change Password
+    </h2>
+</center>
+
+<div class="profile-card">
+
+    <div class="icon-box">
+        <i class="fa-solid fa-lock"></i>
+    </div>
+
+    <form method="POST" action="{% url 'user_dashboard' %}?section=profile">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="change_password">
+
+        <div class="form-group">
+            <label>Current Password</label>
+            <input type="password" name="old_password"
+                   autocomplete="current-password" required>
+        </div>
+
+        <div class="form-group">
+            <label>New Password</label>
+            <input type="password" name="new_password"
+                   autocomplete="new-password" required>
+        </div>
+
+        <div class="form-group">
+            <label>Confirm New Password</label>
+            <input type="password" name="confirm_password"
+                   autocomplete="new-password" required>
+        </div>
+
+        <button type="submit" class="primary-btn">
+            <i class="fa-solid fa-lock"></i> Update Password
+        </button>
+    </form>
+</div>
+
+
+<!-- =========================
+     DELETE ACCOUNT
+========================== -->
+
+<center>
+    <h2 class="section-title" style="margin-top:30px;">
+        Delete Account
+    </h2>
+</center>
+
+<div class="profile-card">
+
+    <div class="icon-box">
+        <i class="fa-solid fa-trash"></i>
+    </div>
+
+    <p style="color:#b91c1c;font-size:13px;margin-bottom:15px;">
+        Warning: Deleting your account is permanent. You may lose access
+        to your profile and associated account information.
+    </p>
+
+    <form method="POST"
+          action="{% url 'user_dashboard' %}?section=profile"
+          onsubmit="return confirm('Are you sure you want to permanently delete your account? This cannot be undone.');">
+
+        {% csrf_token %}
+        <input type="hidden" name="action" value="delete_account">
+
+        <div class="form-group">
+            <label>Enter Your Current Password to Confirm</label>
+            <input type="password" name="delete_password"
+                   autocomplete="current-password" required>
+        </div>
+
+        <button type="submit"
+                style="background:#dc2626;color:white;border:0;
+                       padding:11px 16px;border-radius:7px;cursor:pointer;">
+            <i class="fa-solid fa-trash"></i> Delete My Account
+        </button>
+    </form>
+</div>
 
 {% elif section == 'properties' %}
 
-    <h2 class="section-title">Rooms, Flats and PGs</h2>
+<h2 class="section-title">Rooms, Flats and PGs</h2>
 
-    <p class="properties-description">
-        Explore rental properties listed by owners.
-    </p>
+<p class="properties-description">
+    Explore rental properties listed by owners.
+</p>
 
-    <div class="properties-grid">
+<div class="properties-grid">
 
-        {% for property in recent_properties %}
+    {% for property in recent_properties %}
 
-            <div class="property-card">
+    <div class="property-card">
 
-                <!-- Property Image -->
-                <div class="property-image">
-                    {% if property.image %}
-                        <img src="{{ property.image.url }}"
-                             alt="{{ property.title }}">
+        <!-- Property Image -->
+        <div class="property-image">
+
+            {% if property.image %}
+                <img src="{{ property.image.url }}"
+                     alt="{{ property.title }}">
+            {% else %}
+                <div class="no-property-image">
+                    <i class="fa-solid fa-house"></i>
+                    <span>No Image Available</span>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Property Information -->
+        <div class="property-details">
+
+            <span class="property-category">
+                {{ property.category }}
+            </span>
+
+            <h3 class="property-title">
+                {{ property.title }}
+            </h3>
+
+            <p class="property-area">
+                <i class="fa-solid fa-location-dot"></i>
+                {{ property.area }}
+            </p>
+
+            <div class="property-rent">
+                <span>Monthly Rent</span>
+                <h3>₹{{ property.rent }}</h3>
+            </div>
+
+            <!-- Additional Information -->
+            <!-- <div class="property-extra-details"> -->
+            <div class="property-extra-details"
+                id="property-details-{{ property.id }}"
+                hidden>
+                <p>
+                    <strong>Description:</strong>
+                    {{ property.description|default:"Not specified"|truncatechars:100 }}
+                </p>
+
+                <p>
+                    <strong>Bedrooms:</strong>
+                    {{ property.bedrooms }}
+                </p>
+
+                <p>
+                    <strong>Bathrooms:</strong>
+                    {{ property.bathrooms }}
+                </p>
+
+                <p>
+                    <strong>Floor Number:</strong>
+                    {{ property.floor_number }}
+                </p>
+
+                <p>
+                    <strong>Furnishing:</strong>
+                    {{ property.get_furnishing_display }}
+                </p>
+
+                <p>
+                    <strong>Parking:</strong>
+                    {% if property.parking %}
+                        Available
                     {% else %}
-                        <div class="no-property-image">
-                            <i class="fa-solid fa-house"></i>
-                            <span>No Image Available</span>
+                        Not Available
+                    {% endif %}
+                </p>
+
+                <p>
+                    <strong>Preferred Tenant:</strong>
+                    {{ property.get_preferred_tenant_display }}
+                </p>
+
+                <p>
+                    <strong>Available From:</strong>
+                    {% if property.available_from %}
+                        {{ property.available_from|date:"d M Y" }}
+                    {% else %}
+                        Not specified
+                    {% endif %}
+                </p>
+
+                <div class="property-amenities">
+                    <strong>Amenities:</strong>
+
+                    {% if property.amenities %}
+                        <div class="amenities-list">
+                            {% for amenity in property.amenities %}
+                                <span class="amenity-badge">
+                                    {{ amenity }}
+                                </span>
+                            {% endfor %}
                         </div>
+                    {% else %}
+                        <p>No amenities listed.</p>
                     {% endif %}
                 </div>
 
-                <!-- Property Details -->
-                <div class="property-details">
+            </div>
 
-                    <span class="property-category">
-                        {{ property.property_type|default:"Rental Property" }}
-                    </span>
+            <!-- Three Action Buttons -->
+            <div class="property-actions">
 
-                    <h3 class="property-title">
-                        {{ property.title }}
-                    </h3>
+                <!-- View Details -->
+                <button type="button"
+                        class="property-btn view-btn"
+                        onclick="togglePropertyDetails('property-details-{{ property.id }}', this)">
+                    <i class="fa-solid fa-eye"></i>
+                    View Details
+            </button>
+            <!-- Booking Request -->
+                <form method="POST"
+                    action="{% url 'user_dashboard' %}?section=properties"
+                    onsubmit="return confirm('Do you want to send a booking request for this property?');">
 
-                    <p class="property-area">
-                        <i class="fa-solid fa-location-dot"></i>
-                        {{ property.area|default:"Area not specified" }}
-                    </p>
+                    {% csrf_token %}
 
-                    <div class="property-rent">
-                        <span>Monthly Rent</span>
-                        <h3>
-                            ₹{{ property.rent|default:"Not specified" }}
-                        </h3>
-                    </div>
+                    <input type="hidden" name="action" value="quick_booking">
+                    <input type="hidden" name="property_id" value="{{ property.id }}">
 
+                    <button type="submit" class="property-btn booking-btn">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Booking Request
+                    </button>
 
-                </div>
+                </form>
+                 <!-- Show Reviews / Quick Review -->
+                <!-- <form method="POST"
+                    action="{% url 'user_dashboard' %}?section=properties"
+                    onsubmit="return confirm('Submit a quick 5-star review for {{ property.title|escapejs }}?');">
+
+                    {% csrf_token %}
+
+                    <input type="hidden" name="action" value="quick_review">
+                    <input type="hidden" name="property_id" value="{{ property.id }}">
+
+                    <button type="submit" class="property-btn reviews-btn">
+                        <i class="fa-solid fa-star"></i>
+                        Submit Quick Review
+                    </button>
+
+                </form> -->
 
             </div>
 
-        {% empty %}
-
-            <div class="empty-state">
-                <i class="fa-solid fa-house-circle-exclamation"></i>
-                <h3>No Properties Available</h3>
-                <p>
-                    Properties added by owners will appear here.
-                </p>
-            </div>
-
-        {% endfor %}
+        </div>
 
     </div>
+
+    {% empty %}
+
+    <div class="empty-state">
+        <i class="fa-solid fa-house-circle-exclamation"></i>
+        <h3>No Properties Available</h3>
+        <p>Properties added by owners will appear here.</p>
+    </div>
+
+    {% endfor %}
+
+</div>
+
             
 {% elif section == 'bookings' %}
 
-<center>
-    <h2 class="section-title">Request a Property Booking</h2>
-
-    <p class="booking-description">
-        Select a property and submit your booking request to its owner.
-    </p>
-</center>
 
 <!-- =========================
      CREATE BOOKING
-========================== -->
+========================== 
 
 <div class="panel-card booking-form-card">
 
@@ -1724,7 +3272,7 @@
         </button>
     </form>
 </div>
-
+-->
 
 <!-- =========================
      BOOKING HISTORY
@@ -1890,12 +3438,75 @@
 </div>
 
 
-```django
 {% elif section == 'reviews' %}
 
 <center>
     <h2 class="section-title">Reviews and Feedback</h2>
 </center>
+
+<!-- =========================
+     SELECTED PROPERTY REVIEWS
+========================== -->
+
+{% if selected_property %}
+
+<div class="panel-card selected-property-reviews">
+
+    <h3>
+        <i class="fa-solid fa-star"></i>
+        Reviews for {{ selected_property.title }}
+    </h3>
+
+    <p class="review-description">
+        Read feedback shared by users about this property.
+    </p>
+
+    {% for review in property_reviews %}
+
+        <div class="panel-card review-item">
+
+            <h4>{{ review.user.username }}</h4>
+
+            <div
+                class="display-stars"
+                aria-label="{{ review.rating }} out of 5 stars"
+            >
+                {% for value in "12345" %}
+                    {% if forloop.counter <= review.rating %}
+                        <span class="star-filled">★</span>
+                    {% else %}
+                        <span class="star-empty">★</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <p>
+                {{ review.comment|default:"No written feedback." }}
+            </p>
+
+            <small>
+                {{ review.created_at|date:"d M Y" }}
+            </small>
+
+        </div>
+
+    {% empty %}
+
+        <div class="empty-state">
+            No reviews are available for this property yet.
+        </div>
+
+    {% endfor %}
+
+    <a href="{% url 'user_dashboard' %}?section=properties"
+       class="property-btn view-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Properties
+    </a>
+
+</div>
+
+{% else %}
 
 <!-- =========================
      SUBMIT REVIEW
@@ -1913,15 +3524,19 @@
         Rate a property and share your feedback with its owner.
     </p>
 
-    <form method="POST" action="{% url 'user_dashboard' %}?section=reviews">
+    <form method="POST"
+          action="{% url 'user_dashboard' %}?section=reviews">
+
         {% csrf_token %}
 
         <input type="hidden" name="action" value="submit_review">
 
         <div class="review-field">
+
             <label for="review_property">Select Property</label>
 
             <select name="property_id" id="review_property" required>
+
                 <option value="">Choose a property</option>
 
                 {% for property in recent_properties %}
@@ -1929,14 +3544,19 @@
                         {{ property.title }}
                     </option>
                 {% endfor %}
+
             </select>
+
         </div>
 
         <div class="review-field">
+
             <label>Your Rating</label>
 
             <div class="star-rating">
+
                 {% for value in "54321" %}
+
                     <input
                         type="radio"
                         id="star{{ value }}"
@@ -1948,11 +3568,15 @@
                     <label for="star{{ value }}" title="{{ value }} stars">
                         ★
                     </label>
+
                 {% endfor %}
+
             </div>
+
         </div>
 
         <div class="review-field">
+
             <label for="review_comment">Your Feedback</label>
 
             <textarea
@@ -1961,13 +3585,16 @@
                 rows="4"
                 placeholder="Write your experience here..."
             ></textarea>
+
         </div>
 
         <button type="submit" class="review-submit-btn">
             <i class="fa-solid fa-paper-plane"></i>
             Submit Review
         </button>
+
     </form>
+
 </div>
 
 
@@ -1977,7 +3604,7 @@
 
 <center>
     <h3 class="review-list-title">My Submitted Reviews</h3>
-</center>
+
 
 <div class="my-reviews">
 
@@ -1991,13 +3618,17 @@
                 class="display-stars"
                 aria-label="{{ review.rating }} out of 5 stars"
             >
+
                 {% for value in "12345" %}
+
                     {% if forloop.counter <= review.rating %}
                         <span class="star-filled">★</span>
                     {% else %}
                         <span class="star-empty">★</span>
                     {% endif %}
+
                 {% endfor %}
+
             </div>
 
             <p>
@@ -2023,13 +3654,10 @@
                     action="{% url 'user_dashboard' %}?section=reviews"
                     class="review-edit-form"
                 >
+
                     {% csrf_token %}
 
-                    <input
-                        type="hidden"
-                        name="action"
-                        value="edit_review"
-                    >
+                    <input type="hidden" name="action" value="edit_review">
 
                     <input
                         type="hidden"
@@ -2048,14 +3676,18 @@
                             id="edit_property_{{ review.pk }}"
                             required
                         >
+
                             {% for property in recent_properties %}
+
                                 <option
                                     value="{{ property.pk }}"
                                     {% if property.pk == review.property_id %}selected{% endif %}
                                 >
                                     {{ property.title }}
                                 </option>
+
                             {% endfor %}
+
                         </select>
 
                     </div>
@@ -2087,6 +3719,7 @@
                             {% endfor %}
 
                         </div>
+
                     </div>
 
                     <div class="review-field">
@@ -2121,13 +3754,10 @@
                 class="review-delete-form"
                 onsubmit="return confirm('Are you sure you want to delete this review?');"
             >
+
                 {% csrf_token %}
 
-                <input
-                    type="hidden"
-                    name="action"
-                    value="delete_review"
-                >
+                <input type="hidden" name="action" value="delete_review">
 
                 <input
                     type="hidden"
@@ -2141,7 +3771,7 @@
                 </button>
 
             </form>
-
+</center>
         </div>
 
     {% empty %}
@@ -2154,12 +3784,424 @@
 
 </div>
 
+{% endif %}
 
 {% endif %}
 
 
-    </section>
+</section>
 </main>
+
+<script>
+    function showUserReport(reportId) {
+
+        // Hide other dashboard sections
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Display the reports section
+        const reportsSection = document.getElementById('user-reports-section');
+
+        if (reportsSection) {
+            reportsSection.style.display = 'block';
+        }
+
+        // Hide all individual reports
+        document.querySelectorAll('.user-report-content').forEach(report => {
+            report.style.display = 'none';
+        });
+
+        // Show the selected report
+        const selectedReport = document.getElementById(reportId);
+
+        if (selectedReport) {
+            selectedReport.style.display = 'block';
+        }
+
+        // Update report title
+        const reportTitles = {
+            'user-properties-report': 'Available Properties Report',
+            'user-bookings-report': 'My Booking Requests Report',
+            'user-reviews-report': 'My Reviews Report'
+        };
+
+        const title = document.getElementById('user-report-title');
+
+        if (title) {
+            title.innerHTML =
+                '<i class="fa-solid fa-chart-line me-2"></i>' +
+                (reportTitles[reportId] || 'My Reports');
+        }
+
+        // Scroll to reports
+        reportsSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+
+
+    function closeUserReports() {
+
+        const reportsSection = document.getElementById('user-reports-section');
+
+        if (reportsSection) {
+            reportsSection.style.display = 'none';
+        }
+
+        // Return to the User Dashboard
+        const dashboardSection = document.getElementById('dashboard-section');
+
+        if (dashboardSection) {
+            dashboardSection.style.display = 'block';
+
+            dashboardSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+</script>
+<script>
+function showUserReport(reportId) {
+
+    document.querySelectorAll('.content-section').forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    const reportsSection = document.getElementById('user-reports-section');
+
+    if (reportsSection) {
+        reportsSection.style.display = 'block';
+    }
+
+    document.querySelectorAll('.user-report-content').forEach(function(report) {
+        report.style.display = 'none';
+    });
+
+    const selectedReport = document.getElementById(reportId);
+
+    if (selectedReport) {
+        selectedReport.style.display = 'block';
+    }
+
+    const titles = {
+        'user-properties-report': 'Property Performance Report',
+        'user-bookings-report': 'My Booking Requests Report',
+        'user-reviews-report': 'My Reviews Report'
+    };
+
+    const title = document.getElementById('user-report-title');
+
+    if (title) {
+        title.innerHTML =
+            '<i class="fa-solid fa-chart-line me-2"></i>' +
+            (titles[reportId] || 'My Reports');
+    }
+
+    if (reportsSection) {
+        reportsSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+
+function closeUserReports() {
+
+    const reportsSection = document.getElementById('user-reports-section');
+
+    if (reportsSection) {
+        reportsSection.style.display = 'none';
+    }
+
+    const dashboardSection = document.getElementById('dashboard-section');
+
+    if (dashboardSection) {
+        dashboardSection.style.display = 'block';
+        dashboardSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+
+function downloadUserReportExcel() {
+
+    const visibleReport = document.querySelector(
+        '#user-reports-section .user-report-content:not([style*="display: none"])'
+    );
+
+    if (!visibleReport) {
+        alert('Please select a report first.');
+        return;
+    }
+
+    const table = visibleReport.querySelector('table');
+
+    if (!table) {
+        alert('No report data available.');
+        return;
+    }
+
+    let csv = [];
+
+    table.querySelectorAll('tr').forEach(function(row) {
+
+        const cells = row.querySelectorAll('th, td');
+
+        const rowData = Array.from(cells).map(function(cell) {
+
+            let value = cell.innerText.trim();
+            value = value.replace(/"/g, '""');
+
+            return '"' + value + '"';
+        });
+
+        csv.push(rowData.join(','));
+    });
+
+    const blob = new Blob(
+        ['\uFEFF' + csv.join('\r\n')],
+        { type: 'text/csv;charset=utf-8;' }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    const visibleReportId = visibleReport.id;
+
+    link.href = url;
+    link.download = visibleReportId + '.csv';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+}
+</script>
+<script>
+function togglePropertyDetails(detailsId, button) {
+    const details = document.getElementById(detailsId);
+
+    if (!details) {
+        return;
+    }
+
+    details.hidden = !details.hidden;
+
+    if (details.hidden) {
+        button.innerHTML = '<i class="fa-solid fa-eye"></i> View Details';
+    } else {
+        button.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Hide Details';
+    }
+}
+</script>
+<script>
+function showUserReport(reportId) {
+
+    document.querySelectorAll('.content-section').forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    const reportsSection = document.getElementById('user-reports-section');
+
+    if (reportsSection) {
+        reportsSection.style.display = 'block';
+    }
+
+    document.querySelectorAll('.user-report-content').forEach(function(report) {
+        report.style.display = 'none';
+    });
+
+    const selectedReport = document.getElementById(reportId);
+
+    if (selectedReport) {
+        selectedReport.style.display = 'block';
+    }
+
+    const titles = {
+        'user-properties-report': 'Property Performance Report',
+        'user-bookings-report': 'My Booking Requests Report',
+        'user-reviews-report': 'My Reviews Report'
+    };
+
+    const title = document.getElementById('user-report-title');
+
+    if (title) {
+        title.innerHTML =
+            '<i class="fa-solid fa-chart-line me-2"></i>' +
+            (titles[reportId] || 'My Reports');
+    }
+
+    if (reportsSection) {
+        reportsSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+
+function closeUserReports() {
+
+    const reportsSection = document.getElementById('user-reports-section');
+
+    if (reportsSection) {
+        reportsSection.style.display = 'none';
+    }
+
+    const dashboardSection = document.getElementById('dashboard-section');
+
+    if (dashboardSection) {
+        dashboardSection.style.display = 'block';
+        dashboardSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+
+function downloadUserReportExcel() {
+
+    const visibleReport = document.querySelector(
+        '#user-reports-section .user-report-content:not([style*="display: none"])'
+    );
+
+    if (!visibleReport) {
+        alert('Please select a report first.');
+        return;
+    }
+
+    const table = visibleReport.querySelector('table');
+
+    if (!table) {
+        alert('No report data available.');
+        return;
+    }
+
+    let csv = [];
+
+    table.querySelectorAll('tr').forEach(function(row) {
+
+        const cells = row.querySelectorAll('th, td');
+
+        const rowData = Array.from(cells).map(function(cell) {
+
+            let value = cell.innerText.trim();
+            value = value.replace(/"/g, '""');
+
+            return '"' + value + '"';
+        });
+
+        csv.push(rowData.join(','));
+    });
+
+    const blob = new Blob(
+        ['\uFEFF' + csv.join('\r\n')],
+        { type: 'text/csv;charset=utf-8;' }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    const visibleReportId = visibleReport.id;
+
+    link.href = url;
+    link.download = visibleReportId + '.csv';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+}
+</script>
+
+<script>
+function showUserReport(reportId) {
+
+    const reportsSection =
+        document.getElementById('user-reports-section');
+
+    const selectedReport =
+        document.getElementById(reportId);
+
+    if (!reportsSection) {
+        console.error('Missing HTML element: user-reports-section');
+        return;
+    }
+
+    if (!selectedReport) {
+        console.error('Missing report element:', reportId);
+        return;
+    }
+
+    // Hide the dashboard and other content sections
+    document.querySelectorAll('.content-section').forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    // Show the report section
+    reportsSection.style.display = 'block';
+
+    // Hide all reports
+    document.querySelectorAll('.user-report-content').forEach(function(report) {
+        report.style.display = 'none';
+    });
+
+    // Show the selected report
+    selectedReport.style.display = 'block';
+
+    // Update heading
+    const titles = {
+        'user-properties-report': 'Available Properties Report',
+        'user-bookings-report': 'My Booking Requests Report',
+        'user-reviews-report': 'My Reviews Report'
+    };
+
+    const title = document.getElementById('user-report-title');
+
+    if (title) {
+        title.innerHTML =
+            '<i class="fa-solid fa-chart-line me-2"></i>' +
+            titles[reportId];
+    }
+
+    reportsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+
+function closeUserReports() {
+
+    const reportsSection =
+        document.getElementById('user-reports-section');
+
+    const dashboardSection =
+        document.getElementById('dashboard-section');
+
+    if (reportsSection) {
+        reportsSection.style.display = 'none';
+    }
+
+    if (dashboardSection) {
+        dashboardSection.style.display = 'block';
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+</script>
 
 </body>
 </html>
